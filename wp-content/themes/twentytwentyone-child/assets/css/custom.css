@@ -44,7 +44,7 @@ footer .site-info .site-name .footer span strong{font-weight: 400; color: #FF000
 .homePage .heroBanner .heroContent .heroIcons ul li a img{max-width: 30px;}
 .homePage .heroBanner .heroContent .space{display: block;margin: 20px 0px;}
 .homePage .heroBanner .heroContent span{color: #ff0000;}
-.woocommerce{max-width: 1320px !important;}
+.woocommerce{max-width: 100% !important;}
 .product {width: 100%;float: left; position: relative;}
 ul.slick-dots{position: absolute;
 top: -160px;

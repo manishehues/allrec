@@ -21,23 +21,3 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 the_title( '<h1 class="product_title entry-title">', '</h1>' );
 
-?>
-	<div class="single-page products-grades-types">
-	   <?php $types_grades = ehuesDEV_jit_product_type_grades();
-
-            if (!empty($types_grades)) {?>
-                <ul id="single-page-types_grades">
-                    <?php if(!empty($types_grades['prdct_type'])) : ?>
-                        <li class="<?php echo $types_grades['color_class'];?>"><?php echo $types_grades['prdct_type']; ?></li>
-                    <?php endif; ?>
-
-                    <?php if(!empty($types_grades['grades'])) : ?>
-                        <li class="prdct-grade"><?php echo $types_grades['grades']; ?></li>
-                    <?php endif; ?>
-
-                </ul>
-            <?php } ?>
-
-	</div>
-<?php 
-
