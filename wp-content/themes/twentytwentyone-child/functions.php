@@ -23,5 +23,6 @@ remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0
 /*remove breadcrums*/    
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
 
+
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta',40);
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 10 );

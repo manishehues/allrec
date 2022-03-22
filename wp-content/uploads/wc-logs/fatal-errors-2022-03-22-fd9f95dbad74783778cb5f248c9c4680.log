@@ -1,0 +1,24 @@
+2022-03-22T06:07:07+00:00 CRITICAL Uncaught ArgumentCountError: intdiv() expects exactly 2 arguments, 1 given in E:\laragon\www\allrec\wp-content\themes\twentytwentyone-child\woocommerce\loop\price.php:27
+Stack trace:
+#0 E:\laragon\www\allrec\wp-content\themes\twentytwentyone-child\woocommerce\loop\price.php(27): intdiv(1.0)
+#1 E:\laragon\www\allrec\wp-content\plugins\woocommerce\includes\wc-core-functions.php(345): include('E:\\laragon\\www\\...')
+#2 E:\laragon\www\allrec\wp-content\plugins\woocommerce\includes\wc-template-functions.php(1377): wc_get_template('loop/price.php')
+#3 E:\laragon\www\allrec\wp-includes\class-wp-hook.php(307): woocommerce_template_loop_price('')
+#4 E:\laragon\www\allrec\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#5 E:\laragon\www\allrec\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#6 E:\laragon\www\allrec\wp-content\plugins\woocommerce\templates\content-product.php(57): do_action('woocommerce_aft...')
+#7 E:\laragon\www\allrec\wp-includes\template.php(772): require('E:\\laragon\\www\\...')
+#8 E:\laragon\www\allrec\wp-content\plugins\woocommerce\includes\wc-core-functions.php(284): load_template('E:\\laragon\\www\\...', false)
+#9 E:\laragon\www\allrec\wp-content\plugins\woocommerce\includes\shortcodes\class-wc-shortcode-products.php(660): wc_get_template_part('content', 'product')
+#10 E:\laragon\www\allrec\wp-content\plugins\woocommerce\includes\shortcodes\class-wc-shortcode-products.php(100): WC_Shortcode_Products->product_loop()
+#11 E:\laragon\www\allrec\wp-content\plugins\woocommerce\includes\class-wc-shortcodes.php(283): WC_Shortcode_Products->get_content()
+#12 E:\laragon\www\allrec\wp-includes\shortcodes.php(356): WC_Shortcodes::products(Array, '', 'products')
+#13 [internal function]: do_shortcode_tag(Array)
+#14 E:\laragon\www\allrec\wp-includes\shortcodes.php(228): preg_replace_callback('/\\[(\\[?)(produc...', 'do_shortcode_ta...', '[products class...')
+#15 E:\laragon\www\allrec\wp-content\themes\twentytwentyone-child\templates\homepage.php(58): do_shortcode('[products class...')
+#16 E:\laragon\www\allrec\wp-includes\template-loader.php(106): include('E:\\laragon\\www\\...')
+#17 E:\laragon\www\allrec\wp-blog-header.php(19): require_once('E:\\laragon\\www\\...')
+#18 E:\laragon\www\allrec\index.php(17): require('E:\\laragon\\www\\...')
+#19 {main}
+  thrown in E:\laragon\www\allrec\wp-content\themes\twentytwentyone-child\woocommerce\loop\price.php on line 27
+
