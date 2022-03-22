@@ -20,8 +20,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $product;
+
+$tickets = intdiv($product->get_price(),20);
+$ticket_str = "Ticket";
+if($tickets > 1){
+	$ticket_str = "Tickets";
+
+}
 ?>
 
 <?php if ( $price_html = $product->get_price_html() ) : ?>
 	<span class="price"><?php echo $price_html; ?></span>
+	<div class="tickets"><?php echo $tickets." ". $ticket_str ?></div>
 <?php endif; ?>
+
+
+
