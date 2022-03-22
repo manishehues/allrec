@@ -55,7 +55,7 @@ get_header();
             </div>
         </div>
         <div class="ProductShortcode">       
-            <?php echo do_shortcode('[wcpscwc_pdt_slider type="products"]'); ?>
+            <?php echo do_shortcode('[products class="proSlider"]'); ?>
         </div>
     </div>
 
