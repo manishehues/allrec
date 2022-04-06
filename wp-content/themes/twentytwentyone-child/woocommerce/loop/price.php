@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Loop Price
  *
@@ -15,23 +16,28 @@
  * @version     1.6.4
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
 global $product;
 
-$tickets = intdiv($product->get_price(),20);
-$ticket_str = "Ticket";
-if($tickets > 1){
-	$ticket_str = "Tickets";
+product_ticket_detail($product);
 
+$tickets = intdiv($product->get_price(), 20);
+
+$ticket_str = "Ticket";
+if ($tickets > 1) {
+	$ticket_str = "Tickets";
 }
+
+
 ?>
 
-<?php if ( $price_html = $product->get_price_html() ) : ?>
+<?php if ($price_html = $product->get_price_html()) : ?>
 	<div class="product-price">
 		<span class="price"><?php echo $price_html; ?></span>
-		<div class="tickets"><?php echo $tickets." ". $ticket_str ?></div>
+		<div class="tickets"><?php echo $tickets . " " . $ticket_str
+								?></div>
 	</div>
 <?php endif; ?>
