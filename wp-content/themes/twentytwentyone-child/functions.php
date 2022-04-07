@@ -86,3 +86,32 @@ function product_ticket_detail($product)
 }
 
 /* =============== Lottery System Functionality End ============== */
+
+// Our custom post type function
+function create_posttype() {
+  
+    register_post_type( 'give_away',
+    // CPT Options
+        array(
+            'labels' => array(
+                'name' => __( 'give_away' ),
+                'singular_name' => __( 'away' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'give_away'),
+            'show_in_rest' => true,
+  
+        )
+    );
+}
+// Hooking up our function to theme setup
+add_action( 'init', 'create_posttype' );
+
+add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
+  
+function add_my_post_types_to_query( $query ) {
+    if ( is_home() && $query->is_main_query() )
+        $query->set( 'post_type', array( 'post', 'give_away' ) );
+    return $query;
+}

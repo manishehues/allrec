@@ -81,6 +81,7 @@ ul.products li.product .price{text-align: left;padding-right: 60px;padding-left:
 .features .secOff .leftSide h2{font-weight: 600 !important;}
 .features .secOff .rightSide{float: right;border: 1px solid #FF0606;border-radius: 12px;box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.27);padding: 40px 20px;}
 .features .secOff .rightSide h4 {font-size: 120px; color: #FF0606;font-weight: 900;font-family: 'poppins';}
+.variations_form{width: 100% ; float: left;}
 
 .videoList{width: 100%; float: left;padding-top: 80px; padding-bottom: 30px;}
 .videoList h2{font-weight: 600 !important;padding-bottom: 20px; padding-left: 30px;}
@@ -134,7 +135,7 @@ table {float: left!important;width: 100%!important;margin-top: 20px!important;fo
 .slick-dots li button:focus{outline: none!important;}
 .slick-dots li{width: 30px !important;font-size: 0;list-style: none;margin-right: 13px !important;}
 .slick-next.slick-arrow,.slick-prev.slick-arrow {display: none!important;}
-ul.products li.product .added_to_cart{position: absolute;top: 384px;left: -8px;height: 28%;width: 100%;background: rgba(255, 0, 0, 0.78);text-decoration: none !important; box-shadow: none !important;display: flex;align-items: center;justify-content: center;z-index: 9999;font-size: 20px;font-family: 'poppins';color: #fff;font-weight: 800;text-transform: uppercase;letter-spacing: 2px;border-bottom-right-radius: 40px;border-bottom-left-radius: 40px;}
+ul.products li.product .added_to_cart{position: absolute;top: 305px;left: -8px;height: 33%;width: 100%;background: rgba(255, 0, 0, 0.78);text-decoration: none !important; box-shadow: none !important;display: flex;align-items: center;justify-content: center;z-index: 9999;font-size: 20px;font-family: 'poppins';color: #fff;font-weight: 800;text-transform: uppercase;letter-spacing: 2px;border-bottom-right-radius: 40px;border-bottom-left-radius: 40px;}
 /*Single product page*/
 .upperWrap{width: 100%; float: left; background-color: #fbf9f5; padding: 30px;}
 .upperWrap .woocommerce-product-gallery{margin: 0px;}
@@ -170,3 +171,33 @@ ul.products li.product .added_to_cart{position: absolute;top: 384px;left: -8px;h
 #tab-additional_information table tbody tr td p {color: #000;text-decoration: none;text-transform: uppercase;font-size: 14px;font-family: 'poppins';font-weight: 600;}
 .woocommerce-tabs #tab-reviews #submit{float: right;border: none;background: red;font-size: 20px !important;font-family: 'poppins';color: #fff;letter-spacing: 0;border-radius: 8px;padding: 14px 45px; font-weight: 600;}
 .tickets{position: absolute; text-transform: uppercase; color: #000; font-family: 'poppins'; letter-spacing: normal; font-size: 15px; left: 20%;bottom: 58px;}
+.woocommerce ul.products.columns-3 li.product-type-variable .price{border-radius: 0px!important;}
+.woocommerce ul.products.columns-3 li.product-type-variable .variations{width: 100%;float: left;background: #fff1f1; position: relative;border-bottom-right-radius: 45px;border-bottom-left-radius: 45px;padding-bottom: 30px;}
+.woocommerce ul.products.columns-3 li.product-type-variable .variations li.woo-variation-items-wrapper{margin-top: 0px; margin-bottom: 0px;}
+.woocommerce ul.products.columns-3 li.product-type-variable .variations li.reset_variations{position: absolute;top: 8px;right: 30px;}
+.woocommerce ul.products.columns-3 li.product-type-variable .variations li.reset_variations a{background: transparent;width: 22px;height: 22px;position: relative;font-size: 0px;display: block;padding: 5px;border: 1px solid #000;border-radius: 50px;}
+.woocommerce ul.products.columns-3 li.product-type-variable .variations li.reset_variations a:after {content: '';height: 12px;border-left: 1px solid #f00;position: absolute;transform: rotate(45deg);left: 9px;}
+.woocommerce ul.products.columns-3 li.product-type-variable .variations li.reset_variations a:before {content: '';height: 12px;border-left: 1px solid #f00;position: absolute;transform: rotate(-45deg);left: 9px;}
+.woocommerce ul.products.columns-3 li.product-type-variable .variations li.woo-variation-items-wrapper ul li{box-shadow: none; border: 1px solid #eee;}
+.woocommerce ul.products.columns-3 li.product-type-variable .variations li.woo-variation-items-wrapper ul li.selected{box-shadow: none; border: 1px solid #000!important;}
+.woocommerce ul.products.columns-3 li.product-type-variable .variations li.woo-variation-items-wrapper ul li:hover{box-shadow: none!important; border: 1px solid #000;}
+.woocommerce ul.products.columns-3 li.product-type-variable .add_to_cart_button{bottom: 86px;}
+ul.products li.product-type-variable .added_to_cart{top: 305px;height: 42%;}
+.woocommerce .onsale {font-size: 12px;top: 10px;right: 0; background: #f00;font-weight: 500;font-family: 'poppins';}
+.woocommerce ul.products.columns-3 li.product {
+  width: calc(24.333% - 16px) !important; 
+}
+.woocommerce ul.products.columns-3{justify-content: center;}
+
+/*======================GIVE_AWAY===============================*/
+.giveAway{width: 100%; float: left;}
+.giveAway .giveAway-product{width: 100%; float: left; padding-bottom: 20px;}
+.giveAway .giveAway-product .Sap{width: 60%; float: left; position: relative;}
+.giveAway .giveAway-product .giveAway-chatbox{width: 40%; float: left; text-align: center;}
+.cart_tittle{position: absolute; bottom: 20px; width: 100%;}
+.cart_tittle h2 {float: left; padding-right: 401px;padding-left: 40px;line-height: 1em;color: #fff !important; position: relative;z-index: 99;}
+.lottryNumber{position: absolute;top: 50px;right: 0;color: #fff;text-align: right;background: #0000003b;border-top-left-radius: 15px;border-bottom-left-radius: 15px;line-height: normal;padding: 12px 20px;font-family: 'poppins';font-weight: 500;}
+.cart_tittle h2::after {content: '';height: 25px;width: 176px;position: absolute;background: #FF0000A8;left: 44px;bottom: 55px;z-index: -99999999;}
+.cart_tittle h2::before {content: '';height: 25px;width: 116px;position: absolute;background: #FF0000A8;left: 64px;bottom: 3px;z-index: -99999999;}
+.giveAway .giveAway-product .giveAway-chatbox img{max-height: 550px!important;}
+.cart_tittle .giveAwaybutton{position: absolute;z-index: 9999;}
