@@ -45,7 +45,7 @@ jQuery(function ($) {
       },
       complete: function () {
         // what to do after a comment has been added
-        button.removeClass("loadingform").val("Post Comment");
+        button.removeClass("loadingform").val("Post");
       },
     });
     return false;
@@ -74,11 +74,34 @@ jQuery(function ($) {
 
   var count = 0;
   $(".like-comment").click(function () {
-    count++;
+    var comment_id = $(this).attr("rel");
+
+    var data = {
+      comment_id: comment_id,
+      action: "cmntlike",
+    };
+
+    $.ajax({
+      type: "POST",
+      url: misha_ajax_comment_params.ajaxurl,
+      data: data,
+
+      success: function (response) {
+        if (response) {
+          window.location.reload();
+        }
+      },
+    });
+
+    /* count++;
     likeCount = $(this).html("like " + count);
     var parentCmntID = $(this).attr("rel");
 
-    var data0 = { numberId: likeCount, cmntid: parentCmntID, action: cmntlike };
+    var data0 = {
+      numberId: likeCount,
+      cmntid: parentCmntID,
+      action: "cmntlike",
+    };
 
     $.ajax({
       type: "POST",
@@ -92,6 +115,6 @@ jQuery(function ($) {
         }
       },
     });
-    return false;
+    return false;*/
   });
 });

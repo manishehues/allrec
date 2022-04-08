@@ -161,6 +161,7 @@ function misha_submit_ajax_comment()
     /*
 	 * Set Cookies
 	 */
+
     $user = wp_get_current_user();
     do_action('set_comment_cookies', $comment, $user);
 
@@ -185,34 +186,49 @@ function misha_submit_ajax_comment()
 
         foreach ($comments as $key => $comment) {
 
-            $commentList .= '<li id="comment-' . $postId . '">';
-            $commentList .= '<article class="comment byuser comment-author-admin bypostauthor even thread-even depth-1 entry-comments">
-			<div class="comment-avatar">
-			<img alt="" src="http://2.gravatar.com/avatar/5de4a6139cc0576a70e0dfa51dbb5a8d?s=75&d=mm&r=g" class="avatar arm_grid_avatar arm-avatar avatar-75 photo" height="75" width="75" loading="lazy">
-			</div>
-			<div class="comment-content">
-			<h3 class="comment-author">
-                  <span class="url"> ' . $comment->comment_author . '</span>
-                </h3>
-			<div class="comment-meta">' . $comment->comment_date . '</div>
-			<ol class="comment-list">
-                  <li id="comment-1" class="comment depth-1">
-                    <article>
-                      <div class="reply">
-                        <a class="comment-reply-link">Reply</a>
-                      </div>
-                    </article>
-                    <ol class="children"></ol>
-                  </li>
-                </ol>
-                <div id="respond">
-                </div>
 
-                <div class="comment-text">
-                  <p>' . $comment->comment_content . '</p>
-                </div></div>';
-            $commentList .= '</article>';
-            $commentList .= '</li>';
+            $commentList .= '<li class="profile_single" id="comment-' . $comment->comment_ID . '">
+                            <div class="user">
+                              <img src="' . get_stylesheet_directory_uri() . '/assets/images/user.png" />' .               $comment->comment_author . '
+                              <span>' . $comment->comment_content . '</span>
+                              <div id="respond"></div>
+                              <div class="likes like-comment" rel="' . $comment->comment_ID . '">
+                                <span class="time">1h - </span>likes
+                                <span class="likes">'
+                . $comment->cmnt_like . '
+                                </span>
+                                <span class="likesText comment-reply-link" data-post_id="' . get_the_ID() . '" rel="' . $comment->comment_ID . '">likes -</span><span class="reply">Reply</span>
+                              </div>
+                          </li>';
+
+            // $commentList .= '<li id="comment-' . $postId . '">';
+            // $commentList .= '<article class="comment byuser comment-author-admin bypostauthor even thread-even depth-1 entry-comments">
+            // <div class="comment-avatar">
+            // <img alt="" src="http://2.gravatar.com/avatar/5de4a6139cc0576a70e0dfa51dbb5a8d?s=75&d=mm&r=g" class="avatar arm_grid_avatar arm-avatar avatar-75 photo" height="75" width="75" loading="lazy">
+            // </div>
+            // <div class="comment-content">
+            // <h3 class="comment-author">
+            //       <span class="url"> ' . $comment->comment_author . '</span>
+            //     </h3>
+            // <div class="comment-meta">' . $comment->comment_date . '</div>
+            // <ol class="comment-list">
+            //       <li id="comment-1" class="comment depth-1">
+            //         <article>
+            //           <div class="reply">
+            //             <a class="comment-reply-link">Reply</a>
+            //           </div>
+            //         </article>
+            //         <ol class="children"></ol>
+            //       </li>
+            //     </ol>
+            //     <div id="respond">
+            //     </div>
+
+            //     <div class="comment-text">
+            //       <p>' . $comment->comment_content . '</p>
+            //     </div></div>';
+            // $commentList .= '</article>';
+            // $commentList .= '</li>';
         }
     }
     echo $commentList;
@@ -221,11 +237,33 @@ function misha_submit_ajax_comment()
 }
 
 
-add_action('wp_ajax_ajaxcomments', 'submit_ajax_comment_like'); //
-add_action('wp_ajax_nopriv_ajaxcomments', 'submit_ajax_comment_like'); //
+add_action('wp_ajax_cmntlike', 'submit_ajax_comment_like'); //
+add_action('wp_ajax_nopriv_cmntlike', 'submit_ajax_comment_like'); //
 
 
 function submit_ajax_comment_like()
 {
+    global $wpdb;
+
+    //print_r($_REQUEST);
+
+    $table_name = $wpdb->prefix . "comments";
+    $colName = 'cmnt_like';
+    $id = stripslashes_deep($_REQUEST['comment_id']);
+
+    // $sql = $wpdb->update($table_name, array('cmnt_like' => $colName + 1), array('comment_ID' => $id));
+
+    echo "UPDATE $table_name 
+    SET cmnt_like = cmnt_like + 1
+    WHERE comment_ID = " . $id;
+
+
+
+    $sql = $wpdb->query("UPDATE $table_name 
+    SET cmnt_like = cmnt_like + 1
+    WHERE comment_ID = " . $id);
+
+    print_r($sql);
+    die();
 }
 /* =============== comment system End ============== */
