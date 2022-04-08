@@ -27,7 +27,7 @@ define('DB_NAME', 'allrec');
 define('DB_USER', 'root');
 
 /** Database password */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'newpassword');
 
 /** Database hostname */
 define('DB_HOST', 'localhost');
@@ -80,7 +80,7 @@ $table_prefix = 'wp_';
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
 
 //define('WP_DEBUG_LOG', true);
 
