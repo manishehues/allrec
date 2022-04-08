@@ -87,12 +87,21 @@ class EntryListTable extends WP_List_Table
 
   function column_default($item, $column_name)
   {
-
-    //print_r($item);
+    //print_r(admin_url());
 
     switch ($column_name) {
+      case 'user_login':
+        return '<a target="_blank" href="' . admin_url('user-edit.php?user_id=' . $item['user_id'] . '&wp_http_referer=%2Fallrec%2Fwp-admin%2Fusers.php') . '">' . $item['user_login'] . '</a>';
       case 'order_id':
-        return '<a href="' . admin_url('post.php?post=' . $item['order_id'] . '&action=edit') . '">' . $item['order_id'] . '</a>';
+        return '<a target="_blank" href="' . admin_url('post.php?post=' . $item['order_id'] . '&action=edit') . '">' . $item['order_id'] . '</a>';
+      case 'is_used':
+        return 'Unused';
+        if (!$item['is_used'] == 0) {
+          return 'Used';
+        }
+      case 'created_at':
+        return
+          date('F j, Y', strtotime($item['created_at']));;
       case 'action':
         echo '<a href="' . admin_url('admin.php?page=new-entry&entryid=' . $item['id']) . '">Edit</a>';
     }
@@ -114,13 +123,13 @@ class EntryListTable extends WP_List_Table
   {
     $columns = array(
       'cb'            => '<input type="checkbox" />',
-      'id'            => 'ID',
-      'user_id'       => 'User ID',
+      'user_login'    => 'Username',
+      'user_email'    => 'Email',
       'order_id'      => 'Order ID',
       'ticket_number' => 'Numbers',
       'is_used'       => 'Status',
       'created_at'    => 'Datetime',
-      'action'        => 'Action'
+      /* 'action'        => 'Action' */
     );
     return $columns;
   }
@@ -128,7 +137,8 @@ class EntryListTable extends WP_List_Table
   function get_sortable_columns()
   {
     $sortable_columns = array(
-      'title' => array('title', true)
+      'user_login' => array('user_login', true),
+      'user_email' => array('user_email', true)
     );
     return $sortable_columns;
   }
@@ -154,6 +164,9 @@ class EntryListTable extends WP_List_Table
 
   function prepare_items()
   {
+
+    //$orderby = isset($_REQUEST['orderby']) ? trim($_REQUEST['orderby']) :
+
     global $wpdb, $current_user;
 
     $table_name = $wpdb->prefix . 'custom_lottery_ticket';
@@ -164,66 +177,36 @@ class EntryListTable extends WP_List_Table
     $sortable = $this->get_sortable_columns();
     $this->_column_headers = array($columns, $hidden, $sortable);
     $this->process_bulk_action();
+
     $total_items = $wpdb->get_var("SELECT COUNT(id) FROM $table_name");
 
     $paged = isset($_REQUEST['paged']) ? max(0, intval($_REQUEST['paged']) - 1) : 0;
+
     $orderby = (isset($_REQUEST['orderby']) && in_array($_REQUEST['orderby'], array_keys($this->get_sortable_columns()))) ? $_REQUEST['orderby'] : 'id';
     $order = (isset($_REQUEST['order']) && in_array($_REQUEST['order'], array('asc', 'desc'))) ? $_REQUEST['order'] : 'desc';
-
+    $where_search = "";
     if (isset($_REQUEST['s']) && $_REQUEST['s'] != '') {
-      $this->items = $wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name WHERE `title` LIKE '%" . $_REQUEST['s'] . "%' OR `description` LIKE '%" . $_REQUEST['s'] . "%' ORDER BY $orderby $order LIMIT %d OFFSET %d", $per_page, $paged * $per_page), ARRAY_A);
-    } else {
 
-      /* echo "SELECT lt.*,ut.user_login,ut.user_email 
-          FROM 
-            $table_name lt,
-            $table_user ut
-            WHERE lt.user_id = ut.ID 
-            ORDER BY lt.$orderby $order LIMIT %d OFFSET %d",
-      $per_page,
-      $paged * $per_page; */
 
-      $this->items = $wpdb->get_results(
-        "SELECT lt.*,ut.user_login,ut.user_email 
-          FROM 
-            $table_name lt,
-            $table_user ut
-            WHERE lt.user_id = ut.ID 
-            ORDER BY lt.$orderby $order LIMIT %d OFFSET %d",
-        $per_page,
-        $paged * $per_page
-      );
-
-      /* $this->items = $wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name ORDER BY $orderby $order LIMIT %d OFFSET %d", $per_page, $paged * $per_page), ARRAY_A); */
+      $where_search = " Where lt.order_id LIKE '%" . $_REQUEST['s'] . "%'
+	            OR lt.ticket_number LIKE '%" . $_REQUEST['s'] . "%'
+              OR ut.user_login LIKE '%" . $_REQUEST['s'] . "%'
+              OR ut.user_email LIKE '%" . $_REQUEST['s'] . "%'";
     }
 
+    $this->items = $wpdb->get_results($wpdb->prepare("SELECT lt.*,ut.user_login,ut.user_email 
+          FROM 
+            wp_custom_lottery_ticket as lt 
+              LEFT JOIN wp_users AS ut 
+                ON lt.user_id = ut.ID  " . $where_search . "
+            ORDER BY lt.id DESC LIMIT " . $per_page . " OFFSET " . $paged * $per_page), ARRAY_A);
+
+    //print_r($this->items);
     $this->set_pagination_args(array(
       'total_items' => $total_items,
       'per_page' => $per_page,
       'total_pages' => ceil($total_items / $per_page)
     ));
-
-    $allData = $this->items;
-    pr($this->items);
-
-    //echo count($allData);
-    $dataArr = [];
-
-    if (count($allData) > 0) {
-      foreach ($allData as $index => $post) {
-        $dataArr[] = array(
-
-          'id1'            => $post->id,
-          'user_id1'       => $post->user_id,
-          'order_id1'      => $post->order_id,
-          'ticket_number1' => $post->ticket_number,
-          'is_used1'       => $post->is_used,
-          'created_at1'    => $post->created_at,
-        );
-      }
-    }
-    // pr($dataArr);
-    return $dataArr;
   }
 }
 
