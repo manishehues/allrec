@@ -302,3 +302,15 @@ margin: 0;
 .formFeild form input.userComments:hover{
 border: none;
 }
+.ticket_tittle{width: 100%; float: left; padding-bottom: 50px;}
+.ticket_tittle .tittle{float: left;}
+.ticket_tittle .ticket {
+  float: right;
+text-align: center;
+box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+padding: 6px 11px;
+border-radius: 18px;
+margin-right: 200px;
+}
+.ticket_tittle .tittle .content h1 span{color: #ef040d;}
+.ticket_tittle .ticket h6{font-family: 'poppins'; font-weight: 700; font-size: 30px; color: #ef040d;}

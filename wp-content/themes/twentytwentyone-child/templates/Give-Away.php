@@ -11,7 +11,22 @@
 
 get_header();
 ?>
+
+
 <div class="container">
+<div class="ticket_tittle">
+    <div class="tittle">
+        <div class="content">
+                <h1>GIVE <span>AWAYS</span></h1>
+                <p>Once the prize reaches its goal, a raffle will be drawn and a winner will be announced</p>
+            </div>
+    </div>
+    <div class="ticket">
+        <h6>16</h6>
+        <p>Available Tickets</p>
+    </div>
+    
+</div>
   <div class="giveAway">
     <?php
     $args = array('post_type' => 'give_away', 'posts_per_page' => 10);
