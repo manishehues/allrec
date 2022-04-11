@@ -49,13 +49,10 @@ get_header();
                               <div id="respond"></div>
                               <div class="likes">
                                 <span class="time ">1h - </span>
-                                <span class="time like-comment" rel="<?php echo $comment->comment_ID ?>"> likes</span>
-                                <span class="likes">
-                                  <?php echo $comment->cmnt_like ?>
+
+                                <span class="time like-comment" rel="<?php echo $comment->comment_ID ?>"> likes <span class="likes"><?php echo $comment->cmnt_like ?></span>
                                 </span>
-                                <span class="likesText">
-                                  likes -
-                                </span>
+
                                 <span class="reply comment-reply-link" data-post_id="<?php echo  get_the_ID() ?>" rel="<?php echo $comment->comment_ID ?>">Reply</span>
                               </div>
                           </li>
@@ -74,18 +71,10 @@ get_header();
                               </div>
                             </div>
                             <span>Love this!!❤️❤️❤️</span>
-                            <div class="likes like-comment" rel="<?php //echo $comment->comment_ID; 
-                                                                  ?>">
+                            <div class="likes" >
                               <span class="time">1h - </span>likes<span class="likes">
-                                <?php
-                                //if ($comment->cmnt_like > 0) {
-                                //  echo $comment->cmnt_like;
-                                // }
-                                ?> 
                               </span>
-                              <span class="likesText comment-reply-link" data-post_id="<?php //echo  get_the_ID(); 
-                                                                                        ?>" rel="<?php //echo $comment->comment_ID; 
-                                                                                                  ?>">likes - </span><span class="reply">Reply</span>
+                              <span class="likesText">likes - </span><span class="reply">Reply</span>
                             </div>
                           </div>
                         </li> -->

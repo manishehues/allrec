@@ -193,11 +193,12 @@ function misha_submit_ajax_comment()
                               <span>' . $comment->comment_content . '</span>
                               <div id="respond"></div>
                               <div class="likes like-comment" rel="' . $comment->comment_ID . '">
-                                <span class="time">1h - </span>likes
-                                <span class="likes">'
-                . $comment->cmnt_like . '
-                                </span>
-                                <span class="likesText comment-reply-link" data-post_id="' . get_the_ID() . '" rel="' . $comment->comment_ID . '">likes -</span><span class="reply">Reply</span>
+                                <span class="time">1h - </span>
+                                
+                                 <span class="time like-comment" rel="' . $comment->comment_ID . '"> likes <span class="likes">' . $comment->cmnt_like . '</span>
+                                </span>   
+                                
+                                <span class="reply comment-reply-link">Reply</span>
                               </div>
                           </li>';
 
@@ -248,22 +249,41 @@ function submit_ajax_comment_like()
     //print_r($_REQUEST);
 
     $table_name = $wpdb->prefix . "comments";
-    $colName = 'cmnt_like';
+    $commmentTable = $wpdb->prefix . "custom_comment_count";
+
     $id = stripslashes_deep($_REQUEST['comment_id']);
-
-    // $sql = $wpdb->update($table_name, array('cmnt_like' => $colName + 1), array('comment_ID' => $id));
-
-    echo "UPDATE $table_name 
-    SET cmnt_like = cmnt_like + 1
-    WHERE comment_ID = " . $id;
+    $user_id = get_current_user_id();
 
 
+    $wpdb->get_results("SELECT id FROM $commmentTable WHERE `comment_id` = " . $id . " AND `user_id` = " . $user_id);
 
-    $sql = $wpdb->query("UPDATE $table_name 
-    SET cmnt_like = cmnt_like + 1
-    WHERE comment_ID = " . $id);
+    pr($wpdb->num_rows);
 
-    print_r($sql);
+    if ($wpdb->num_rows == 0) {
+
+        $wpdb->query("INSERT INTO $commmentTable (`user_id`, comment_id) VALUES($user_id,$id)");
+
+        $wpdb->query("UPDATE $table_name SET cmnt_like = cmnt_like + 1 WHERE comment_ID = " . $id);
+    }
+
     die();
 }
+
+/* function comment_exist($id)
+{
+    global $wpdb;
+
+    $user_id = get_current_user_id();
+
+    $commmentTable = $wpdb->prefix . "custom_comment_count";
+
+    echo "SELECT id FROM $commmentTable WHERE `comment_id` = " . $id . " AND `user_id` = " . $user_id;
+
+    $res = $wpdb->get_results("SELECT id FROM $commmentTable WHERE `comment_id` = " . $id . " AND `user_id` = " . $user_id);
+
+    return $res;
+
+} */
+
+
 /* =============== comment system End ============== */

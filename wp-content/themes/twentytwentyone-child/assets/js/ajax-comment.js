@@ -54,7 +54,10 @@ jQuery(function ($) {
   /*
    * On comment reply form submit
    */
-  $(".comment-reply-link").click(function () {
+
+  $("html").on("click", ".comment-reply-link", function () {
+    alert();
+
     var parentCmntID = $(this).attr("rel");
     var cmntPost = $(this).data("post_id");
     //var textArea = $(this).("post_id");
@@ -72,9 +75,11 @@ jQuery(function ($) {
    * On comment like
    */
 
-  var count = 0;
-  $(".like-comment").click(function () {
+  $("html").on("click", ".like-comment", function () {
     var comment_id = $(this).attr("rel");
+    var count = $(this).find(".likes").html();
+    count++;
+    likeCount = $(this).find(".likes").html(count);
 
     var data = {
       comment_id: comment_id,
@@ -88,7 +93,7 @@ jQuery(function ($) {
 
       success: function (response) {
         if (response) {
-          window.location.reload();
+          // window.location.reload();
         }
       },
     });
