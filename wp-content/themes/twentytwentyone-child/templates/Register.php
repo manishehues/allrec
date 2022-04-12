@@ -18,7 +18,7 @@ get_header();
         </div>
         <?php echo do_shortcode( '[arm_setup id="1"]' ); ?>
     </div>
-</div>ghf
+</div>
 
 
 
