@@ -147,12 +147,6 @@ add_action('wp_ajax_nopriv_ajaxcomments', 'misha_submit_ajax_comment'); // wp_aj
 
 function misha_submit_ajax_comment()
 {
-    /*
-	 * Wow, this cool function appeared in WordPress 4.4.0, before that my code was muuuuch mooore longer
-	 *
-	 * @since 4.4.0
-	 */
-    //print_r($_POST);
 
     $comment = wp_handle_comment_submission(wp_unslash($_POST));
 
@@ -178,10 +172,6 @@ function misha_submit_ajax_comment()
 
     $commentList = '';
 
-    /* echo "<pre>";
-    print_r($comments);
-    echo "</pre>"; */
-
     if ($comments) {
 
         foreach ($comments as $key => $comment) {
@@ -201,35 +191,6 @@ function misha_submit_ajax_comment()
                                 <span class="reply comment-reply-link">Reply</span>
                               </div>
                           </li>';
-
-            // $commentList .= '<li id="comment-' . $postId . '">';
-            // $commentList .= '<article class="comment byuser comment-author-admin bypostauthor even thread-even depth-1 entry-comments">
-            // <div class="comment-avatar">
-            // <img alt="" src="http://2.gravatar.com/avatar/5de4a6139cc0576a70e0dfa51dbb5a8d?s=75&d=mm&r=g" class="avatar arm_grid_avatar arm-avatar avatar-75 photo" height="75" width="75" loading="lazy">
-            // </div>
-            // <div class="comment-content">
-            // <h3 class="comment-author">
-            //       <span class="url"> ' . $comment->comment_author . '</span>
-            //     </h3>
-            // <div class="comment-meta">' . $comment->comment_date . '</div>
-            // <ol class="comment-list">
-            //       <li id="comment-1" class="comment depth-1">
-            //         <article>
-            //           <div class="reply">
-            //             <a class="comment-reply-link">Reply</a>
-            //           </div>
-            //         </article>
-            //         <ol class="children"></ol>
-            //       </li>
-            //     </ol>
-            //     <div id="respond">
-            //     </div>
-
-            //     <div class="comment-text">
-            //       <p>' . $comment->comment_content . '</p>
-            //     </div></div>';
-            // $commentList .= '</article>';
-            // $commentList .= '</li>';
         }
     }
     echo $commentList;
@@ -254,10 +215,7 @@ function submit_ajax_comment_like()
     $id = stripslashes_deep($_REQUEST['comment_id']);
     $user_id = get_current_user_id();
 
-
     $wpdb->get_results("SELECT id FROM $commmentTable WHERE `comment_id` = " . $id . " AND `user_id` = " . $user_id);
-
-    pr($wpdb->num_rows);
 
     if ($wpdb->num_rows == 0) {
 
@@ -268,6 +226,37 @@ function submit_ajax_comment_like()
 
     die();
 }
+
+function get_all_tickets_of_current_user()
+{
+
+    global $wpdb;
+
+    $table_name = $wpdb->prefix . "custom_lottery_ticket";
+    $user_id = get_current_user_id();
+    $res =  $wpdb->get_var("SELECT COUNT(*) as total FROM $table_name WHERE `user_id` = " . $user_id);
+
+    return $res;
+}
+
+function get_all_tickets()
+{
+
+    global $wpdb;
+
+    $table_name = $wpdb->prefix . "custom_lottery_ticket";
+    $user_id = get_current_user_id();
+
+    //echo "SELECT ticket_number as total_tickets FROM $table_name WHERE `user_id` = " . $user_id;
+
+    $res =  $wpdb->get_results("SELECT id, ticket_number as total_tickets FROM $table_name WHERE `user_id` = " . $user_id);
+
+    //pr($res);
+
+    return $res;
+}
+
+
 
 /* function comment_exist($id)
 {

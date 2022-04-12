@@ -97,29 +97,5 @@ jQuery(function ($) {
         }
       },
     });
-
-    /* count++;
-    likeCount = $(this).html("like " + count);
-    var parentCmntID = $(this).attr("rel");
-
-    var data0 = {
-      numberId: likeCount,
-      cmntid: parentCmntID,
-      action: "cmntlike",
-    };
-
-    $.ajax({
-      type: "POST",
-      url: misha_ajax_comment_params.ajaxurl,
-      data: data0,
-
-      success: function (response) {
-        alert("woo hoo 1");
-        if (response) {
-          alert("woo hoo 2");
-        }
-      },
-    });
-    return false;*/
   });
 });

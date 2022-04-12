@@ -14,23 +14,24 @@ get_header();
 
 
 <div class="container">
-<div class="ticket_tittle">
+  <div class="ticket_tittle">
     <div class="tittle">
-        <div class="content">
-                <h1>GIVE <span>AWAYS</span></h1>
-                <p>Once the prize reaches its goal, a raffle will be drawn and a winner will be announced</p>
-            </div>
+      <div class="content">
+        <h1>GIVE <span>AWAYS</span></h1>
+        <p>Once the prize reaches its goal, a raffle will be drawn and a winner will be announced</p>
+      </div>
     </div>
     <div class="ticket">
-        <h6>16</h6>
-        <p>Available Tickets</p>
+      <h6><?php echo $total_tickets_count = get_all_tickets_of_current_user(); ?></h6>
+      <p>Available Tickets</p>
     </div>
-    
-</div>
+
+  </div>
   <div class="giveAway">
     <?php
     $args = array('post_type' => 'give_away', 'posts_per_page' => 10);
     $the_query = new WP_Query($args);
+
     ?>
     <?php if ($the_query->have_posts()) : ?>
       <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
@@ -45,6 +46,31 @@ get_header();
               Raffle Draw <br>488/<?php the_field('total_participants'); ?>
             </div>
           </div>
+
+          <div>
+            <?php
+            $total_tickets = get_all_tickets();
+            /* echo "<pre>";
+            print_r($total_tickets); */
+            ?>
+            <select name="current_number">
+              <option value="">Select Ticket</option>
+
+              <?php
+              foreach ($total_tickets as $ticket) {
+                //echo $ticket;
+                echo '<option value="' . $ticket->id . '" >' . $ticket->total_tickets . '</option>';
+              }
+              ?>
+              <!-- <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="40">40</option>
+              <option value="60">60</option>
+              <option value="100">100</option>
+              <option value="200">200</option> -->
+            </select>
+          </div>
+
           <?php the_content(); ?>
           <div class="giveAway-chatbox">
             <div class="commentForm">
@@ -71,10 +97,6 @@ get_header();
                                 <span class="reply comment-reply-link" data-post_id="<?php echo  get_the_ID() ?>" rel="<?php echo $comment->comment_ID ?>">Reply</span>
                               </div>
                           </li>
-
-
-
-
 
                           <!-- <li class="profile_single" >
                           <div class="user"><img src="<?php //echo get_stylesheet_directory_uri() 
