@@ -7,6 +7,7 @@ body{background: #fff!important; }
 .btn{background: #FF0000; color: #fff;border-radius: 14px;font-weight: 400;font-family: 'Poppins', sans-serif !important;font-size: 16px;padding: 14px 36px;text-decoration: none;}
 .homePage .heroBanner .heroContent .space .btn:focus{background: #FF0000!important; color: #fff!important;border-radius: 14px;font-weight: 400;font-family: 'Poppins', sans-serif !important;font-size: 16px;padding: 14px 36px;text-decoration: none;}
 .container{max-width: 1320px; margin: 0 auto;}
+.shortContainer{max-width: 400px; margin: 0 auto;}
 .woocommerce-checkout #main .woocommerce{max-width: 1320px !important;}
 header{background: #1B212F;}
 .wp-custom-logo .site-header {align-items: center; width: 100%; max-width: none;}
@@ -228,3 +229,44 @@ border: none;right: 15px;transform: translateY(-50%);top: 50%;margin: 0;}
 padding: 6px 11px;border-radius: 18px;margin-right: 200px;}
 .ticket_tittle .tittle .content h1 span{color: #ef040d;}
 .ticket_tittle .ticket h6{font-family: 'poppins';font-weight: 700;font-size: 30px;color: #ef040d;}
+
+.registerCustom{width: 100%; float: left; background-image: url('../images/charlein-gracia-wIrp9cijCmw-unsplash.jpg'); background-size: cover;}
+.formlogo {
+  width: 100%;
+  text-align: center;
+}
+.formlogo img {
+ max-width: 250px;
+margin: 40px 0px;
+}
+.page-id-132 header{display: none!important;}
+.page-id-132 #main {
+  padding: 0;
+}
+.registerCustom .arm_setup_form_container {
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.85);
+}
+.registerCustom .arm_setup_submit_btn_wrapper{
+	border-bottom-right-radius: 30px;
+  	border-bottom-left-radius: 30px;
+  	margin-bottom: 50px;
+}
+.registerCustom h3.arm_setup_form_title{width: 100%; text-align: center; font-family: 'poppins'!important; font-weight: 700!important; color: #c42329!important;
+	text-transform: capitalize!important; font-size: 35px!important; margin: 50px 0px!important; margin-bottom: 0px!important;}
+.registerCustom .arm_module_box{
+	padding-bottom: 0px;
+	border-bottom: none!important;
+}
+.registerCustom .arm_form_field_submit_button.arm_btn_style_border{
+	background-color: #FF0000 !important;
+	color: #fff !important;
+	border-radius: 14px !important;
+	font-weight: 400 !important;
+	font-family: 'Poppins', sans-serif !important;
+	font-size: 16px !important;
+	padding: 14px 36px !important;
+	text-decoration: none !important;
+	border: none!important;
+}
