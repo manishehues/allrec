@@ -27,7 +27,7 @@ define('DB_NAME', 'allrec');
 define('DB_USER', 'root');
 
 /** Database password */
-define('DB_PASSWORD', 'newpassword');
+define('DB_PASSWORD', '');
 
 /** Database hostname */
 define('DB_HOST', 'localhost');

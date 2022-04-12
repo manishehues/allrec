@@ -190,7 +190,7 @@ ul.products li.product-type-variable .added_to_cart{top: 305px;height: 42%;}
 
 .giveAway{width: 100%; float: left;}
 .giveAway .giveAway-product{width: 100%; float: left; padding-bottom: 20px;}
-.giveAway .giveAway-product .Sap{width: 60%; float: left; position: relative;}
+.giveAway .giveAway-product .Sap{width: 60%; float: left; position: relative; margin-bottom: 40px;}
 .giveAway .giveAway-product .giveAway-chatbox{width: 40%; float: left; /*text-align: center;*/}
 .cart_tittle{position: absolute; bottom: 20px; width: 100%;}
 .cart_tittle h2 {float: left; padding-right: 401px;padding-left: 40px;line-height: 1em;color: #fff !important; position: relative;z-index: 99;}
@@ -200,117 +200,31 @@ ul.products li.product-type-variable .added_to_cart{top: 305px;height: 42%;}
 .giveAway .giveAway-product .giveAway-chatbox img{max-height: 550px!important;}
 .cart_tittle .giveAwaybutton{position: absolute;z-index: 9999;}
 
-
 /*========================*/
-.commentForm {
-  width: 100%;
-  float: left;
-}
-.commentForm .userComments{
-  width: 100%;
-  float: left;
-  max-width: 460px;
-background: #eee;
-margin: 0 auto;
-padding: 30px;
-box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-border-radius: 3px;
-margin: 0px 35px;
-}
-.commentForm .userComments .foruserScrool {
-  overflow: scroll;
-    overflow-x: scroll;
-  max-height: 390px !important;
-  overflow-x: hidden;
-  margin-bottom: 20px;
-}
-.commentForm .userComments ul{
- padding: 0;
- list-style: none;
-}
-.commentForm .userComments ul li {
-  padding-bottom: 20px;
-}
-.commentForm .userComments ul li .user img{
-width: 28px;
-height: 28px;
-margin-right: 10px;
-margin-bottom: 5px;
-}
-.commentForm .userComments ul li .user{
-font-family: Poppins;
-font-weight: 500;
-font-size: 14px;
-color: #000;
-}
-.commentForm .userComments ul li .user span{
-	font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 14px;
-color: #000;
-}
-.commentForm .userComments ul li .user .likes span{
-	font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 12px;
-color: #767676;
-}
-.commentForm .userComments ul li .user .replyComment{background: #eee;
-padding: 0px 14px;
-border-left: 2px solid #ef040d;
-margin: 10px 0px;}
-.commentForm .userComments ul li .user .replyComment .reply span{
-	color: #0000005e;
-	display: block;
-}
-.commentForm .userComments ul li .user .replyComment .reply {
-  white-space: nowrap;
-  width: 300px;
-  overflow: hidden;
-  text-overflow: inherit;
-  color: #969696;
-}
+.commentForm {width: 100%;float: left;}
+.commentForm .userComments{width: 100%;float: left; max-width: 460px; background: #eee; margin: 0 auto;padding: 30px;box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+border-radius: 3px; margin: 0px 35px; }
+.commentForm .userComments .foruserScrool {overflow: scroll;overflow-x: scroll;max-height: 390px !important;overflow-x: hidden;margin-bottom: 20px;}
+.commentForm .userComments ul{padding: 0;list-style: none;}
+.commentForm .userComments ul li {padding-bottom: 20px;}
+.commentForm .userComments ul li .user img{width: 28px;height: 28px;margin-right: 10px;margin-bottom: 5px;}
+.commentForm .userComments ul li .user{font-family: 'poppins';font-weight: 500;font-size: 14px;color: #000;}
+.commentForm .userComments ul li .user span{font-family: 'poppins';font-style: normal;font-weight: normal;font-size: 14px;color: #000;}
+.commentForm .userComments ul li .user .likes span{font-family: 'poppins';font-style: normal;font-weight: normal;font-size: 12px;color: #767676;}
+.commentForm .userComments ul li .user .replyComment{background: #eee;padding: 0px 14px;border-left: 2px solid #ef040d;margin: 10px 0px;}
+.commentForm .userComments ul li .user .replyComment .reply span{color: #0000005e;display: block;}
+.commentForm .userComments ul li .user .replyComment .reply {white-space: nowrap;width: 300px;overflow: hidden;text-overflow: inherit;color: #969696;}
 .formFeild{position: relative;}
-.formFeild form textarea{background: #fff;
-border: 2px solid #cfcfcf !important;
-height: 50px;
-font-size: 15px !important;;
-font-family: 'poppins' !important;
-font-weight: 600!important;
-color: #929292 !important;
-resize: none;
-}
+.formFeild form textarea{background: #fff;border: 2px solid #cfcfcf !important;height: 50px;font-size: 15px !important;;font-family: 'poppins' !important;font-weight: 600!important;color: #929292 !important;resize: none;}
 
-.formFeild form input.userComments{position: absolute;font-size: 15px !important;;
-position: absolute;
-font-size: 15px !important;
-font-family: 'poppins' !important;
-font-weight: 600 !important;
-color: #929292 !important;
-box-shadow: none;
-padding: 0px;
-width: auto;
-background-color: transparent !important;
-border: none;
-right: 15px;
-transform: translateY(-50%);
-top: 50%;
-margin: 0;
-}
-.formFeild form input.userComments:hover{
-border: none;
-}
-.ticket_tittle{width: 100%; float: left; padding-bottom: 50px;}
+.formFeild form input.userComments{
+position: absolute;font-size: 15px !important;font-family: 'poppins' !important;font-weight: 600 !important;color: #929292 !important;
+box-shadow: none;padding: 0px;width: auto;background-color: transparent !important;
+border: none;right: 15px;transform: translateY(-50%);top: 50%;margin: 0;}
+.formFeild form input.userComments:hover{border: none;}
+.ticket_tittle{width: 100%;float: left; padding-bottom: 50px;}
 .ticket_tittle .tittle{float: left;}
-.ticket_tittle .ticket {
-  float: right;
-text-align: center;
-box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-padding: 6px 11px;
-border-radius: 18px;
-margin-right: 200px;
-}
+.ticket_tittle .ticket {float: right;text-align: center;box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+padding: 6px 11px;border-radius: 18px;margin-right: 200px;}
 .ticket_tittle .tittle .content h1 span{color: #ef040d;}
-.ticket_tittle .ticket h6{font-family: 'poppins'; font-weight: 700; font-size: 30px; color: #ef040d;}
+.ticket_tittle .ticket h6{font-family: 'poppins';font-weight: 700;font-size: 30px;color: #ef040d;}
