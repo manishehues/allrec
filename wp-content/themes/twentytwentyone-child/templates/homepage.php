@@ -53,6 +53,19 @@ get_header();
            <?php the_field('shortcode'); ?>
         </div>
     </div>
+    <div class="product">
+        <div class="productTitle">
+            <div class="setTitel">
+                <h2><?php the_field('heading_give_away'); ?></h2>
+                <p><?php the_field('description_give_away'); ?></p>
+            </div>
+            <div class="sildeSlider">
+            </div>
+        </div>
+        <div class="ProductShortcode">       
+           <?php the_field('shortcode_give_away'); ?>
+        </div>
+    </div>
 </div>
 
 <div class="fullBorder">
