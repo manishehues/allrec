@@ -31,8 +31,29 @@ function activate_ticket_lottery_plugin_function()
   PRIMARY KEY (`lot_id`)
 ) $charset_collate; ";
 
+  $table_participant = $wpdb->prefix . 'custom_lottery_participants';
+  $participant_sql = "CREATE TABLE $table_participant (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `ticket_number` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) $charset_collate; ";
+
+
+  $table_comment_count = $wpdb->prefix . 'custom_comment_count';
+  $comment_count_sql = "CREATE TABLE $table_comment_count (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `comment_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) $charset_collate;";
+
+
   require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
   dbDelta($sql);
+  dbDelta($participant_sql);
+  dbDelta($comment_count_sql);
 }
 
 /* function deactivate_ticket_lottery_plugin_function()

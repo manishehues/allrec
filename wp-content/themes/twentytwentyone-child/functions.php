@@ -6,12 +6,14 @@ if (!function_exists('b7ectg_theme_enqueue_styles')) {
 
     function b7ectg_theme_enqueue_styles()
     {
+        wp_enqueue_style('bootstrap-cdn', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css');
         wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
         wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('parent-style'));
         wp_enqueue_style('custom-style', get_stylesheet_directory_uri() . '/assets/css/custom.css', array('parent-style'));
         wp_enqueue_style('slick-style', get_stylesheet_directory_uri() . '/assets/css/slick.css', array('parent-style'));
         wp_enqueue_style('responsive-style', get_stylesheet_directory_uri() . '/assets/css/responsive.css', array('parent-style'));
 
+        wp_enqueue_script('bootstrap-cdn', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js');
         wp_enqueue_script('slick-js', get_stylesheet_directory_uri() . '/assets/js/slick.js');
         wp_enqueue_script('global-js', get_stylesheet_directory_uri() . '/assets/js/global.js');
     }
@@ -179,11 +181,27 @@ function misha_submit_ajax_comment()
 
             $commentList .= '<li class="profile_single" id="comment-' . $comment->comment_ID . '">
                             <div class="user">
-                              <img src="' . get_stylesheet_directory_uri() . '/assets/images/user.png" />' .               $comment->comment_author . '
-                              <span>' . $comment->comment_content . '</span>
+                              <img src="' . get_stylesheet_directory_uri() . '/assets/images/user.png" />' .
+                $comment->comment_author;
+
+            $reply_comment = check_reply_parent_cmnt_id($comment->comment_parent);
+
+            //print_r($reply_comment);
+
+            if (!empty($reply_comment)) :
+                //echo "fffffffffffff";
+
+                $commentList .= '<div class="replyComment">' . $reply_comment->comment_author . '
+                                  <div class="reply">
+                                    <span>' . str_limit($reply_comment->comment_content, 20) . '</span>
+                                  </div>
+                                </div>';
+            endif;
+
+            $commentList .= ' <span>' . $comment->comment_content . '</span>
                               <div id="respond"></div>
                               <div class="likes like-comment" rel="' . $comment->comment_ID . '">
-                                <span class="time">1h - </span>
+                                <span class="time">' . date('H:i', strtotime($comment->comment_date)) . ' - </span>
                                 
                                  <span class="time like-comment" rel="' . $comment->comment_ID . '"> likes <span class="likes">' . $comment->cmnt_like . '</span>
                                 </span>   
@@ -199,8 +217,8 @@ function misha_submit_ajax_comment()
 }
 
 
-add_action('wp_ajax_cmntlike', 'submit_ajax_comment_like'); //
-add_action('wp_ajax_nopriv_cmntlike', 'submit_ajax_comment_like'); //
+add_action('wp_ajax_cmntlike', 'submit_ajax_comment_like'); // comment like
+add_action('wp_ajax_nopriv_cmntlike', 'submit_ajax_comment_like'); //comment like
 
 
 function submit_ajax_comment_like()
@@ -231,10 +249,9 @@ function get_all_tickets_of_current_user()
 {
 
     global $wpdb;
-
     $table_name = $wpdb->prefix . "custom_lottery_ticket";
     $user_id = get_current_user_id();
-    $res =  $wpdb->get_var("SELECT COUNT(*) as total FROM $table_name WHERE `user_id` = " . $user_id);
+    $res =  $wpdb->get_var("SELECT COUNT(*) as total FROM $table_name WHERE is_used = 0 AND `user_id` = " . $user_id);
 
     return $res;
 }
@@ -243,36 +260,112 @@ function get_all_tickets()
 {
 
     global $wpdb;
-
     $table_name = $wpdb->prefix . "custom_lottery_ticket";
     $user_id = get_current_user_id();
-
-    //echo "SELECT ticket_number as total_tickets FROM $table_name WHERE `user_id` = " . $user_id;
-
-    $res =  $wpdb->get_results("SELECT id, ticket_number as total_tickets FROM $table_name WHERE `user_id` = " . $user_id);
-
-    //pr($res);
+    $res =  $wpdb->get_results("SELECT id, ticket_number as total_tickets FROM $table_name WHERE is_used = 0 AND `user_id` = " . $user_id);
 
     return $res;
 }
 
+add_action('wp_ajax_numberadd', 'submit_ajax_lottery_number'); // participant in lts 
+add_action('wp_ajax_nopriv_numberadd', 'submit_ajax_lottery_number'); //participant in lts
 
-
-/* function comment_exist($id)
+function submit_ajax_lottery_number()
 {
     global $wpdb;
 
+    $post_id = sanitize_text_field($_REQUEST['post_id']);
+    $ticket_number = sanitize_text_field($_REQUEST['ticket_number']);
+    $participant = $wpdb->prefix . "custom_lottery_participants";
+    $lottery_ticket = $wpdb->prefix . "custom_lottery_ticket";
     $user_id = get_current_user_id();
 
-    $commmentTable = $wpdb->prefix . "custom_comment_count";
+    $wpdb->get_results("INSERT INTO $participant (`post_id`, `user_id`, ticket_number) VALUES( $post_id,$user_id,$ticket_number)");
+    $wpdb->query("UPDATE $lottery_ticket SET is_used = 1 WHERE ticket_number = " . $ticket_number);
 
-    echo "SELECT id FROM $commmentTable WHERE `comment_id` = " . $id . " AND `user_id` = " . $user_id;
+    die();
+}
 
-    $res = $wpdb->get_results("SELECT id FROM $commmentTable WHERE `comment_id` = " . $id . " AND `user_id` = " . $user_id);
+/* check the user participation in any lottery */
 
-    return $res;
+function check_user_participation($post_id)
+{
 
-} */
+    global $wpdb;
+    $table_name = $wpdb->prefix . "custom_lottery_participants";
+    $user_id = get_current_user_id();
+    $sql = $wpdb->get_var("SELECT COUNT(*) FROM $table_name WHERE post_id = $post_id AND `user_id` = " . $user_id);
+
+    return $sql;
+}
+
+/* check the reply parent commnet */
+
+function check_reply_parent_cmnt_id($cmnt_id)
+{
+
+    global $wpdb;
+    $comment_table = $wpdb->prefix . "comments";
+    $user_id = get_current_user_id();
+    $sql = $wpdb->get_row("SELECT * FROM $comment_table WHERE comment_ID = $cmnt_id AND `user_id` = " . $user_id);
+
+    return $sql;
+}
+
+/* check total participant per post */
+
+function check_total_participant_per_post($post_id)
+{
+
+    global $wpdb;
+    $table = $wpdb->prefix . "custom_lottery_participants";
+    $sql = $wpdb->get_var("SELECT COUNT(*) as total FROM $table WHERE `post_id` = " . $post_id);
+
+    return $sql;
+}
+
+
+/* convert the string into few words */
+
+function str_limit($value, $limit = 100, $end = '...')
+{
+    $limit = $limit - mb_strlen($end); // Take into account $end string into the limit
+    $valuelen = mb_strlen($value);
+    return $limit < $valuelen ? mb_substr($value, 0, mb_strrpos($value, ' ', $limit - $valuelen)) . $end : $value;
+}
+
+/* time format change according to minute,hour,week,month  */
+
+function time_elapsed_string($datetime, $full = false)
+{
+    $now = new DateTime;
+    $ago = new DateTime($datetime);
+    $diff = $now->diff($ago);
+
+    $diff->w = floor($diff->d / 7);
+    $diff->d -= $diff->w * 7;
+
+    $string = array(
+        'y' => 'year',
+        'm' => 'month',
+        'w' => 'week',
+        'd' => 'day',
+        'h' => 'hour',
+        'i' => 'minute',
+        's' => 'second',
+    );
+    foreach ($string as $k => &$v) {
+        if ($diff->$k) {
+            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+        } else {
+            unset($string[$k]);
+        }
+    }
+
+    if (!$full) $string = array_slice($string, 0, 1);
+    return $string ? implode(', ', $string) . ' ago' : 'just now';
+}
+
 
 
 /* =============== comment system End ============== */

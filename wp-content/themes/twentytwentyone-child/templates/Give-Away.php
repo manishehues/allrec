@@ -32,6 +32,7 @@ get_header();
     $args = array('post_type' => 'give_away', 'posts_per_page' => 10);
     $the_query = new WP_Query($args);
 
+    //pr($the_query);
     ?>
     <?php if ($the_query->have_posts()) : ?>
       <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
@@ -40,36 +41,23 @@ get_header();
             <?php the_post_thumbnail(); ?>
             <div class="cart_tittle">
               <h2><?php the_title(); ?></h2>
-              <a href="#" class="button product_type_simple add_to_cart_button ajax_add_to_cart giveAwaybutton">Add to cart</a>
+
+              <?php $res = check_user_participation(get_the_ID());
+              if ($res > 0) : ?>
+                <a href="javascript:void(0)" class="btn btn-primary ">Already Participat</a>
+
+              <?php else : ?>
+
+                <a href="javascript:void(0)" class="btn btn-primary add_participants " data-bs-toggle="modal" data-bs-target="#myModal" data-post-id="<?php echo  get_the_ID(); ?>">Add to cart</a>
+
+              <?php endif ?>
+
             </div>
             <div class="lottryNumber">
-              Raffle Draw <br>488/<?php the_field('total_participants'); ?>
+              Raffle Draw <br><?php echo check_total_participant_per_post(get_the_ID()) ?>/<?php the_field('total_participants'); ?>
             </div>
           </div>
 
-          <div>
-            <?php
-            $total_tickets = get_all_tickets();
-            /* echo "<pre>";
-            print_r($total_tickets); */
-            ?>
-            <select name="current_number">
-              <option value="">Select Ticket</option>
-
-              <?php
-              foreach ($total_tickets as $ticket) {
-                //echo $ticket;
-                echo '<option value="' . $ticket->id . '" >' . $ticket->total_tickets . '</option>';
-              }
-              ?>
-              <!-- <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="40">40</option>
-              <option value="60">60</option>
-              <option value="100">100</option>
-              <option value="200">200</option> -->
-            </select>
-          </div>
 
           <?php the_content(); ?>
           <div class="giveAway-chatbox">
@@ -79,44 +67,66 @@ get_header();
                   <div id="respond<?php echo  get_the_ID(); ?>" class="comment-respond">
                     <?php $comments = get_comments(array('post_id' => get_the_ID(), 'order' => 'ASC')); ?>
                     <ul class="commentslist">
-                      <?php if ($comments) :
+
+                      <?php
+
+                      //pr($comments);
+
+                      if ($comments) :
                         foreach ($comments as $key => $comment) { ?>
 
                           <li class="profile_single" id="comment-<?php echo $comment->comment_ID ?>">
                             <div class="user">
                               <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/user.png" />
                               <?php echo $comment->comment_author ?>
+
+                              <?php $reply_comment = check_reply_parent_cmnt_id($comment->comment_parent);
+                              ?>
+
+                              <?php if (!empty($reply_comment)) : ?>
+                                <div class="replyComment">
+                                  <?php echo $reply_comment->comment_author ?>
+                                  <div class="reply">
+                                    <span><?php echo str_limit($reply_comment->comment_content, 20) ?></span>
+                                  </div>
+                                </div>
+                              <?php endif ?>
+
                               <span><?php echo $comment->comment_content ?></span>
                               <div id="respond"></div>
                               <div class="likes">
-                                <span class="time ">1h - </span>
+                                <span class="time "><?php echo time_elapsed_string($comment->comment_date); ?> - </span>
 
                                 <span class="time like-comment" rel="<?php echo $comment->comment_ID ?>"> likes <span class="likes"><?php echo $comment->cmnt_like ?></span>
                                 </span>
 
-                                <span class="reply comment-reply-link" data-post_id="<?php echo  get_the_ID() ?>" rel="<?php echo $comment->comment_ID ?>">Reply</span>
+                                <span class="reply comment-reply-link" data-post_id="<?php echo  get_the_ID() ?>" rel="<?php echo $comment->comment_ID ?>" data-reply="<?php echo $comment->comment_author ?>" data-str="<?php echo $comment->comment_content ?>">Reply</span>
                               </div>
                           </li>
-
-                          <!-- <li class="profile_single" >
-                          <div class="user"><img src="<?php //echo get_stylesheet_directory_uri() 
-                                                      ?>/assets/images/user.png" />Usernamea
-                            <div class="replyComment">
-                              Usernamea
-                              <div class="reply">
-                                <span>mam this month i am very busy....... because of office projects you'll.</span>
-                              </div>
-                            </div>
-                            <span>Love this!!❤️❤️❤️</span>
-                            <div class="likes" >
-                              <span class="time">1h - </span>likes<span class="likes">
-                              </span>
-                              <span class="likesText">likes - </span><span class="reply">Reply</span>
-                            </div>
-                          </div>
-                        </li> -->
                       <?php }
                       endif; ?>
+
+
+                      <!-- <li class="profile_single">
+                        <div class="user"><img src="<?php //echo get_stylesheet_directory_uri() 
+                                                    ?>/assets/images/user.png" />Usernamea
+                          <div class="replyComment">
+                            Usernamea
+                            <div class="reply">
+                              <span>mam this month i am very busy....... because of office projects you'll.</span>
+                            </div>
+                          </div>
+                          <span>Love this!!❤️❤️❤️</span>
+                          <div class="likes">
+                            <span class="time">1h - </span>likes<span class="likes">
+                            </span>
+                            <span class="likesText">likes - </span><span class="reply">Reply</span>
+                          </div>
+                        </div>
+                      </li> -->
+
+
+
                     </ul>
                   </div>
                 </div>
@@ -140,6 +150,37 @@ get_header();
       <?php endif; ?>
         </div>
 
+  </div>
+
+
+  <div class="modal fade show" id="myModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Participant</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+
+          <?php $total_tickets = get_all_tickets(); ?>
+          <select name="current_number" class="ticket_number">
+            <option value="">Select Ticket</option>
+            <?php
+            foreach ($total_tickets as $ticket) {
+              echo '<option value="' . $ticket->total_tickets . '" >' . $ticket->total_tickets . '</option>';
+            }
+            ?>
+          </select>
+
+          <input type="hidden" name="comment_post_ID" class="current_post_id" value="">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary participant">Participant</button>
+        </div>
+      </div>
+    </div>
   </div>
   <?php
   get_footer();

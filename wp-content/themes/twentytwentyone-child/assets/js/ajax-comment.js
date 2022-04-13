@@ -3,6 +3,8 @@ jQuery(function ($) {
    * On comment form submit
    */
 
+  $(".foruserScrool").scrollTop($(".foruserScrool")[0].scrollHeight);
+
   $(".postComment").click(function () {
     var from_id = $(this).attr("rel");
 
@@ -42,6 +44,12 @@ jQuery(function ($) {
 
         // clear textarea field
         $("#comment_" + from_id).val("");
+
+        // remove reply div
+        $(".replyComment1").html("");
+
+        // scroll to bottom after reply
+        $(".foruserScrool").scrollTop($(".foruserScrool")[0].scrollHeight);
       },
       complete: function () {
         // what to do after a comment has been added
@@ -56,19 +64,27 @@ jQuery(function ($) {
    */
 
   $("html").on("click", ".comment-reply-link", function () {
-    alert();
-
     var parentCmntID = $(this).attr("rel");
     var cmntPost = $(this).data("post_id");
-    //var textArea = $(this).("post_id");
-    console.log(parentCmntID);
-    console.log(cmntPost);
 
     $("#comment_parent_" + cmntPost).val(parentCmntID);
 
-    $("#comment_" + cmntPost).focus();
+    var reply = $(this).data("reply");
+    var cmntstr = $(this).data("str");
 
-    //console.log(cmntPost);
+    var shortcmnt =
+      jQuery.trim(cmntstr).substring(0, 10).split(" ").slice(0, -1).join(" ") +
+      "...";
+
+    $("#comment_" + cmntPost).before(
+      "<div class='replyComment1'> " +
+        reply +
+        " <div class='reply'> <span> " +
+        shortcmnt +
+        "</span></div></div>"
+    );
+
+    $("#comment_" + cmntPost).focus();
   });
 
   /*
@@ -90,6 +106,40 @@ jQuery(function ($) {
       type: "POST",
       url: misha_ajax_comment_params.ajaxurl,
       data: data,
+
+      success: function (response) {
+        if (response) {
+          // window.location.reload();
+        }
+      },
+    });
+  });
+
+  /*
+   * submit lottery number to db
+   */
+
+  $("html body").on("click", ".add_participants", function () {
+    var currentPostId = $(this).data("post-id");
+    $(".current_post_id").val(currentPostId);
+  });
+
+  $("html body").on("click", ".participant", function () {
+    var post_id = $(".current_post_id").val();
+    var user_id = $(".current_user_id").val();
+    var ticket_number = $(".ticket_number").val();
+
+    var data11 = {
+      post_id: post_id,
+      user_id: user_id,
+      ticket_number: ticket_number,
+      action: "numberadd",
+    };
+
+    $.ajax({
+      type: "POST",
+      url: misha_ajax_comment_params.ajaxurl,
+      data: data11,
 
       success: function (response) {
         if (response) {
