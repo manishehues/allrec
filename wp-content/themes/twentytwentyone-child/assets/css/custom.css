@@ -270,3 +270,19 @@ margin: 40px 0px;
 	text-decoration: none !important;
 	border: none!important;
 }
+.onlytest {
+  width: 100%;
+  float: left;
+  clear: both;
+}
+.steptwo{
+	width: 100%;
+	float: left;
+	clear: both;
+}
+.onlytest .entry-content{
+	margin: 0px!important;
+}
+.onlytest .entry-content .wp-video{width: 100%; float: left; min-width: 100%!important; margin: 0px!important;}
+
+/*.wp-video-shortcode{width: 100%!important;}*/
