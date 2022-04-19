@@ -44,7 +44,7 @@ get_header();
 
               <?php $res = check_user_participation(get_the_ID());
               if ($res > 0) : ?>
-                <a href="javascript:void(0)" class="btn btn-primary ">Already Participat</a>
+                <a href="javascript:void(0)" class="btn btn-primary ">Already Participate</a>
 
               <?php else : ?>
 
@@ -54,7 +54,7 @@ get_header();
 
             </div>
             <div class="lottryNumber">
-              Raffle Draw <br><?php echo check_total_participant_per_post(get_the_ID()) ?>/<?php the_field('total_participants'); ?>
+              Raffle Draw <br><?php echo check_total_participate_per_post(get_the_ID()) ?>/<?php the_field('total_participants'); ?>
             </div>
           </div>
 

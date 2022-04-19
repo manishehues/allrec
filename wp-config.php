@@ -27,7 +27,7 @@ define('DB_NAME', 'allrec');
 define('DB_USER', 'root');
 
 /** Database password */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'newpassword');
 
 /** Database hostname */
 define('DB_HOST', 'localhost');
@@ -80,9 +80,19 @@ $table_prefix = 'wp_';
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define('WP_DEBUG', true);
 
-//define('WP_DEBUG_LOG', true);
+// Enable WP_DEBUG mode
+define('WP_DEBUG', false);
+
+// Enable Debug logging to the /wp-content/debug.log file
+define('WP_DEBUG_LOG', false);
+
+// Disable display of errors and warnings
+define('WP_DEBUG_DISPLAY', false);
+@ini_set('display_errors', 0);
+
+// Use dev versions of core JS and CSS files (only needed if you are modifying these core files)
+define('SCRIPT_DEBUG', false);
 
 /* Add any custom values between this line and the "stop editing" line. */
 

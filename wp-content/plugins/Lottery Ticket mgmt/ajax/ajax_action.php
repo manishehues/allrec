@@ -6,6 +6,7 @@ function wqnew_entry_callback_function()
 {
   global $wpdb;
   $wpdb->get_row("SELECT * FROM `wp_crud` WHERE `title` = '" . $_POST['wqtitle'] . "' AND `description` = '" . $_POST['wqdescription'] . "' ORDER BY `id` DESC");
+
   if ($wpdb->num_rows < 1) {
     $wpdb->insert("wp_crud", array(
       "title" => $_POST['wqtitle'],

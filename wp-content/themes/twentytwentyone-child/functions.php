@@ -12,12 +12,9 @@ if (!function_exists('b7ectg_theme_enqueue_styles')) {
         wp_enqueue_style('custom-style', get_stylesheet_directory_uri() . '/assets/css/custom.css', array('parent-style'));
         wp_enqueue_style('slick-style', get_stylesheet_directory_uri() . '/assets/css/slick.css', array('parent-style'));
         wp_enqueue_style('responsive-style', get_stylesheet_directory_uri() . '/assets/css/responsive.css', array('parent-style'));
-<<<<<<< HEAD
 
         wp_enqueue_script('bootstrap-cdn', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js');
-=======
-        
->>>>>>> 48802b9af0ce826c724fb441c236a4be55552d4f
+
         wp_enqueue_script('slick-js', get_stylesheet_directory_uri() . '/assets/js/slick.js');
         wp_enqueue_script('global-js', get_stylesheet_directory_uri() . '/assets/js/global.js');
     }
@@ -316,9 +313,9 @@ function check_reply_parent_cmnt_id($cmnt_id)
     return $sql;
 }
 
-/* check total participant per post */
+/* check total participate per post */
 
-function check_total_participant_per_post($post_id)
+function check_total_participate_per_post($post_id)
 {
 
     global $wpdb;
