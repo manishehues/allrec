@@ -32,25 +32,37 @@ get_header();
     <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
     <?php endif; ?>
   </div>
-  <div class="steptwo">
-    <?php 
-    $args = array( 'post_type' => 'video', 'posts_per_page' => 10 );
-    $the_query = new WP_Query( $args ); 
-    ?>
-    <?php if ( $the_query->have_posts() ) : ?>
-      <div class="allVideos slideVideo">
-          <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-        
-          <div class="snglVideo">
-            <?php the_content(); ?> 
-          </div>
-        <?php endwhile;?>
+
+  <div class="product">
+        <div class="productTitle">
+            <div class="setTitel">
+                <h2>SHOP</h2>
+                <p>Subscribe to our foundation and get membership to exclusive<br>perks such as: Event, Prizes, apparel, food, vacations, cannabis<br>and much more.</p>
+            </div>
+            <div class="sildeSlider">
+            </div>
+        </div>
+        <div class="steptwo">
+          <?php 
+          $args = array( 'post_type' => 'video', 'posts_per_page' => 10 );
+          $the_query = new WP_Query( $args ); 
+          ?>
+          <?php if ( $the_query->have_posts() ) : ?>
+            <div class="allVideos slideVideo">
+                <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+              
+                <div class="snglVideo">
+                  <?php the_content(); ?> 
+                </div>
+              <?php endwhile;?>
+            </div>
+          <?php wp_reset_postdata(); ?>
+          <?php else:  ?>
+          <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+          <?php endif; ?>
       </div>
-    <?php wp_reset_postdata(); ?>
-    <?php else:  ?>
-    <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-    <?php endif; ?>
   </div>
+  
        
 
   </div>

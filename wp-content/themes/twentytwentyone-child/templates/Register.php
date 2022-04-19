@@ -14,7 +14,10 @@ get_header();
 <div class="registerCustom">
     <div class="shortContainer">
         <div class="formlogo">
-            <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/allreclog.svg"/>
+            <a href="http://localhost/allrec">
+                <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/allreclog.svg"/>
+            </a>
+            
         </div>
         <?php echo do_shortcode( '[arm_setup id="1"]' ); ?>
     </div>

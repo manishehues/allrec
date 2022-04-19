@@ -50,7 +50,7 @@ footer .site-info .site-name .footer span strong{font-weight: 400; color: #FF000
 .homePage .heroBanner .heroContent span{color: #ff0000;}
 .woocommerce{max-width: 100% !important;}
 .product {width: 100%;float: left; position: relative;}
-ul.slick-dots{position: absolute;top: -160px;right: 0;display: flex;max-width: 120px;}
+ul.slick-dots{position: absolute;top: -160px;right: 0;display: flex;max-width: 100%; padding: 0;}
 .product .productTitle{display: flex; align-items: center; justify-content: space-between; width: 100%;float: left; padding-bottom: 60px;}
 .product .productTitle .sildeSlider ul{padding: 0px;display: flex;align-items: center;}
 .product .productTitle .sildeSlider ul li{display: inline-block;padding: 0px 10px; }
@@ -229,7 +229,7 @@ border: none;right: 15px;transform: translateY(-50%);top: 50%;margin: 0;}
 padding: 6px 11px;border-radius: 18px;margin-right: 200px;}
 .ticket_tittle .tittle .content h1 span{color: #ef040d;}
 .ticket_tittle .ticket h6{font-family: 'poppins';font-weight: 700;font-size: 30px;color: #ef040d;}
-
+.registerCustom{min-height: calc(100vh - 55px); display: flex; align-items: center;}
 .registerCustom{width: 100%; float: left; background-image: url('../images/charlein-gracia-wIrp9cijCmw-unsplash.jpg'); background-size: cover;}
 .formlogo {
   width: 100%;
@@ -286,3 +286,5 @@ margin: 40px 0px;
 .onlytest .entry-content .wp-video{width: 100%; float: left; min-width: 100%!important; margin: 0px!important;}
 
 /*.wp-video-shortcode{width: 100%!important;}*/
+/*----------------------------------------woocommerce-shop-----------------------------------------------------------------*/
+.woocommerce-shop
