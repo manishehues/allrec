@@ -28,7 +28,7 @@ class allTickets extends WP_List_Table
                 if ($item['is_used'] == 1) {
                     return 'Used';
                 } else {
-                    return 'Unused';
+                    return '-';
                 }
 
             case 'created_at':
@@ -120,8 +120,8 @@ class allTickets extends WP_List_Table
 
             $where_search = " Where lt.order_id LIKE '%" . $_REQUEST['s'] . "%'
 	            OR lt.ticket_number LIKE '%" . $_REQUEST['s'] . "%'
-              OR ut.user_login LIKE '%" . $_REQUEST['s'] . "%'
-              OR ut.user_email LIKE '%" . $_REQUEST['s'] . "%'";
+                OR ut.user_login LIKE '%" . $_REQUEST['s'] . "%'
+                OR ut.user_email LIKE '%" . $_REQUEST['s'] . "%'";
         }
 
         $this->items = $wpdb->get_results($wpdb->prepare("SELECT lt.*,ut.user_login,ut.user_email 

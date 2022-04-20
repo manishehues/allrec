@@ -139,7 +139,7 @@ function participant()
 
 function PostDetailPage()
 {
-  require_once(CRUD_PLUGIN_PATH . '/admin/participant.php');
+  require_once(CRUD_PLUGIN_PATH . '/admin/PostDetailPage.php');
 }
 
 
