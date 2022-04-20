@@ -60,28 +60,27 @@ function gen_winner_function()
 {
 
   global $wpdb;
-  //print_r($_REQUEST);
 
   $custom_lottery = $wpdb->prefix . 'custom_lottery_participants';
 
   $post_id = isset($_REQUEST['post_id']) ? $_REQUEST['post_id'] : null;
 
-  /* echo "SELECT id,`user_id`, ticket_number AS Random_Number FROM $custom_lottery WHERE post_id = $post_id ORDER BY RAND() LIMIT 1 ;"; */
-
   $res = $wpdb->get_row("SELECT ticket_number AS Random_Number FROM $custom_lottery WHERE post_id = $post_id and is_winner_declare = 0 ORDER BY RAND() LIMIT 1 ;", ARRAY_A);
 
   $num = $res['Random_Number'];
 
-  //print_r($res);
-
-  //echo $wpdb->num_rows;
   if (!empty($res)) {
+
     $wpdb->update($custom_lottery, array('is_winner_declare' => 1), array('post_id' => $post_id));
 
     $wpdb->update($custom_lottery, array('winner' => 1), array('ticket_number' => $num));
+
+    $response = array('message' => 'Winner Declare Successfully', 'rescode' => 200);
+  } else {
+    $response = array('message' => 'Winner Declare Already', 'rescode' => 404);
   }
 
-  //die();
-
-  //pr($sql);
+  echo json_encode($response);
+  exit();
+  wp_die();
 }

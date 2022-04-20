@@ -163,6 +163,8 @@ function showPostDetailfn()
             <?php $table->search_box('search', 'search_id');
             $table->display() ?>
         </form>
+
+        <div class="wqsubmit_message"></div>
     </div>
 <?php
     $wq_msg = ob_get_clean();

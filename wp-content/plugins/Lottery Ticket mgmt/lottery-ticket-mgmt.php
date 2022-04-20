@@ -13,55 +13,80 @@ define('CRUD_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('CRUD_PLUGIN_PATH', plugin_dir_path(__FILE__));
 
 register_activation_hook(__FILE__, 'activate_ticket_lottery_plugin_function');
-register_deactivation_hook(__FILE__, 'deactivate_ticket_lottery_plugin_function');
+//register_deactivation_hook(__FILE__, 'deactivate_ticket_lottery_plugin_function');
 
 function activate_ticket_lottery_plugin_function()
 {
   global $wpdb;
+  require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
   $charset_collate = $wpdb->get_charset_collate();
-  $table_name = $wpdb->prefix . 'custom_lottery_ticket';
 
-  $sql = " CREATE TABLE $table_name (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `user_id` int(11) NOT NULL,
-    `order_id` int(11) NOT NULL,
-    `ticket_number` varchar(255) NOT NULL,
-    `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-    `is_used` tinyint(4) NOT NULL,
-    PRIMARY KEY (`lot_id`)
-  ) $charset_collate; ";
+  $lottery_ticket = $wpdb->prefix . 'custom_lottery_ticket';
+
+  if ($wpdb->get_var("SHOW TABLES LIKE ' $lottery_ticket '") != $lottery_ticket) {
+
+    $sql = "CREATE TABLE $lottery_ticket (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `user_id` int(11) NOT NULL,
+            `order_id` int(11) NOT NULL,
+            `ticket_number` varchar(255) NOT NULL,
+            `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+            `is_used` tinyint(4) NOT NULL,
+            PRIMARY KEY (`id`)
+        ) $charset_collate; ";
+
+    dbDelta($sql);
+  }
+
 
   $table_participant = $wpdb->prefix . 'custom_lottery_participants';
-  $participant_sql = "CREATE TABLE $table_participant (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `post_id` int(11) NOT NULL,
-    `user_id` int(11) NOT NULL,
-    `ticket_number` varchar(255) NOT NULL,
-    PRIMARY KEY (`id`)
-  ) $charset_collate; ";
+
+  if ($wpdb->get_var("SHOW TABLES LIKE ' $table_participant '") != $table_participant) {
+
+    $participant_sql = "CREATE TABLE $table_participant (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `post_id` int(11) NOT NULL,
+            `user_id` int(11) NOT NULL,
+            `ticket_number` varchar(255) NOT NULL,
+            `is_winner_declare` tinyint(4) NOT NULL DEFAULT 0,
+            `winner` tinyint(4) NOT NULL DEFAULT 0,
+            PRIMARY KEY (`id`)
+        ) $charset_collate; ";
+
+    dbDelta($participant_sql);
+  }
 
 
   $table_comment_count = $wpdb->prefix . 'custom_comment_count';
-  $comment_count_sql = "CREATE TABLE $table_comment_count (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `user_id` int(11) NOT NULL,
-    `comment_id` int(11) NOT NULL,
-    PRIMARY KEY (`id`)
-  ) $charset_collate;";
 
+  if ($wpdb->get_var("SHOW TABLES LIKE ' $table_comment_count '") != $table_comment_count) {
 
-  require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-  dbDelta($sql);
-  dbDelta($participant_sql);
-  dbDelta($comment_count_sql);
+    $comment_count_sql = "CREATE TABLE $table_comment_count (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `user_id` int(11) NOT NULL,
+            `comment_id` int(11) NOT NULL,
+            PRIMARY KEY (`id`)
+        ) $charset_collate;";
+
+    dbDelta($comment_count_sql);
+  }
 }
 
 /* function deactivate_ticket_lottery_plugin_function()
 {
   global $wpdb;
-  $table_name = $wpdb->prefix .'custom_lottery_ticket';
-  $sql = "DROP TABLE IF EXISTS $table_name";
-  $wpdb->query($sql);
+  $lottery_ticket = $wpdb->prefix . 'custom_lottery_ticket';
+    $sql1 = "DROP TABLE IF EXISTS $lottery_ticket";
+    $wpdb->query($sql1);
+
+    $table_participant = $wpdb->prefix . 'custom_lottery_participants';
+    $sql2 = "DROP TABLE IF EXISTS $table_participant";
+    $wpdb->query($sql2);
+
+    $table_comment_count = $wpdb->prefix . 'custom_comment_count';
+    $sql3 = "DROP TABLE IF EXISTS $table_comment_count";
+    $wpdb->query($sql3);
+
 } */
 
 function load_custom_css_js()
@@ -81,33 +106,36 @@ add_action('admin_menu', 'my_menu_pages');
 function my_menu_pages()
 {
   add_menu_page(
-    'LTS mgmt',
-    'LTS',
+    'Lottery Ticket',
+    'Lottery Ticket',
     'manage_options',
-    'new-entry',
-    'my_menu_output'
+    'view-entries',
+    'my_submenu_output',
+    'dashicons-tickets-alt',
+    66
   );
 
-  add_submenu_page(
+  /* add_submenu_page(
     'new-entry',
     'LTS Application',
     'New Entry',
     'manage_options',
     'new-entry',
     'my_menu_output'
-  );
+  ); */
+
   add_submenu_page(
-    'new-entry',
-    'LTS Application',
-    'View Entries',
+    'view-entries',
+    'Tickets',
+    'Tickets',
     'manage_options',
     'view-entries',
     'my_submenu_output'
   );
   add_submenu_page(
-    'new-entry',
-    'Participant',
-    'Participant',
+    'view-entries',
+    'Participants',
+    'Participants',
     'manage_options',
     'view-participant',
     'participant'
@@ -127,10 +155,10 @@ function my_submenu_output()
   require_once(CRUD_PLUGIN_PATH . '/admin/allTickets.php');
 }
 
-function my_menu_output()
+/* function my_menu_output()
 {
   require_once(CRUD_PLUGIN_PATH . '/admin/new_entry.php');
-}
+} */
 
 function participant()
 {
@@ -141,6 +169,3 @@ function PostDetailPage()
 {
   require_once(CRUD_PLUGIN_PATH . '/admin/PostDetailPage.php');
 }
-
-
-/* =========================== pick lottery winner  ================================ */

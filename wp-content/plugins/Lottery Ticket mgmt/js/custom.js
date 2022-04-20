@@ -98,13 +98,13 @@ jQuery(document).ready(function () {
       url: ajax_var.ajaxurl,
       success: function (response) {
         console.log(response);
-        /* var res = JSON.parse(response);
+        var res = JSON.parse(response);
         $(".wqsubmit_message").html(res.message);
         if (res.rescode != "404") {
           $(".wqsubmit_message").css("color", "green");
         } else {
-          $(".wqsubmit_message").css("color", "red");
-        } */
+          $(".wqsubmit_message").css("color", "#ffffcc");
+        }
       },
     });
   });
