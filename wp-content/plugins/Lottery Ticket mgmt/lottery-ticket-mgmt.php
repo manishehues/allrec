@@ -15,6 +15,8 @@ define('CRUD_PLUGIN_PATH', plugin_dir_path(__FILE__));
 register_activation_hook(__FILE__, 'activate_ticket_lottery_plugin_function');
 //register_deactivation_hook(__FILE__, 'deactivate_ticket_lottery_plugin_function');
 
+//echo dirname(__FILE__);
+
 function activate_ticket_lottery_plugin_function()
 {
   global $wpdb;
@@ -169,3 +171,42 @@ function PostDetailPage()
 {
   require_once(CRUD_PLUGIN_PATH . '/admin/PostDetailPage.php');
 }
+
+
+add_filter('page_template', 'wpa3396_page_template');
+function wpa3396_page_template($page_template)
+{
+  if (is_page('my-custom-page-slug')) {
+    $page_template = CRUD_PLUGIN_PATH . '/templates/custom-page-template.php';
+  }
+  return $page_template;
+}
+
+
+
+add_filter('theme_page_templates', 'pluginname_template_as_option', 10, 3);
+function pluginname_template_as_option($page_templates, $theme, $post)
+{
+
+  $page_templates['Untitled-1.php'] = 'PageWithoutSidebar';
+
+  return $page_templates;
+}
+
+//When our custom template has been chosen then display it for the page
+/* add_filter('template_include', 'pluginname_load_template', 99);
+function pluginname_load_template($template)
+{
+
+  global $post;
+  $custom_template_slug   = 'Untitled-1.php';
+  $page_template_slug     = get_page_template_slug($post->ID);
+
+  if ($page_template_slug == $custom_template_slug) {
+    return CRUD_PLUGIN_PATH . '/templates/' . $custom_template_slug;
+  }
+
+  return $template;
+} */
+
+//echo plugin_dir_path(__FILE__);
