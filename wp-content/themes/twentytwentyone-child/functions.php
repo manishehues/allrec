@@ -284,7 +284,9 @@ function submit_ajax_lottery_number()
     $wpdb->get_results("INSERT INTO $participant (`post_id`, `user_id`, ticket_number) VALUES( $post_id,$user_id,$ticket_number)");
     $wpdb->query("UPDATE $lottery_ticket SET is_used = 1 WHERE ticket_number = " . $ticket_number);
 
-    die();
+    //wpsd_email_to_admin();
+
+    //die();
 }
 
 /* check the user participation in any lottery */
@@ -367,6 +369,41 @@ function time_elapsed_string($datetime, $full = false)
     return $string ? implode(', ', $string) . ' ago' : 'just now';
 }
 
+
+/* ====================== Mail after ticket number is using  ========================== */
+
+// function  wpsd_email_to_admin($amount, $Email, $payMethod)
+function  wpsd_email_to_admin()
+{
+
+    /*  $Email           = sanitize_email($_REQUEST['payemail']);
+    $payMethod       = sanitize_text_field($_REQUEST['paymethod']);
+    $amount          = filter_var($_REQUEST['payamount'], FILTER_SANITIZE_STRING); */
+
+    //$headers = array('Content-Type: text/html; charset=UTF-8');
+    //$to = 'vikasehues@gmail.com';
+    //$to = get_option('admin_email');
+    //$wpsdEmailSubject = __('Ticket number is for Lottery!');
+
+    //$wpsdEmailMessage = __('Lottery!');
+    /*   $wpsdEmailMessage = __('Email: ') . $Email;
+    $wpsdEmailMessage .= '<br>' . __('Ticket no: ') . $payMethod;
+    $wpsdEmailMessage .= '<br>' . __('Amount: ') . $amount; */
+
+    //return wp_mail($to, $wpsdEmailSubject, $wpsdEmailMessage, $headers);
+
+
+
+
+    $to         = 'vikasehues@gmail.com';
+    $subject    = 'The subject';
+    $body       = 'The email body content';
+    $headers    = array('Content-Type: text/html; charset=UTF-8');
+
+    wp_mail($to, $subject, $body, $headers);
+}
+
+wpsd_email_to_admin();
 
 
 /* =============== comment system End ============== */

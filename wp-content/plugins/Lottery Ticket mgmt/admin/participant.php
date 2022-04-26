@@ -22,7 +22,7 @@ class participantTable extends WP_List_Table
         $this->process_bulk_action();
 
         $total_items = $wpdb->get_var(
-            "SELECT COUNT(po.ID) AS totalcount FROM wp_posts po JOIN wp_custom_lottery_participants cl ON po.ID WHERE po.ID = cl.post_id"
+            "SELECT COUNT(po.ID) AS totalcount FROM $wp_post po JOIN $custom_lottery cl ON po.ID WHERE po.ID = cl.post_id"
         );
 
         $paged = isset($_REQUEST['paged']) ? max(0, intval($_REQUEST['paged']) - 1) : 0;
@@ -32,44 +32,23 @@ class participantTable extends WP_List_Table
         $where_search = "";
         if (isset($_REQUEST['s']) && $_REQUEST['s'] != '') {
 
-
-            $where_search = " Where lt.order_id LIKE '%" . $_REQUEST['s'] . "%'
-	            OR lt.ticket_number LIKE '%" . $_REQUEST['s'] . "%'
-                OR ut.user_login LIKE '%" . $_REQUEST['s'] . "%'
-                OR ut.user_email LIKE '%" . $_REQUEST['s'] . "%'";
+            $where_search = " and po.post_title LIKE '%" . $_REQUEST['s'] . "%' ";
         }
 
-        /* $this->items = $wpdb->get_results($wpdb->prepare("SELECT lt.*,ut.user_login,ut.user_email 
-          FROM 
-            wp_custom_lottery_ticket as lt 
-              LEFT JOIN wp_users AS ut 
-                ON lt.user_id = ut.ID  " . $where_search . "
-            ORDER BY lt.id DESC LIMIT " . $per_page . " OFFSET " . $paged * $per_page), ARRAY_A); */
 
-        /* echo "SELECT po.ID, po.post_title, COUNT(cl.post_id) AS numberOfParticipant,pm.meta_value as totalParticipant
+        $this->items = $wpdb->get_results($wpdb->prepare("SELECT po.ID, po.post_title,cl.is_winner_declare ,COUNT(cl.post_id) AS numberOfParticipant,pm.meta_value as totalParticipant
             FROM $wp_post po
             JOIN $custom_lottery cl
             ON po.ID = cl.post_id
             JOIN $wp_post_meta pm
             ON cl.post_id = pm.post_id
-            WHERE meta_key = 'total_participants'
-            GROUP BY po.ID
-            limit $per_page OFFSET 0
-            ;
-        "; */
-
-        $this->items = $wpdb->get_results($wpdb->prepare("SELECT po.ID, po.post_title, COUNT(cl.post_id) AS numberOfParticipant,pm.meta_value as totalParticipant
-            FROM $wp_post po
-            JOIN $custom_lottery cl
-            ON po.ID = cl.post_id
-            JOIN $wp_post_meta pm
-            ON cl.post_id = pm.post_id
-            WHERE meta_key = 'total_participants'
+            WHERE meta_key = 'total_participants'" . $where_search . "
             GROUP BY po.ID
             limit $per_page OFFSET 0
         "), ARRAY_A);
 
-        //print_r($this->items);
+        //pr($this->items);
+
         $this->set_pagination_args(array(
             'total_items' => $total_items,
             'per_page' => $per_page,
@@ -79,12 +58,22 @@ class participantTable extends WP_List_Table
 
     function column_default($item, $column_name)
     {
-        //print_r(admin_url());
-        //pr($item);
+        //print_r($item);
 
         switch ($column_name) {
+
+            case 'is_winner_declare':
+                if ($item['is_winner_declare'] == 1) {
+                    return 'declared';
+                } else {
+                    return '-';
+                }
+                break;
+            case 'winner':
+                echo $this->get_declare_winner($item['ID']);
+                break;
             case 'action':
-                echo '<a href="' . admin_url('admin.php?page=new-entry&entryid=' . $item['ID']) . '">View Detail</a>';
+                echo '<a href="' . admin_url('admin.php?page=Post-details-page&Post_details_id=' . $item['ID']) . '">View Detail</a>';
         }
         return $item[$column_name];
     }
@@ -108,11 +97,9 @@ class participantTable extends WP_List_Table
             'post_title'           => 'Post Title',
             'numberOfParticipant'  => 'Number of Participants',
             'totalParticipant'     => 'Total Participants',
-            /* 'order_id'      => 'O',
-            'ticket_number' => 'Numbers',
-            'is_used'       => 'Status',
-            'created_at'    => 'Datetime', */
-            'action'        => 'Action'
+            'is_winner_declare'    => 'Winner Declared',
+            'winner'               => 'Winner Is',
+            'action'               => 'Action'
         );
         return $columns;
     }
@@ -132,7 +119,25 @@ class participantTable extends WP_List_Table
         return $actions;
     }
 
-    function process_bulk_action()
+    function get_declare_winner($post_id)
+    {
+        global $wpdb;
+
+        $custom_lottery = $wpdb->prefix . 'custom_lottery_participants';
+        $wp_users = $wpdb->prefix . 'users';
+        $wp_posts = $wpdb->prefix . 'posts';
+
+
+        $this->items = $wpdb->get_row("SELECT cl.*,wu.user_login FROM wp_custom_lottery_participants cl 
+            JOIN wp_users wu ON cl.id = wu.ID 
+            JOIN wp_posts po ON cl.post_id = po.ID 
+                WHERE cl.post_id = $post_id and cl.winner = 1 ;
+        ");
+
+        return $this->items->user_login;
+    }
+
+    /* function process_bulk_action()
     {
         global $wpdb;
         //$wp_post = $wpdb->prefix . 'custom_lottery_ticket';
@@ -143,7 +148,7 @@ class participantTable extends WP_List_Table
                 $wpdb->query("DELETE FROM $wp_post WHERE id IN($ids)");
             }
         }
-    }
+    } */
 }
 
 

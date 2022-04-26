@@ -1,4 +1,6 @@
 <?php
+/* ========= new entery ======== */
+
 add_action('wp_ajax_wqnew_entry', 'wqnew_entry_callback_function');
 add_action('wp_ajax_nopriv_wqnew_entry', 'wqnew_entry_callback_function');
 
@@ -24,7 +26,7 @@ function wqnew_entry_callback_function()
   wp_die();
 }
 
-
+/* ========= update entery ======== */
 
 add_action('wp_ajax_wqedit_entry', 'wqedit_entry_callback_function');
 add_action('wp_ajax_nopriv_wqedit_entry', 'wqedit_entry_callback_function');
@@ -44,6 +46,40 @@ function wqedit_entry_callback_function()
   } else {
     $response = array('message' => 'Data Has Already Exist', 'rescode' => 404);
   }
+  echo json_encode($response);
+  exit();
+  wp_die();
+}
+
+/* ========= declared winner ======== */
+
+add_action('wp_ajax_gen_winner', 'gen_winner_function');
+add_action('wp_ajax_nopriv_gen_winner', 'gen_winner_function');
+
+function gen_winner_function()
+{
+
+  global $wpdb;
+
+  $custom_lottery = $wpdb->prefix . 'custom_lottery_participants';
+
+  $post_id = isset($_REQUEST['post_id']) ? $_REQUEST['post_id'] : null;
+
+  $res = $wpdb->get_row("SELECT ticket_number AS Random_Number FROM $custom_lottery WHERE post_id = $post_id and is_winner_declare = 0 ORDER BY RAND() LIMIT 1 ;", ARRAY_A);
+
+  $num = $res['Random_Number'];
+
+  if (!empty($res)) {
+
+    $wpdb->update($custom_lottery, array('is_winner_declare' => 1), array('post_id' => $post_id));
+
+    $wpdb->update($custom_lottery, array('winner' => 1), array('ticket_number' => $num));
+
+    $response = array('message' => 'Winner Declare Successfully', 'rescode' => 200);
+  } else {
+    $response = array('message' => 'Winner Declare Already', 'rescode' => 404);
+  }
+
   echo json_encode($response);
   exit();
   wp_die();

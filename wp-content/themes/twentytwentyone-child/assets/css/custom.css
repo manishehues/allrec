@@ -1,8 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 /*font-family: 'Poppins', sans-serif;*/
 h1{font-size: 45px!important; color: #111723; font-weight: 700!important; font-family: 'Poppins', sans-serif!important;}
+a:hover {
+  color: #000;
+}
+body {
+  font-size: 14px;
+  line-height: 1.8em;
+  font-weight: 300;
+  font-family: 'poppins';
+}
 h2 {color: #1B212F!important;font-size: 46px!important;font-weight: 700!important;font-family: 'Poppins', sans-serif!important;margin-bottom: 10px!important;}
-p{font-size: 16px; font-weight: 400;font-family: 'Poppins', sans-serif; color: #1B212F; }
+p{font-size: 16px!important; font-weight: 400!important;font-family: 'Poppins'!important, sans-serif; color: #1B212F!important; }
 body{background: #fff!important; }
 .btn{background: #FF0000; color: #fff;border-radius: 14px;font-weight: 400;font-family: 'Poppins', sans-serif !important;font-size: 16px;padding: 14px 36px;text-decoration: none;}
 .homePage .heroBanner .heroContent .space .btn:focus{background: #FF0000!important; color: #fff!important;border-radius: 14px;font-weight: 400;font-family: 'Poppins', sans-serif !important;font-size: 16px;padding: 14px 36px;text-decoration: none;}
@@ -37,6 +46,7 @@ footer .site-info .socialIcons ul li{display: inline-block; padding: 0px 12px;}
 footer .site-info .socialIcons ul li a img{max-width: 20px;}
 footer .site-info .site-name .footer span{font-size: 14px; color: #fff;font-family: 'Poppins', sans-serif; font-weight: 400;}
 footer .site-info .site-name .footer span strong{font-weight: 400; color: #FF0000;}
+footer .site-info .powered-by ul li a:hover{color: #fff;}
 
 .homePage .heroBanner{width: 100%; float: left; display: flex;align-items: center;padding-top: 80px;padding-bottom: 100px;}
 .homePage .heroBanner .videoSection,.homePage .heroBanner .heroContent{width: 50%; float: left;}
@@ -203,8 +213,7 @@ ul.products li.product-type-variable .added_to_cart{top: 305px;height: 42%;}
 
 /*========================*/
 .commentForm {width: 100%;float: left;}
-.commentForm .userComments{width: 100%;float: left; max-width: 460px; background: #eee; margin: 0 auto;padding: 30px;box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-border-radius: 3px; margin: 0px 35px; }
+.commentForm .userComments{width: 100%;float: left; max-width: 460px; background: #eee; margin: 0 auto;padding: 30px;box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);border-radius: 3px; margin: 0px 35px; }
 .commentForm .userComments .foruserScrool {overflow: scroll;overflow-x: scroll;max-height: 390px !important;overflow-x: hidden;margin-bottom: 20px;}
 .commentForm .userComments ul{padding: 0;list-style: none;}
 .commentForm .userComments ul li {padding-bottom: 20px;}
@@ -217,73 +226,31 @@ border-radius: 3px; margin: 0px 35px; }
 .commentForm .userComments ul li .user .replyComment .reply {white-space: nowrap;width: 300px;overflow: hidden;text-overflow: inherit;color: #969696;}
 .formFeild{position: relative;}
 .formFeild form textarea{background: #fff;border: 2px solid #cfcfcf !important;height: 50px;font-size: 15px !important;;font-family: 'poppins' !important;font-weight: 600!important;color: #929292 !important;resize: none;}
-
-.formFeild form input.userComments{
-position: absolute;font-size: 15px !important;font-family: 'poppins' !important;font-weight: 600 !important;color: #929292 !important;
-box-shadow: none;padding: 0px;width: auto;background-color: transparent !important;
-border: none;right: 15px;transform: translateY(-50%);top: 50%;margin: 0;}
+.formFeild form input.userComments{position: absolute;font-size: 15px !important;font-family: 'poppins' !important;font-weight: 600 !important;color: #929292 !important;box-shadow: none;padding: 0px;width: auto;background-color: transparent !important;border: none;right: 15px;transform: translateY(-50%);top: 50%;margin: 0;}
 .formFeild form input.userComments:hover{border: none;}
 .ticket_tittle{width: 100%;float: left; padding-bottom: 50px;}
 .ticket_tittle .tittle{float: left;}
-.ticket_tittle .ticket {float: right;text-align: center;box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-padding: 6px 11px;border-radius: 18px;margin-right: 200px;}
+.ticket_tittle .ticket {float: right;text-align: center;box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);padding: 6px 11px;border-radius: 18px;margin-right: 200px;}
 .ticket_tittle .tittle .content h1 span{color: #ef040d;}
 .ticket_tittle .ticket h6{font-family: 'poppins';font-weight: 700;font-size: 30px;color: #ef040d;}
 .registerCustom{min-height: calc(100vh - 55px); display: flex; align-items: center;}
 .registerCustom{width: 100%; float: left; background-image: url('../images/charlein-gracia-wIrp9cijCmw-unsplash.jpg'); background-size: cover;}
-.formlogo {
-  width: 100%;
-  text-align: center;
-}
-.formlogo img {
- max-width: 250px;
-margin: 40px 0px;
-}
+.formlogo {width: 100%;
+  text-align: center;}
+.formlogo img {max-width: 250px;margin: 40px 0px;}
 .page-id-132 header{display: none!important;}
-.page-id-132 #main {
-  padding: 0;
-}
-.registerCustom .arm_setup_form_container {
-  border-top-right-radius: 30px;
-  border-top-left-radius: 30px;
-  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.85);
-}
-.registerCustom .arm_setup_submit_btn_wrapper{
-	border-bottom-right-radius: 30px;
-  	border-bottom-left-radius: 30px;
-  	margin-bottom: 50px;
-}
-.registerCustom h3.arm_setup_form_title{width: 100%; text-align: center; font-family: 'poppins'!important; font-weight: 700!important; color: #c42329!important;
-	text-transform: capitalize!important; font-size: 35px!important; margin: 50px 0px!important; margin-bottom: 0px!important;}
-.registerCustom .arm_module_box{
-	padding-bottom: 0px;
-	border-bottom: none!important;
-}
-.registerCustom .arm_form_field_submit_button.arm_btn_style_border{
-	background-color: #FF0000 !important;
-	color: #fff !important;
-	border-radius: 14px !important;
-	font-weight: 400 !important;
-	font-family: 'Poppins', sans-serif !important;
-	font-size: 16px !important;
-	padding: 14px 36px !important;
-	text-decoration: none !important;
-	border: none!important;
-}
-.onlytest {
-  width: 100%;
-  float: left;
-  clear: both;
-}
-.steptwo{
-	width: 100%;
-	float: left;
-	clear: both;
-}
-.onlytest .entry-content{
-	margin: 0px!important;
-}
+.page-id-132 #main { padding: 0;}
+.registerCustom .arm_setup_form_container {border-top-right-radius: 30px;border-top-left-radius: 30px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.85);}
+.registerCustom .arm_setup_submit_btn_wrapper{border-bottom-right-radius: 30px;border-bottom-left-radius: 30px;margin-bottom: 50px;}
+.registerCustom h3.arm_setup_form_title{width: 100%; text-align: center; font-family: 'poppins'!important; font-weight: 700!important; color: #c42329!important;text-transform: capitalize!important; font-size: 35px!important; margin: 50px 0px!important; margin-bottom: 0px!important;}
+.registerCustom .arm_module_box{padding-bottom: 0px;border-bottom: none!important;}
+.registerCustom .arm_form_field_submit_button.arm_btn_style_border{background-color: #FF0000 !important;color: #fff !important;border-radius: 14px !important;font-weight: 400 !important;font-family: 'Poppins', sans-serif !important;font-size: 16px !important;padding: 14px 36px !important;text-decoration: none !important;border: none!important;}
+.onlytest {width: 100%;float: left;clear: both;}
+.steptwo{width: 100%;float: left;clear: both;}
+.onlytest .entry-content{margin: 0px!important;}
 .onlytest .entry-content .wp-video{width: 100%; float: left; min-width: 100%!important; margin: 0px!important;}
+<<<<<<< HEAD
 
 
 .arm_form_101 .arm_form_field_submit_button.md-button, .arm_form_101 .arm_form_field_submit_button{border: 2px solid red !important;}
@@ -298,3 +265,62 @@ font-family: 'poppins';
 font-size: 18px !important;
 text-transform: capitalize;}
 .arm_setup_form_1 .arm_setup_column_item.arm_active .arm_module_plan_option .arm_module_plan_price_type .arm_module_plan_price, .arm_setup_form_1 .arm_setup_column_item.arm_active .arm_module_plan_price{color: #000!important;font-weight: 800; font-family:'poppins'!important; font-weight: 500;}
+=======
+/*.wp-video-shortcode{width: 100%!important;}*/
+.page-id-134 #main{padding: 0px!important;}
+.page-id-134 .shortContainer {max-width: 560px;margin: 0 auto;}
+
+/*===========================================================================woocommerce-shop======================================================================*/
+.woocommerce-shop.woocommerce ul.products.columns-3 li.product{background: #fbf9f5; padding: 20px 40px; border-radius: 20px;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);}
+.woocommerce-shop.woocommerce ul.products li.product .added_to_cart{border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;height: 100%;top: -12px;left: -8px;border-radius: 20px;}
+.woocommerce-shop .woocommerce ul.products.columns-3 li.product{text-align: center;}
+.woocommerce-shop ul.products li.product .woocommerce-loop-product__title::after{display: none;}
+.woocommerce-shop ul.products li.product .woocommerce-loop-product__title{background: #FBF9F5!important;text-align: inherit;padding: 0px; position: inherit; text-align: center;}
+.woocommerce-shop ul.products li.product .price{background: #FBF9F5 !important;border-bottom-left-radius: 0 !important;border-bottom-right-radius: 0 !important;padding: 0;position: inherit;text-align: center;}
+.woocommerce-shop .tickets{position: inherit; text-align: center; padding-bottom: 10px;}
+.woocommerce-shop .add_to_cart_button{position: inherit;bottom: 0 !important;font-size: 18px !important;text-align: center !important;transform: translateX(-50%);left: 50%;font-family: 'poppins' !important;color: #fff !important;padding: 8px 20px !important;font-weight: 600 !important;}
+.woocommerce-shop .add_to_cart_button::after{display: none;}
+.woocommerce-shop .site a:focus:not(.wp-block-button__link):not(.wp-block-file__button){background: red!important;}
+.woocommerce-shop .add_to_cart_button:focus{background-color: }
+.woocommerce-shop .woocommerce ul.products.columns-3 li.product-type-variable .variations{position: inherit!important;}
+.woocommerce-shop .woocommerce ul.products.columns-3 li.product{background: #000!important;}
+.woocommerce-shop.woocommerce ul.products.columns-3 li.product-type-variable .variations{background: #fbf9f5; padding-bottom: 10px!important;}
+/*===========================================================================woocommerce-shop=====================================================================*/
+
+/*===========================================================================eventPost============================================================================*/
+.eventPost{width: 100%; float: left; margin-bottom: 20px;}
+.eventPost .eventImage{width: 48%;float: left;margin-right: 20px;}
+.eventPost .eventContent{background: #F1F1F1;display: flex;flex-wrap: wrap;align-items: center;border-radius: 15px;padding: 18px 24px;width: 50%;float: left;}
+.eventPost .eventContent .innerContent .tittleevent{font-size:26px;color: #EF040D; font-family: 'poppins';font-weight: 700;}
+.eventPost .eventContent .innerContent p{font-size: 15px;line-height: 1.6em !important;}
+.eventPost .eventContent .innerContent .winner{font-size: 15px;font-weight: 700;color: #000;padding: 6px 0px;}
+.eventPost .eventContent .innerContent .Hours{font-size: 15px;line-height: 1.6em !important;padding-top: 5px;}
+.eventPost .eventContent .innerContent .guest{font-size: 20px;font-weight: 700;color: #000;padding-top: 5px;}
+.eventPost .eventContent .innerContent .Hours .hourTittle{font-size: 20px;font-weight: 700;color: #000;}
+.eventPost .eventContent .innerContent .winnerlast{font-size: 20px;font-weight: 700;color: #000;padding-top: 5px;}
+/*===========================================================================eventPost============================================================================*/
+
+.woocommerce-account .woocommerce-MyAccount-navigation{width:20%;float:left;margin-right:30px;border-top:1px solid #ddd;}
+.woocommerce-account .woocommerce-MyAccount-navigation li a{color:#000;}
+#payment .form-row.place-order{padding-left:0;padding-right:0;}
+.logged-in .woocommerce-MyAccount-navigation{float:left !important;background-color:#000 !important;padding:15px 30px;margin-bottom:15px !important;}
+.woocommerce .woocommerce-MyAccount-navigation{width:250px;}
+.logged-in .woocommerce-MyAccount-navigation ul li{border:0px !important; display: flex; padding: 5px 12px;margin: 3px 0px!important;}
+  
+.logged-in .woocommerce-MyAccount-navigation{float:left !important;background-color:#000 !important;padding:15px 30px;margin-bottom:15px !important;}
+.woocommerce .woocommerce-MyAccount-navigation{width:250px;}
+.woocommerce .woocommerce-MyAccount-navigation ul li.is-active, .woocommerce .woocommerce-MyAccount-navigation ul li:hover{opacity:1;}
+.logged-in .woocommerce-MyAccount-navigation ul li{border:0px !important;}
+.logged-in .woocommerce-MyAccount-navigation{float:left !important;background-color:#1b212f !important;padding:15px 0px;margin-bottom:15px !important;}
+.woocommerce .woocommerce-MyAccount-navigation ul li.is-active{background: #ef040d; padding: 5px 12px!important;margin: 3px 0px!important;}
+.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a{box-shadow: none!important; color: #fff!important; text-decoration: none!important;}
+.woocommerce .woocommerce-MyAccount-navigation ul li{padding-right: 15px; padding-left: 15px; opacity: 1; margin: 0px!important;}
+.logged-in .woocommerce-MyAccount-navigation ul li a{color: #fff!important; font-family: 'poppins'; font-size: 16px;text-transform: uppercase; font-weight: bold; text-decoration: none!important;}
+.woocommerce .woocommerce-MyAccount-navigation ul li::before{color: #000000c2;}
+.woocommerce .woocommerce-MyAccount-navigation ul li.is-active a{font-weight: 700;}
+.woocommerce-account .woocommerce-MyAccount-navigation li.is-active::before{color: #000;}
+.woocommerce .woocommerce-MyAccount-navigation ul li:hover{background: #ef040d; transition: all 0.2s ease;}
+.woocommerce .woocommerce-MyAccount-navigation ul li:hover a{color: #fff!important; transition: all 0.2s ease; text-decoration: none!important;}
+.logged-in .woocommerce-MyAccount-navigation{margin-top: 0px; margin-bottom: 0!important; border-radius: 10px; box-shadow: -1px 4px 16px rgb(0, 0, 0);}
+>>>>>>> 8d9b0b0dd107279bb10e2b5611b55a840b4e650e
