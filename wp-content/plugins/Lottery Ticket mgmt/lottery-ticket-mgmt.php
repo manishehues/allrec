@@ -210,3 +210,92 @@ function pluginname_load_template($template)
 } */
 
 //echo plugin_dir_path(__FILE__);
+
+
+
+/* =================== frontEnd user dashboard ======================= */
+
+/*
+ * Step 1. Add Link (Tab) to My Account menu
+ */
+add_filter('woocommerce_account_menu_items', 'lottery_ticket_link', 40);
+function lottery_ticket_link($menu_links)
+{
+
+  $menu_links = array_slice($menu_links, 0, 5, true)
+    + array('user-tickets' => 'Ticket')
+    + array_slice($menu_links, 5, NULL, true);
+
+  return $menu_links;
+}
+/*
+ * Step 2. Register Permalink Endpoint
+ */
+add_action('init', 'add_endpoint');
+function add_endpoint()
+{
+
+  // WP_Rewrite is my Achilles' heel, so please do not ask me for detailed explanation
+  add_rewrite_endpoint('user-tickets', EP_PAGES);
+}
+/*
+ * Step 3. Content for the new page in My Account, woocommerce_account_{ENDPOINT NAME}_endpoint
+ */
+add_action('woocommerce_account_user-tickets_endpoint', 'misha_my_account_endpoint_content');
+function misha_my_account_endpoint_content()
+{
+
+  global $wpdb;
+  $user_id = get_current_user_id();
+
+  $limit = 10;
+  if (isset($_GET['pg'])) {
+    $page = $_GET['pg'];
+  } else {
+    $page = 1;
+  }
+  $offset = ($page - 1) * $limit;
+
+  $ticket = $wpdb->prefix . 'custom_lottery_ticket';
+
+
+  $totalCount = " SELECT * FROM $ticket where `user_id` = $user_id ORDER BY id DESC LIMIT $offset, $limit ";
+  $tickets = $wpdb->get_results($totalCount);
+  $rowcount = $wpdb->num_rows;
+
+  $sql = " SELECT * FROM $ticket where `user_id` = $user_id ";
+
+  $wpdb->get_results($sql);
+
+  if ($wpdb->num_rows > 0) {
+    $total_records = $wpdb->num_rows;
+    $total_page = ceil($total_records / $limit);
+  }
+
+  require_once(CRUD_PLUGIN_PATH . '/frontend/front-end.php');
+}
+
+
+/*
+ * Step 4
+ */
+
+
+/* ====================== Mail ========================== */
+
+/* function  wpsd_email_to_admin($amount, $Email, $payMethod)
+{
+
+  $Email           = sanitize_email($_REQUEST['payemail']);
+  $payMethod       = sanitize_text_field($_REQUEST['paymethod']);
+  $amount       = filter_var($_REQUEST['payamount'], FILTER_SANITIZE_STRING);
+
+  $headers = array('Content-Type: text/html; charset=UTF-8');
+  $to = 'vikasehues@gmail.com';
+  $wpsdEmailSubject = __('Request to Transfer Payment!');
+  $wpsdEmailMessage = __('Email: ') . $Email;
+  $wpsdEmailMessage .= '<br>' . __('Payment method: ') . $payMethod;
+  $wpsdEmailMessage .= '<br>' . __('Amount: ') . $amount;
+
+  return wp_mail($to, $wpsdEmailSubject, $wpsdEmailMessage, $headers);
+} */
