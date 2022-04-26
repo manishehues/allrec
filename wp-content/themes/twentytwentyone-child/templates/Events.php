@@ -38,21 +38,23 @@ get_header();
         <div class="eventContent">
           <div class="innerContent">
             <div class="tittleevent"><?php echo the_title(); ?></div>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+            <p><!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, --><?php the_field('discription'); ?></p>
             <div class="winner">
-              WINNER: Jhone QUE
+              <!-- WINNER: Jhone QUE --><?php the_field('winner'); ?>
             </div>
             <div class="Hours">
-              <div class="hourTittle">Hours</div>
-             Monday-02 -2022 : 07 PM - 10 AM<br>
-             Monday-02 -2022 : 07 PM - 10 AM
+              <div class="hourTittle"><?php the_field('hours_tittle'); ?><!-- Hours --></div>
+              <?php the_field('date_and_time'); ?>
+             <!-- Monday-02 -2022 : 07 PM - 10 AM<br>
+             Monday-02 -2022 : 07 PM - 10 AM -->
             </div>
             <div class="guest">
-              Number Of Guest: 04
+              <!-- Number Of Guest: 04 --><?php the_field('number_of_guest'); ?>
             </div>
             <div class="winnerlast">
-              How to win:
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+              <?php the_field('how_to_win'); ?>
+              <!-- How to win: -->
+              <p><!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, --><?php the_field('win_discription'); ?></p>
             </div>
           </div>
         </div>
