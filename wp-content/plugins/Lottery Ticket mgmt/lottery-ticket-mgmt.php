@@ -298,4 +298,5 @@ function misha_my_account_endpoint_content()
   $wpsdEmailMessage .= '<br>' . __('Amount: ') . $amount;
 
   return wp_mail($to, $wpsdEmailSubject, $wpsdEmailMessage, $headers);
-} */
+}
+ */
