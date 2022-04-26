@@ -285,6 +285,16 @@ margin: 40px 0px;
 }
 .onlytest .entry-content .wp-video{width: 100%; float: left; min-width: 100%!important; margin: 0px!important;}
 
-/*.wp-video-shortcode{width: 100%!important;}*/
-/*----------------------------------------woocommerce-shop-----------------------------------------------------------------*/
-.woocommerce-shop
+
+.arm_form_101 .arm_form_field_submit_button.md-button, .arm_form_101 .arm_form_field_submit_button{border: 2px solid red !important;}
+.arm_form_101 .arm_form_field_submit_button:hover, .arm_form_101 .arm_form_field_submit_button.md-button:hover, .arm_form_101 .arm_form_field_submit_button.md-button:not([disabled]):hover{background-color: #F00 !important;
+border: 2px solid #F00 !important;
+color: #ffffff !important;}
+.arm_plan_skin2.arm_setup_column_item.arm_active .arm_module_plan_option{border: 1px solid #f00!important;}
+.arm_setup_form_1 .arm_plan_skin2.arm_setup_column_item.arm_active .arm_module_plan_option .arm_module_plan_name{background-color: #F00 !important;
+border: 1px solid #F00 !important;
+font-weight: 600;
+font-family: 'poppins';
+font-size: 18px !important;
+text-transform: capitalize;}
+.arm_setup_form_1 .arm_setup_column_item.arm_active .arm_module_plan_option .arm_module_plan_price_type .arm_module_plan_price, .arm_setup_form_1 .arm_setup_column_item.arm_active .arm_module_plan_price{color: #000!important;font-weight: 800; font-family:'poppins'!important; font-weight: 500;}

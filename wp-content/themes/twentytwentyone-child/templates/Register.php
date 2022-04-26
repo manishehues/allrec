@@ -14,7 +14,7 @@ get_header();
 <div class="registerCustom">
     <div class="shortContainer">
         <div class="formlogo">
-            <a href="http://localhost/allrec">
+            <a href="https://allrec.ehuesdev.com">
                 <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/allreclog.svg"/>
             </a>
             
