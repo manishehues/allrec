@@ -28,7 +28,7 @@ define('DB_USER', 'root');
 
 /** Database password */
 
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'newpassword');
 
 
 /** Database hostname */

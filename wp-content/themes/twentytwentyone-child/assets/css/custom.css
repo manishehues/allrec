@@ -250,8 +250,6 @@ ul.products li.product-type-variable .added_to_cart{top: 305px;height: 42%;}
 .steptwo{width: 100%;float: left;clear: both;}
 .onlytest .entry-content{margin: 0px!important;}
 .onlytest .entry-content .wp-video{width: 100%; float: left; min-width: 100%!important; margin: 0px!important;}
-<<<<<<< HEAD
-
 
 .arm_form_101 .arm_form_field_submit_button.md-button, .arm_form_101 .arm_form_field_submit_button{border: 2px solid red !important;}
 .arm_form_101 .arm_form_field_submit_button:hover, .arm_form_101 .arm_form_field_submit_button.md-button:hover, .arm_form_101 .arm_form_field_submit_button.md-button:not([disabled]):hover{background-color: #F00 !important;
@@ -265,7 +263,7 @@ font-family: 'poppins';
 font-size: 18px !important;
 text-transform: capitalize;}
 .arm_setup_form_1 .arm_setup_column_item.arm_active .arm_module_plan_option .arm_module_plan_price_type .arm_module_plan_price, .arm_setup_form_1 .arm_setup_column_item.arm_active .arm_module_plan_price{color: #000!important;font-weight: 800; font-family:'poppins'!important; font-weight: 500;}
-=======
+
 /*.wp-video-shortcode{width: 100%!important;}*/
 .page-id-134 #main{padding: 0px!important;}
 .page-id-134 .shortContainer {max-width: 560px;margin: 0 auto;}
@@ -282,7 +280,7 @@ box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);}
 .woocommerce-shop .add_to_cart_button{position: inherit;bottom: 0 !important;font-size: 18px !important;text-align: center !important;transform: translateX(-50%);left: 50%;font-family: 'poppins' !important;color: #fff !important;padding: 8px 20px !important;font-weight: 600 !important;}
 .woocommerce-shop .add_to_cart_button::after{display: none;}
 .woocommerce-shop .site a:focus:not(.wp-block-button__link):not(.wp-block-file__button){background: red!important;}
-.woocommerce-shop .add_to_cart_button:focus{background-color: }
+.woocommerce-shop .add_to_cart_button:focus{background-color: "#fff"}
 .woocommerce-shop .woocommerce ul.products.columns-3 li.product-type-variable .variations{position: inherit!important;}
 .woocommerce-shop .woocommerce ul.products.columns-3 li.product{background: #000!important;}
 .woocommerce-shop.woocommerce ul.products.columns-3 li.product-type-variable .variations{background: #fbf9f5; padding-bottom: 10px!important;}
@@ -323,4 +321,4 @@ box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);}
 .woocommerce .woocommerce-MyAccount-navigation ul li:hover{background: #ef040d; transition: all 0.2s ease;}
 .woocommerce .woocommerce-MyAccount-navigation ul li:hover a{color: #fff!important; transition: all 0.2s ease; text-decoration: none!important;}
 .logged-in .woocommerce-MyAccount-navigation{margin-top: 0px; margin-bottom: 0!important; border-radius: 10px; box-shadow: -1px 4px 16px rgb(0, 0, 0);}
->>>>>>> 8d9b0b0dd107279bb10e2b5611b55a840b4e650e
+
