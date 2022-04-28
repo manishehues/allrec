@@ -43,7 +43,7 @@ class showPostDetail extends WP_List_Table
         }
 
         $this->items = $wpdb->get_results($wpdb->prepare(" SELECT cl.*,wu.user_login,wu.user_email,po.post_title FROM $custom_lottery cl 
-            JOIN $wp_users wu ON cl.id = wu.ID 
+            JOIN $wp_users wu ON cl.user_id = wu.ID 
             JOIN $wp_posts po ON cl.post_id = po.ID 
                 WHERE cl.post_id = $detail_post_id " . $where_search . " limit $per_page OFFSET 0
         "), ARRAY_A);
