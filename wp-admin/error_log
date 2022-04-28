@@ -7,3 +7,6 @@ Stack trace:
 #4 /home4/woazuymy/public_html/allrec/wp-admin/admin-ajax.php(187): do_action('wp_ajax_gen_win...')
 #5 {main}
   thrown in /home4/woazuymy/public_html/allrec/wp-content/themes/twentytwentyone-child/functions.php on line 502
+[28-Apr-2022 01:33:25 America/Boise] PHP Parse error:  syntax error, unexpected '<<' (T_SL), expecting end of file in /home4/woazuymy/public_html/allrec/wp-config.php on line 31
+[28-Apr-2022 01:35:25 America/Boise] PHP Parse error:  syntax error, unexpected '<<' (T_SL), expecting end of file in /home4/woazuymy/public_html/allrec/wp-config.php on line 31
+[28-Apr-2022 01:37:25 America/Boise] PHP Parse error:  syntax error, unexpected '<<' (T_SL), expecting end of file in /home4/woazuymy/public_html/allrec/wp-config.php on line 31
