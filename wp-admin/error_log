@@ -1,0 +1,12 @@
+[28-Apr-2022 06:43:14 UTC] PHP Fatal error:  Uncaught Error: Object of class WP_User could not be converted to string in /home4/woazuymy/public_html/allrec/wp-content/themes/twentytwentyone-child/functions.php:502
+Stack trace:
+#0 /home4/woazuymy/public_html/allrec/wp-content/plugins/Lottery Ticket mgmt/ajax/ajax_action.php(78): send_email_to_admin_after_declare_winner('46616')
+#1 /home4/woazuymy/public_html/allrec/wp-includes/class-wp-hook.php(307): gen_winner_function('')
+#2 /home4/woazuymy/public_html/allrec/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#3 /home4/woazuymy/public_html/allrec/wp-includes/plugin.php(474): WP_Hook->do_action(Array)
+#4 /home4/woazuymy/public_html/allrec/wp-admin/admin-ajax.php(187): do_action('wp_ajax_gen_win...')
+#5 {main}
+  thrown in /home4/woazuymy/public_html/allrec/wp-content/themes/twentytwentyone-child/functions.php on line 502
+[28-Apr-2022 01:33:25 America/Boise] PHP Parse error:  syntax error, unexpected '<<' (T_SL), expecting end of file in /home4/woazuymy/public_html/allrec/wp-config.php on line 31
+[28-Apr-2022 01:35:25 America/Boise] PHP Parse error:  syntax error, unexpected '<<' (T_SL), expecting end of file in /home4/woazuymy/public_html/allrec/wp-config.php on line 31
+[28-Apr-2022 01:37:25 America/Boise] PHP Parse error:  syntax error, unexpected '<<' (T_SL), expecting end of file in /home4/woazuymy/public_html/allrec/wp-config.php on line 31

@@ -75,12 +75,17 @@ function gen_winner_function()
 
     $wpdb->update($custom_lottery, array('winner' => 1), array('ticket_number' => $num));
 
+    send_email_to_admin_after_declare_winner($num);
+    send_email_to_user_after_declare_winner($num);
+
     $response = array('message' => 'Winner Declare Successfully', 'rescode' => 200);
   } else {
     $response = array('message' => 'Winner Declare Already', 'rescode' => 404);
   }
 
   echo json_encode($response);
+
   exit();
+
   wp_die();
 }
