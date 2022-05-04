@@ -10,6 +10,9 @@ body {
   font-weight: 300;
   font-family: 'poppins';
 }
+tbody tr:nth-child(2n+1) {background-color: #f7f7f7!important;}
+tbody td{border: none!important;}
+tbody th{border: none!important;}
 h2 {color: #1B212F!important;font-size: 46px!important;font-weight: 700!important;font-family: 'Poppins', sans-serif!important;margin-bottom: 10px!important;}
 p{font-size: 16px!important; font-weight: 400!important;font-family: 'Poppins'!important, sans-serif; color: #1B212F!important; }
 body{background: #fff!important; }
@@ -104,7 +107,7 @@ ul.products li.product .price{text-align: left;padding-right: 60px;padding-left:
 /*JUST FOR NOW*/.entry-header.alignwide{display: none;}/*JUST FOR NOW*/
 #customer_details.row{margin-left:0;margin-right:0;}
 #customer_details .leftSide{float:left;width: 55%;padding: 40px; box-shadow: 0px 0px 30px rgba(0,0,0,0.10); border: 1px solid #707070; border-radius:10px ;}
-#customer_details .rightSide{float:right;width: 40%; padding: 40px; box-shadow: 0px 0px 30px rgba(0,0,0,0.10); border: 1px solid #707070; border-radius:10px ;}
+#customer_details .rightSide{float:right;width: 40%; padding: 40px; box-shadow: 0px 0px 30px rgba(0,0,0,0.10); border: 1px solid #707070; border-radius:10px; margin-left: 60px;}
 #customer_details .rightSide #order_review{width: 100%; padding: 0px!important;}
 .shop_table.woocommerce-checkout-review-order-table{margin-top: 0px!important;}
 .woocommerce-checkout .woocommerce-billing-fields h3{font-family: 'poppins';font-weight: 700;text-transform: capitalize; margin-bottom: 10px; margin-top: 0px;color: #000;}
@@ -323,3 +326,39 @@ box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);}
 .woocommerce .woocommerce-MyAccount-navigation ul li:hover{background: #ef040d; transition: all 0.2s ease;}
 .woocommerce .woocommerce-MyAccount-navigation ul li:hover a{color: #fff!important; transition: all 0.2s ease; text-decoration: none!important;}
 .logged-in .woocommerce-MyAccount-navigation{margin-top: 0px; margin-bottom: 0!important; border-radius: 10px; box-shadow: -1px 4px 16px rgb(0, 0, 0);}
+
+.cartPage .leftSide.cartForm table thead{background: #000; color: #fff;}
+.cartPage .leftSide.cartForm table tbody tr:nth-child(odd){background-color: #f7f7f7 !important;}
+.cartPage .leftSide.cartForm table tbody tr td.product-thumbnail{max-width: 50px!important;}
+.cartPage .leftSide.cartForm table tbody tr td.product-quantity .quantity input.input-text {border: 1px solid #000; padding: 7px; border-radius: 6px;}
+.cartPage .leftSide.cartForm table tbody tr td.product-name a{font-size: 16px!important;}
+.cartPage .leftSide.cartForm table tbody tr td.product-remove .remove:hover{background: red;}
+.cartPage .leftSide.cartForm table tbody tr td.actions .button{border: 2px solid #FF0000 !important;
+background: #FF0000 !important;
+color: #fff !important;
+border-radius: 8px !important;
+font-weight: 600 !important;
+font-family: 'Poppins', sans-serif !important;
+font-size: 16px !important;
+text-transform: uppercase;
+padding: 10px 30px;
+}
+.cartPage .leftSide.cartForm table tbody tr td.actions .button:hover{border: 2px solid #FF0000 !important;
+color: #000 !important;
+background: transparent !important;}
+.cartPage .leftSide.cartForm table tbody tr td.actions .coupon input{font-size: 14px!important;}
+.woocommerce .cart-collaterals .cart_totals, .woocommerce-page .cart-collaterals .cart_totals{width: 100%!important; float: left;}
+.col-sm-4.rightSide.cartTotals{margin-top: 90px; padding: 0px 40px;}
+.col-sm-4.rightSide.cartTotals .checkout-button{border: 2px solid #FF0000 !important;
+background: #FF0000 !important;
+color: #fff !important;
+border-radius: 8px !important;
+font-weight: 600 !important;
+font-family: 'Poppins', sans-serif !important;
+font-size: 16px !important;
+text-transform: uppercase;
+padding: 10px 30px;
+text-decoration: none!important;}
+.col-sm-4.rightSide.cartTotals .checkout-button:hover{border: 2px solid #FF0000 !important;color: #000 !important;background: transparent !important;}
+.woocommerce .cart-collaterals, .woocommerce-page .cart-collaterals{width: 100%;background: #fff;padding: 30px;box-shadow: 0px 0px 30px rgba(0,0,0,0.10);}
+.woocommerce .cartPage{height: calc(100vh - 210px);}
