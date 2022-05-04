@@ -1,10 +1,10 @@
-<?php /* Template Name: PageWithoutSidebar */ ?>
+<?php /* Template Name: UserLottries */ ?>
 <?php get_header(); ?>
 <div id="primary" class="content-area">
   <main id="main" class="site-main" role="main">
-
+    ggggggggggggggggggggggggggggggg
     <?php
-    // Start the loop.
+    /* // Start the loop.
     while (have_posts()) : the_post();
       // Include the page content template.
       get_template_part('template-parts/content', 'page');
@@ -13,8 +13,9 @@
         comments_template();
       }
     // End of the loop.
-    endwhile;
+    endwhile; */
     ?>
+    dddddddddddddddddddddddddddddddddsssssssss
   </main><!-- .site-main -->
 
 </div><!-- .content-area -->

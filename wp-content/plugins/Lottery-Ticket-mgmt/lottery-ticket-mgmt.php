@@ -15,8 +15,6 @@ define('CRUD_PLUGIN_PATH', plugin_dir_path(__FILE__));
 register_activation_hook(__FILE__, 'activate_ticket_lottery_plugin_function');
 //register_deactivation_hook(__FILE__, 'deactivate_ticket_lottery_plugin_function');
 
-//echo dirname(__FILE__);
-
 function activate_ticket_lottery_plugin_function()
 {
   global $wpdb;
@@ -172,58 +170,263 @@ function PostDetailPage()
   require_once(CRUD_PLUGIN_PATH . '/admin/PostDetailPage.php');
 }
 
+/*============= custom template start =============*/
 
 add_filter('page_template', 'wpa3396_page_template');
 function wpa3396_page_template($page_template)
 {
-  if (is_page('my-custom-page-slug')) {
-    $page_template = CRUD_PLUGIN_PATH . '/templates/custom-page-template.php';
+  if (get_page_template_slug() == 'user-lottries.php') {
+    $page_template = CRUD_PLUGIN_PATH . '/templates/user-lottries.php';
   }
   return $page_template;
 }
 
-
-
 add_filter('theme_page_templates', 'pluginname_template_as_option', 10, 3);
 function pluginname_template_as_option($page_templates, $theme, $post)
 {
-
-  $page_templates['Untitled-1.php'] = 'PageWithoutSidebar';
-
+  $page_templates['user-lottries.php'] = 'UserLottries';
   return $page_templates;
 }
 
-//When our custom template has been chosen then display it for the page
-/* add_filter('template_include', 'pluginname_load_template', 99);
-function pluginname_load_template($template)
+/*============= custom template start =============*/
+
+/* ====================== Mail after ticket number is using  ========================== */
+
+/* mail after send to Admin when user participat in any post */
+function  wpsd_email_to_admin($post_id, $ticket_number, $user_id)
 {
+  $user_info = get_user_by('ID', $user_id);
+  $post_title = get_post($post_id, ARRAY_A);
+  $title = $post_title['post_title'];
 
-  global $post;
-  $custom_template_slug   = 'Untitled-1.php';
-  $page_template_slug     = get_page_template_slug($post->ID);
+  $headers = array('Content-Type: text/html; charset=UTF-8');
+  //$to = 'vikasehues@gmail.com';
+  $to = get_option('admin_email');
+  $wpsdEmailSubject = __('New Participation');
 
-  if ($page_template_slug == $custom_template_slug) {
-    return CRUD_PLUGIN_PATH . '/templates/' . $custom_template_slug;
-  }
+  $wpsdEmailMessage = '
+    <html>
+        <head>
+            <title>Email Newsletter Template</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+        </head>
+        <body bgcolor="#e3e3e3">
+            <table border="0" cellpadding="0" cellspacing="0" style="max-width: 602px;width: 100%;border:1px solid #d5d5d5" align="center">
+                <tr>
+                    <td style="background-color: #fde148;padding:15px" align="center" valign="middle">
+                        <h2 style="margin:0;font-family: sans-serif;font-size:30px; color:#000000"> Participated in ';
+  $wpsdEmailMessage .= $post_title['post_title'];
+  $wpsdEmailMessage .= '</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ffffff;padding:0px 20px" align="center">
+                            <h4 style="font-size:25px;font-family: sans-serif;margin:25px 0px 20px;color:#000000 ">Hello Admin </h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="middle">
+                        <p style="font-size:16px;font-family: sans-serif;color:#000000;margin:20px 0px">
+                        A new user <b>';
+  $wpsdEmailMessage .= $user_info->user_login;
+  $wpsdEmailMessage .= '</b> has been Participat in <b>';
+  $wpsdEmailMessage .= $post_title['post_title'];
+  $wpsdEmailMessage .= '</b></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:100px 30px;background-image: url("https://i10.dainikbhaskar.com/thumbnails/730x548/web2images/www.bhaskar.com/2016/11/24/evoke_socks-4_1479993435.jpg");background-size: cover;background-position: center;" align="center" valign="middle">
+                        <a href="" style="display: inline-block;background-color: #fde148;text-decoration: none;padding:12px 30px;text-decoration: none;font-family: sans-serif;font-weight: bold;color:#000000;margin:20px 0px;border-radius: 5px">TICKET NO- ';
+  $wpsdEmailMessage .= $ticket_number;
+  $wpsdEmailMessage .= ' </a>
+                    </td>
+                </tr>
+            </table>
+        </body>
+    </html>';
 
-  return $template;
-} */
+  return wp_mail($to, $wpsdEmailSubject, $wpsdEmailMessage, $headers);
+}
 
-//echo plugin_dir_path(__FILE__);
+/* mail after send to user participat in any post */
+function wpsd_email_to_user($post_id, $ticket_number, $user_id)
+{
+  $user_info = get_user_by('ID', $user_id);
+  $userMail = $user_info->user_email;
 
+  $post_title = get_post($post_id, ARRAY_A);
+  $title = $post_title['post_title'];
 
+  $headers = array('Content-Type: text/html; charset=UTF-8');
+  $to = 'vikasehues@gmail.com';
+  //$to = $userMail;
+  $wpsdEmailSubject = __('New Participation');
+
+  $wpsdEmailMessage = '
+    <html>
+        <head>
+            <title>Email Newsletter Template</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+        </head>
+        <body bgcolor="#e3e3e3">
+            <table border="0" cellpadding="0" cellspacing="0" style="max-width: 602px;width: 100%;border:1px solid #d5d5d5" align="center">
+                <tr>
+                    <td style="background-color: #fde148;padding:15px" align="center" valign="middle">
+                        <h2 style="margin:0;font-family: sans-serif;font-size:30px; color:#000000">Thanks for Participated in ';
+  $wpsdEmailMessage .= $post_title['post_title'];
+  $wpsdEmailMessage .= '</h2>
+                    </td>
+                </tr>
+               
+                <tr>
+                    <td align="center" valign="middle">
+                        <p style="font-size:16px;font-family: sans-serif;color:#000000;margin:20px 0px">
+                        Hey, <b>';
+  $wpsdEmailMessage .= $user_info->user_login;
+  $wpsdEmailMessage .= '</b> Result of <b>';
+  $wpsdEmailMessage .= $post_title['post_title'];
+  $wpsdEmailMessage .= '</b> declared shortly. </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:100px 30px;background-image: url("https://i10.dainikbhaskar.com/thumbnails/730x548/web2images/www.bhaskar.com/2016/11/24/evoke_socks-4_1479993435.jpg");background-size: cover;background-position: center;" align="center" valign="middle">
+                        <a href="" style="display: inline-block;background-color: #fde148;text-decoration: none;padding:12px 30px;text-decoration: none;font-family: sans-serif;font-weight: bold;color:#000000;margin:20px 0px;border-radius: 5px">TICKET NO- ';
+  $wpsdEmailMessage .= $ticket_number;
+  $wpsdEmailMessage .= ' </a>
+                    </td>
+                </tr>
+            </table>
+        </body>
+    </html>';
+
+  return wp_mail($to, $wpsdEmailSubject, $wpsdEmailMessage, $headers);
+}
+
+/* mail after winner declaration to admin */
+function send_email_to_admin_after_declare_winner($ticket_number)
+{
+  global $wpdb;
+  $table_name = $wpdb->prefix . "custom_lottery_participants";
+  $declaredWinner = $wpdb->get_row("SELECT * FROM $table_name WHERE ticket_number = $ticket_number AND winner = 1 ");
+
+  $decWinUserTic = $declaredWinner->ticket_number;
+  $decWinUserId = $declaredWinner->user_id;
+  $decWinPostId = $declaredWinner->post_id;
+
+  $user_info = get_user_by('ID', $decWinUserId);
+  $post_title = get_post($decWinPostId, ARRAY_A);
+  $title = $post_title['post_title'];
+
+  $headers = array('Content-Type: text/html; charset=UTF-8');
+  $to = 'vikasehues@gmail.com';
+  //$to = get_option('admin_email');
+  $wpsdEmailSubject = __('Winner Declared');
+
+  $wpsdEmailMessage = '
+    <html>
+        <body bgcolor="#e3e3e3">
+            <table border="0" cellpadding="0" cellspacing="0" style="max-width: 602px;width: 100%;border:1px solid #d5d5d5" align="center">
+                <tr>
+                    <td style="background-color: #fde148;padding:15px" align="center" valign="middle">
+                        <h2 style="margin:0;font-family: sans-serif;font-size:30px; color:#000000"> Winner of this Event ';
+  $wpsdEmailMessage .= $title;
+  $wpsdEmailMessage .= '</h2>
+                    </td>
+                </tr>
+               
+                <tr>
+                    <td align="center" valign="middle">
+                        <p style="font-size:16px;font-family: sans-serif;color:#000000;margin:20px 0px">
+                        Here is winner , <b>';
+  $wpsdEmailMessage .= $user_info->user_login;
+  $wpsdEmailMessage .= '</b> of the Event  <b>';
+  $wpsdEmailMessage .= $title;
+  $wpsdEmailMessage .= '</b>.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:100px 30px;background-image: url("https://i10.dainikbhaskar.com/thumbnails/730x548/web2images/www.bhaskar.com/2016/11/24/evoke_socks-4_1479993435.jpg");background-size: cover;background-position: center;" align="center" valign="middle">
+                        <a href="" style="display: inline-block;background-color: #fde148;text-decoration: none;padding:12px 30px;text-decoration: none;font-family: sans-serif;font-weight: bold;color:#000000;margin:20px 0px;border-radius: 5px">TICKET NO- ';
+  $wpsdEmailMessage .= $decWinUserTic;
+  $wpsdEmailMessage .= ' </a>
+                    </td>
+                </tr>
+            </table>
+        </body>
+    </html>';
+
+  return wp_mail($to, $wpsdEmailSubject, $wpsdEmailMessage, $headers);
+}
+
+/* mail after winner declaration to user */
+function send_email_to_user_after_declare_winner($ticket_number)
+{
+  global $wpdb;
+  $table_name = $wpdb->prefix . "custom_lottery_participants";
+  $declaredWinner = $wpdb->get_row("SELECT * FROM $table_name WHERE ticket_number = $ticket_number AND winner = 1 ");
+
+  $decWinUserTic = $declaredWinner->ticket_number;
+  $decWinUserId = $declaredWinner->user_id;
+  $decWinPostId = $declaredWinner->post_id;
+
+  $user_info = get_user_by('ID', $decWinUserId);
+  $userMail = $user_info->user_email;
+  $post_title = get_post($decWinPostId, ARRAY_A);
+  $title = $post_title['post_title'];
+
+  $headers = array('Content-Type: text/html; charset=UTF-8');
+  $to = 'vikasehues@gmail.com';
+  //$to = $userMail;
+  $wpsdEmailSubject = __('Winner Declared');
+
+  $wpsdEmailMessage = '
+    <html>
+        <body bgcolor="#e3e3e3">
+            <table border="0" cellpadding="0" cellspacing="0" style="max-width: 602px;width: 100%;border:1px solid #d5d5d5" align="center">
+                <tr>
+                    <td style="background-color: #fde148;padding:15px" align="center" valign="middle">
+                        <h2 style="margin:0;font-family: sans-serif;font-size:30px; color:#000000"> Winner of this Event ';
+  $wpsdEmailMessage .= $title;
+  $wpsdEmailMessage .= '</h2>
+                    </td>
+                </tr>
+               
+                <tr>
+                    <td align="center" valign="middle">
+                        <p style="font-size:16px;font-family: sans-serif;color:#000000;margin:20px 0px">
+                        Here is winner , <b>';
+  $wpsdEmailMessage .= $user_info->user_login;
+  $wpsdEmailMessage .= '</b> of the Event  <b>';
+  $wpsdEmailMessage .= $title;
+  $wpsdEmailMessage .= '</b>.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:100px 30px;background-image: url("https://i10.dainikbhaskar.com/thumbnails/730x548/web2images/www.bhaskar.com/2016/11/24/evoke_socks-4_1479993435.jpg");background-size: cover;background-position: center;" align="center" valign="middle">
+                        <a href="" style="display: inline-block;background-color: #fde148;text-decoration: none;padding:12px 30px;text-decoration: none;font-family: sans-serif;font-weight: bold;color:#000000;margin:20px 0px;border-radius: 5px">TICKET NO- ';
+  $wpsdEmailMessage .= $decWinUserTic;
+  $wpsdEmailMessage .= ' </a>
+                    </td>
+                </tr>
+            </table>
+        </body>
+    </html>';
+
+  return wp_mail($to, $wpsdEmailSubject, $wpsdEmailMessage, $headers);
+}
 
 /* =================== frontEnd user dashboard ======================= */
 
 /*
  * Step 1. Add Link (Tab) to My Account menu
- */
+*/
 add_filter('woocommerce_account_menu_items', 'lottery_ticket_link', 40);
 function lottery_ticket_link($menu_links)
 {
 
+  $new = array('user-tickets' => 'Ticket', 'user-lottries' => 'Lottry withdrawal');
   $menu_links = array_slice($menu_links, 0, 5, true)
-    + array('user-tickets' => 'Ticket')
+    + $new
     + array_slice($menu_links, 5, NULL, true);
 
   return $menu_links;
@@ -234,9 +437,9 @@ function lottery_ticket_link($menu_links)
 add_action('init', 'add_endpoint');
 function add_endpoint()
 {
-
   // WP_Rewrite is my Achilles' heel, so please do not ask me for detailed explanation
   add_rewrite_endpoint('user-tickets', EP_PAGES);
+  //add_rewrite_endpoint('link2', EP_PAGES);
 }
 /*
  * Step 3. Content for the new page in My Account, woocommerce_account_{ENDPOINT NAME}_endpoint
@@ -275,28 +478,35 @@ function misha_my_account_endpoint_content()
   require_once(CRUD_PLUGIN_PATH . '/frontend/front-end.php');
 }
 
-
 /*
  * Step 4
- */
+*/
 
 
-/* ====================== Mail ========================== */
+function my_custom_endpoint_content()
+{
+  wc_get_template('myaccount/user-lottries.php');
+}
 
-/* function  wpsd_email_to_admin($amount, $Email, $payMethod)
+add_action('woocommerce_account_link2_endpoint', 'my_custom_endpoint_content');
+
+
+/* function example_forum_link($menu_links)
 {
 
-  $Email           = sanitize_email($_REQUEST['payemail']);
-  $payMethod       = sanitize_text_field($_REQUEST['paymethod']);
-  $amount       = filter_var($_REQUEST['payamount'], FILTER_SANITIZE_STRING);
+  // we will hook "womanide-forum" later
+  $new = array('example-forum' => 'Forum Example');
 
-  $headers = array('Content-Type: text/html; charset=UTF-8');
-  $to = 'vikasehues@gmail.com';
-  $wpsdEmailSubject = __('Request to Transfer Payment!');
-  $wpsdEmailMessage = __('Email: ') . $Email;
-  $wpsdEmailMessage .= '<br>' . __('Payment method: ') . $payMethod;
-  $wpsdEmailMessage .= '<br>' . __('Amount: ') . $amount;
+  // or in case you need 2 links
+  // $new = array( 'link1' => 'Link 1', 'link2' => 'Link 2' );
 
-  return wp_mail($to, $wpsdEmailSubject, $wpsdEmailMessage, $headers);
+  // array_slice() is good when you want to add an element between the other ones
+  $menu_links = array_slice($menu_links, 0, 1, true)
+    + $new
+    + array_slice($menu_links, 1, NULL, true);
+
+
+  return $menu_links;
 }
- */
+
+add_filter('woocommerce_account_menu_items', 'example_forum_link'); */

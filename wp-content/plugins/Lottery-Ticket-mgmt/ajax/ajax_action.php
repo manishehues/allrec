@@ -51,6 +51,34 @@ function wqedit_entry_callback_function()
   wp_die();
 }
 
+
+add_action('wp_ajax_numberadd', 'submit_ajax_lottery_number'); // participant in lts 
+add_action('wp_ajax_nopriv_numberadd', 'submit_ajax_lottery_number'); //participant in lts
+
+function submit_ajax_lottery_number()
+{
+  global $wpdb;
+
+  $post_id = sanitize_text_field($_REQUEST['post_id']);
+  $ticket_number = sanitize_text_field($_REQUEST['ticket_number']);
+  $participant = $wpdb->prefix . "custom_lottery_participants";
+  $lottery_ticket = $wpdb->prefix . "custom_lottery_ticket";
+  $user_id = get_current_user_id();
+
+  $wpdb->get_results("INSERT INTO $participant (`post_id`, `user_id`, ticket_number) VALUES( $post_id,$user_id,$ticket_number)");
+  $wpdb->query("UPDATE $lottery_ticket SET is_used = 1 WHERE ticket_number = " . $ticket_number);
+
+  wpsd_email_to_admin($post_id, $ticket_number, $user_id);
+  wpsd_email_to_user($post_id, $ticket_number, $user_id);
+
+  if ($wpdb->num_rows > 0) :
+
+  endif;
+
+  exit();
+}
+
+
 /* ========= declared winner ======== */
 
 add_action('wp_ajax_gen_winner', 'gen_winner_function');
