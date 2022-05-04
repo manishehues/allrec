@@ -342,3 +342,35 @@ function time_elapsed_string($datetime, $full = false)
     if (!$full) $string = array_slice($string, 0, 1);
     return $string ? implode(', ', $string) . ' ago' : 'just now';
 }
+
+
+function get_users_participated_lotteries(){
+    global $wpdb;
+    $res =[];
+    if(is_user_logged_in()){
+
+        $table_name = $wpdb->prefix . "custom_lottery_participants";
+        $table_name1 = $wpdb->prefix . "posts";
+        $user_id = get_current_user_id();
+        //echo "SELECT ls.post_id, pst.* FROM $table_name ls, $table_name1 pst WHERE ls.user_id = " . $user_id." AND ls.post_id = pst.ID";
+        $res =  $wpdb->get_results("SELECT ls.post_id, pst.* FROM $table_name ls, $table_name1 pst WHERE ls.user_id = " . $user_id." AND ls.post_id = pst.ID");
+
+    }
+    return $res;
+}
+
+function get_users_participated_tikets_nos($post_id){
+    global $wpdb;
+    $res =[];
+    if(is_user_logged_in()){
+
+        $table_name = $wpdb->prefix . "custom_lottery_participants";
+        $table_name1 = $wpdb->prefix . "posts";
+        $user_id = get_current_user_id();
+        $res =  $wpdb->get_results("SELECT * FROM $table_name WHERE user_id = " . $user_id." AND post_id =".$post_id);
+
+    }
+    return $res;
+}
+
+
