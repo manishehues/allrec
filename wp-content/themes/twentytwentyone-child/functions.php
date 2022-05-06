@@ -353,7 +353,7 @@ function get_users_participated_lotteries(){
         $table_name1 = $wpdb->prefix . "posts";
         $user_id = get_current_user_id();
         //echo "SELECT ls.post_id, pst.* FROM $table_name ls, $table_name1 pst WHERE ls.user_id = " . $user_id." AND ls.post_id = pst.ID";
-        $res =  $wpdb->get_results("SELECT ls.post_id, pst.* FROM $table_name ls, $table_name1 pst WHERE ls.user_id = " . $user_id." AND ls.post_id = pst.ID");
+        $res =  $wpdb->get_results("SELECT ls.post_id, pst.* FROM $table_name ls, $table_name1 pst WHERE ls.user_id = " . $user_id." AND ls.post_id = pst.ID group by ls.post_id");
 
     }
     return $res;

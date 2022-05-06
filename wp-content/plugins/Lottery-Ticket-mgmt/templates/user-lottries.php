@@ -41,32 +41,32 @@ get_header();
 						<div class="tittleCart">
 							<?php echo get_the_post_thumbnail($user_lottery->ID,'large');?>
 
+							
+							<div class="cart_tittle">
+				              <h1><?php  echo $user_lottery->post_title; ?></h1>
+								<!-- <a href="javascript:void(0)" class="btn btn-primary ">Already Participate</a> -->
+	            			</div>
+	            			<div class="lottryNumber">
+          						Raffle Draw <br>
+								  <?php echo check_total_participate_per_post($user_lottery->ID) ?>/
+								  <?php echo get_post_meta($user_lottery->ID,'total_participants',true); ?>
+      					 	</div>
+						</div>
+            			<div class="ticket">
+							<ul>
 							<?php $user_participated_tickets = get_users_participated_tikets_nos($user_lottery->ID);
 								//print_r($user_participated_tickets);
 								if(!empty( $user_participated_tickets)){
 								foreach ($user_participated_tickets as $key => $user_participated_ticket) { ?>
+									<li><?php echo $user_participated_ticket->ticket_number;?></li>
 
 								<?php }
 							}
 
 
 							?>
-							<div class="cart_tittle">
-				              <h1><?php  echo $user_lottery->post_title; ?></h1>
-								<!-- <a href="javascript:void(0)" class="btn btn-primary ">Already Participate</a> -->
-	            			</div>
-	            			<div class="lottryNumber">
-          						Raffle Draw <br>5/150 
-      					 	</div>
-						</div>
-            			<div class="ticket">
-							<ul>
-								<li><?php echo $user_participated_ticket->ticket_number;?></li>
-								<li>53654</li>
-								<li>98567</li>
-								<li>68726</li>
-								<li>85334</li>
-								<li>00597</li>	
+
+									
 							</ul>	
 						</div>
 					</div>
