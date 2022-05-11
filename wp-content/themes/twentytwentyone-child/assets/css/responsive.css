@@ -30,6 +30,14 @@
 	.primary-navigation .primary-menu-container > ul > .menu-item {
   		padding-right: 10px;
 	}
+	#main .woocommerce-error{
+		margin-right: 30px;
+		margin-left: 30px;
+	}
+	.woocommerce-form-coupon{
+		margin-right: 30px;
+		margin-left: 30px;
+	}
 
 }
 
@@ -87,6 +95,27 @@
 	.woocommerce ul.products.columns-3 li.product{
 		width: calc(33.333% - 16px) !important;
 	}	
+	#customer_details .leftSide{
+		margin-left: 14px;
+		padding: 20px;
+	}
+	#customer_details .rightSide{
+		margin-left: 20px;
+		padding: 20px;	
+	}
+	.woocommerce-checkout form #order_review_heading{
+		margin-bottom: 20px;
+	}
+	#order_review .shop_table.woocommerce-checkout-review-order-table tbody tr td{
+		padding: 10px 8px !important;
+		font-size: 15px;
+	}
+	.woocommerce-info, .woocommerce-message{
+		max-width: 100%;
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+	.page-id-34 .entry-content{margin-top: 0px;}
 
 }
 
@@ -96,13 +125,13 @@
 		font-size: 12px;
 	}
 	.home .woocommerce ul.products.columns-3 li.product{
-		text-align: center;
-		background: #fff1f1;
+		background: #fbf9f5!important;
 		padding: 0;
 		border-bottom-right-radius: 45px;
 		border-bottom-left-radius: 45px;
 		padding-bottom: 30px;
 	}
+
 	ul.products li.product .woocommerce-loop-product__title{
 		font-size: 21px !important;
 		margin-top: 20px;
@@ -110,9 +139,11 @@
 		padding: 0px;
 		text-align: center;
 	}
+
 	ul.products li.product .woocommerce-loop-product__title::after{
 		display: none;
 	}
+	
 	ul.products li.product .price{
 		font-size: 22px;
 		font-weight: 700;
@@ -182,6 +213,19 @@
 	.woocommerce-shop.woocommerce ul.products.columns-3 li.product{
 		padding: 20px 22px;
 		margin: 10px;
+	}
+	#customer_details.row{
+		margin-left: 15px;
+		margin-right: 15PX;
+	}
+	#customer_details .leftSide{
+		margin:0px;
+		width: 100%;
+		margin-bottom: 15px;
+	}
+	#customer_details .rightSide{
+		margin: 0px;
+		width: 100%;
 	}
 
 }
@@ -256,7 +300,6 @@
 	 }
 	 .primary-navigation > .primary-menu-container{
 	 	transition: all .3s ease!important;
-	 	
 	 }
 	 .primary-navigation-open .primary-navigation > .primary-menu-container{
 	 	background: #1b212f;
@@ -315,6 +358,10 @@
 	ul.products li.product .woocommerce-loop-product__title{
 		z-index: auto!important;
 	}
+	.woocommerce-form-coupon button{
+		font-size: 15px !important;
+		padding: 10px 15px !important;
+	}
 
 
 }
@@ -332,6 +379,7 @@
 	.woocommerce ul.products.columns-3 li.product-type-variable .add_to_cart_button{
 		font-size: 14px !important;
 	}
+
 }
 
 @media screen and (max-width:413px){   
