@@ -28,7 +28,7 @@ class allTickets extends WP_List_Table
                 if ($item['is_used'] == 1) {
                     return 'Used';
                 } else {
-                    return '-';
+                    return '<span class="dashicons dashicons-minus"></span> ';
                 }
 
             case 'created_at':
