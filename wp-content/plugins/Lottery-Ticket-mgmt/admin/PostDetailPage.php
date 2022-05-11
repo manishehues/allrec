@@ -76,7 +76,7 @@ class showPostDetail extends WP_List_Table
                 if ($item['winner'] == 1) {
                     return 'winner';
                 } else {
-                    return '-';
+                    return '<span class="dashicons dashicons-minus"></span>';
                 }
 
             case 'action':
