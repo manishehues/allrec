@@ -30,7 +30,6 @@ get_header();
     <?php if ($the_query->have_posts()) : ?>
       <?php while ($the_query->have_posts()) : $the_query->the_post();?>
      <?php if ( has_post_thumbnail()) : ?>
-    <a href="<?php the_permalink(); ?>" alt="<?php the_title_attribute(); ?>">
       <div class="eventPost">
         <div class="eventImage">
           <?php the_post_thumbnail(); ?>
@@ -38,7 +37,8 @@ get_header();
         <div class="eventContent">
           <div class="innerContent">
             <div class="tittleevent"><?php echo the_title(); ?></div>
-            <p><!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, --><?php the_field('discription'); ?></p>
+            <p><!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, -->
+            <?php the_field('discription'); ?></p>
             <div class="winner">
               <!-- WINNER: Jhone QUE --><?php the_field('winner'); ?>
             </div>

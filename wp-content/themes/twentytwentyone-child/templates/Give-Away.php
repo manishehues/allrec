@@ -1,4 +1,4 @@
-<?php
+  <?php
 
 /**
  * Template Name: Give Away
@@ -42,15 +42,15 @@ get_header();
             <div class="cart_tittle">
               <h2><?php the_title(); ?></h2>
 
-              <?php $res = check_user_participation(get_the_ID());
+              <?php /* $res = check_user_participation(get_the_ID());
               if ($res > 0) : ?>
                 <a href="javascript:void(0)" class="btn btn-primary ">Already Participate</a>
 
-              <?php else : ?>
+              <?php else : */?>
 
                 <a href="javascript:void(0)" class="btn btn-primary add_participants " data-bs-toggle="modal" data-bs-target="#myModal" data-post-id="<?php echo  get_the_ID(); ?>">Add to cart</a>
 
-              <?php endif ?>
+              <?php //endif ?>
 
             </div>
             <div class="lottryNumber">
@@ -105,27 +105,6 @@ get_header();
                           </li>
                       <?php }
                       endif; ?>
-
-
-                      <!-- <li class="profile_single">
-                        <div class="user"><img src="<?php //echo get_stylesheet_directory_uri() 
-                                                    ?>/assets/images/user.png" />Usernamea
-                          <div class="replyComment">
-                            Usernamea
-                            <div class="reply">
-                              <span>mam this month i am very busy....... because of office projects you'll.</span>
-                            </div>
-                          </div>
-                          <span>Love this!!❤️❤️❤️</span>
-                          <div class="likes">
-                            <span class="time">1h - </span>likes<span class="likes">
-                            </span>
-                            <span class="likesText">likes - </span><span class="reply">Reply</span>
-                          </div>
-                        </div>
-                      </li> -->
-
-
 
                     </ul>
                   </div>

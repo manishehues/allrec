@@ -47,13 +47,19 @@ get_header();
           $args = array( 'post_type' => 'video', 'posts_per_page' => 10 );
           $the_query = new WP_Query( $args ); 
           ?>
-          <?php if ( $the_query->have_posts() ) : ?>
+          <!-- <?php if ( $the_query->have_posts() ) : ?> -->
+          <?php the_post_thumbnail(); ?>
+
+
             <div class="allVideos slideVideo">
-                <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-              
+                <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>  
+                <a href="<?php the_permalink(); ?>" alt="<?php the_title_attribute(); ?>">      
                 <div class="snglVideo">
-                  <?php the_content(); ?> 
+                  <!-- <?php the_content(); ?>  -->
+                  <?php the_post_thumbnail(); ?>
+
                 </div>
+              </a>
               <?php endwhile;?>
             </div>
           <?php wp_reset_postdata(); ?>

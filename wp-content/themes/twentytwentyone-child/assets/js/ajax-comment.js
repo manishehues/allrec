@@ -141,10 +141,10 @@ jQuery(function ($) {
       url: misha_ajax_comment_params.ajaxurl,
       data: data11,
 
-      success: function (response) {
-        if (response) {
-          // window.location.reload();
-        }
+      success: function (response) { window.location.reload();
+        // if (response) {
+         
+        // }
       },
     });
   });

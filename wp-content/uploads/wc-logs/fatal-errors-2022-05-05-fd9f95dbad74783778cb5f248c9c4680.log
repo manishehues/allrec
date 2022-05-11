@@ -1,0 +1,22 @@
+2022-05-05T10:34:17+00:00 CRITICAL syntax error, unexpected end of file, expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF) in E:\laragon\www\allrec\wp-content\themes\twentytwentyone-child\templates\Video Post.php on line 73
+
+2022-05-05T10:34:34+00:00 CRITICAL syntax error, unexpected 'endwhile' (T_ENDWHILE), expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF) in E:\laragon\www\allrec\wp-content\themes\twentytwentyone-child\templates\Video Post.php on line 59
+
+2022-05-05T10:43:21+00:00 CRITICAL syntax error, unexpected 'endwhile' (T_ENDWHILE), expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF) in E:\laragon\www\allrec\wp-content\themes\twentytwentyone-child\templates\Video Post.php on line 60
+
+2022-05-05T11:26:55+00:00 CRITICAL Uncaught Error: Call to undefined function get_ID() in E:\laragon\www\allrec\wp-content\themes\twentytwentyone-child\templates\Video Post.php:52
+Stack trace:
+#0 E:\laragon\www\allrec\wp-includes\template-loader.php(106): include()
+#1 E:\laragon\www\allrec\wp-blog-header.php(19): require_once('E:\\laragon\\www\\...')
+#2 E:\laragon\www\allrec\index.php(17): require('E:\\laragon\\www\\...')
+#3 {main}
+  thrown in E:\laragon\www\allrec\wp-content\themes\twentytwentyone-child\templates\Video Post.php on line 52
+
+2022-05-05T11:27:16+00:00 CRITICAL Uncaught Error: Call to undefined function get_id() in E:\laragon\www\allrec\wp-content\themes\twentytwentyone-child\templates\Video Post.php:52
+Stack trace:
+#0 E:\laragon\www\allrec\wp-includes\template-loader.php(106): include()
+#1 E:\laragon\www\allrec\wp-blog-header.php(19): require_once('E:\\laragon\\www\\...')
+#2 E:\laragon\www\allrec\index.php(17): require('E:\\laragon\\www\\...')
+#3 {main}
+  thrown in E:\laragon\www\allrec\wp-content\themes\twentytwentyone-child\templates\Video Post.php on line 52
+
