@@ -547,3 +547,28 @@ padding: 10px 60px!important;
 }
 .woocommerce form .form-row-last{text-align:right;}
 /*==============================order placed==========================================*/
+
+/*popupo*/
+.modal-footer .btn.btn-secondary{
+  background-color: transparent!important;
+  color: #000!important;
+  border: 1px solid #000;
+   padding: 10px 40px!important;
+}
+.modal-footer .btn.btn-secondary:hover{
+  background-color: red !important;
+  border: 1px solid red;
+  color: #fff!important;
+}
+.modal-footer .btn.btn-primary.participant{
+  background-color: transparent;
+  color: #000;
+  border: 1px solid #000;
+   padding: 10px 40px!important;
+}
+.modal-footer .btn.btn-primary.participant:hover{
+  background-color: #0b5ed7;
+  color: #fff;
+  border: 1px solid #0b5ed7;
+}
+/*popupo*/
