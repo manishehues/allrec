@@ -27,7 +27,11 @@ define('DB_NAME', 'woazuymy_allrec');
 define('DB_USER', 'woazuymy_allrec');
 
 /** Database password */
+<<<<<<< HEAD
 define('DB_PASSWORD', 'Shinda@11');
+=======
+define('DB_PASSWORD', '12345');
+>>>>>>> f5aa93cbb352cff377734c42931d553c0aa3dd52
 
 /** Database hostname */
 define('DB_HOST', 'localhost');

@@ -252,13 +252,26 @@ function get_all_tickets_of_current_user()
     return $res;
 }
 
-function get_all_tickets()
+function get_all_tickets($ticket_number = null)
 {
 
     global $wpdb;
-    $table_name = $wpdb->prefix . "custom_lottery_ticket";
-    $user_id = get_current_user_id();
-    $res =  $wpdb->get_results("SELECT id, ticket_number as total_tickets FROM $table_name WHERE is_used = 0 AND `user_id` = " . $user_id);
+    $res = [];
+
+    if (is_user_logged_in()) {
+        $table_name = $wpdb->prefix . "custom_lottery_ticket";
+        $user_id = get_current_user_id();
+        $sql = '';
+        if (!$ticket_number) {
+
+            $sql = "SELECT id, ticket_number as total_tickets FROM $table_name WHERE is_used = 0 AND `user_id` = " . $user_id;
+        } else {
+
+            $sql = "SELECT id, ticket_number as total_tickets FROM $table_name WHERE is_used = 0 AND `user_id` = " . $user_id . " limit " . $ticket_number;
+        }
+
+        $res =  $wpdb->get_results($sql);
+    }
 
     return $res;
 }
@@ -344,33 +357,31 @@ function time_elapsed_string($datetime, $full = false)
 }
 
 
-function get_users_participated_lotteries(){
+function get_users_participated_lotteries()
+{
     global $wpdb;
-    $res =[];
-    if(is_user_logged_in()){
+    $res = [];
+    if (is_user_logged_in()) {
 
         $table_name = $wpdb->prefix . "custom_lottery_participants";
         $table_name1 = $wpdb->prefix . "posts";
         $user_id = get_current_user_id();
         //echo "SELECT ls.post_id, pst.* FROM $table_name ls, $table_name1 pst WHERE ls.user_id = " . $user_id." AND ls.post_id = pst.ID";
-        $res =  $wpdb->get_results("SELECT ls.post_id, pst.* FROM $table_name ls, $table_name1 pst WHERE ls.user_id = " . $user_id." AND ls.post_id = pst.ID group by ls.post_id");
-
+        $res =  $wpdb->get_results("SELECT ls.post_id, pst.* FROM $table_name ls, $table_name1 pst WHERE ls.user_id = " . $user_id . " AND ls.post_id = pst.ID group by ls.post_id");
     }
     return $res;
 }
 
-function get_users_participated_tikets_nos($post_id){
+function get_users_participated_tikets_nos($post_id)
+{
     global $wpdb;
-    $res =[];
-    if(is_user_logged_in()){
+    $res = [];
+    if (is_user_logged_in()) {
 
         $table_name = $wpdb->prefix . "custom_lottery_participants";
         $table_name1 = $wpdb->prefix . "posts";
         $user_id = get_current_user_id();
-        $res =  $wpdb->get_results("SELECT * FROM $table_name WHERE user_id = " . $user_id." AND post_id =".$post_id);
-
+        $res =  $wpdb->get_results("SELECT * FROM $table_name WHERE user_id = " . $user_id . " AND post_id =" . $post_id);
     }
     return $res;
 }
-
-
