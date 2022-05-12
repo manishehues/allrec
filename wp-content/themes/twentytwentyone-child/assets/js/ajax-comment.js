@@ -127,7 +127,12 @@ jQuery(function ($) {
   $("html body").on("click", ".participant", function () {
     var post_id = $(".current_post_id").val();
     var user_id = $(".current_user_id").val();
-    var ticket_number = $(".ticket_number").val();
+    // var ticket_number = $(".ticket_number").val();
+    var ticket_number = $(".quantity").val();
+
+    /*  console.log(post_id);
+    console.log(user_id);
+    console.log(ticket_number); */
 
     var data11 = {
       post_id: post_id,
@@ -141,9 +146,9 @@ jQuery(function ($) {
       url: misha_ajax_comment_params.ajaxurl,
       data: data11,
 
-      success: function (response) { window.location.reload();
+      success: function (response) {
+        window.location.reload();
         // if (response) {
-         
         // }
       },
     });

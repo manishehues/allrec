@@ -65,15 +65,24 @@ function submit_ajax_lottery_number()
   $lottery_ticket = $wpdb->prefix . "custom_lottery_ticket";
   $user_id = get_current_user_id();
 
-  $wpdb->get_results("INSERT INTO $participant (`post_id`, `user_id`, ticket_number) VALUES( $post_id,$user_id,$ticket_number)");
-  $wpdb->query("UPDATE $lottery_ticket SET is_used = 1 WHERE ticket_number = " . $ticket_number);
+  $total_tickets = get_all_tickets($ticket_number);
 
-  wpsd_email_to_admin($post_id, $ticket_number, $user_id);
-  wpsd_email_to_user($post_id, $ticket_number, $user_id);
 
-  if ($wpdb->num_rows > 0) :
+  foreach ($total_tickets as $key => $val) {
 
-  endif;
+    $wpdb->insert($participant, array(
+      "post_id" => $post_id,
+      "user_id" => $user_id,
+      "ticket_number" => $val->total_tickets,
+    ));
+
+    $wpdb->query("UPDATE $lottery_ticket SET is_used = 1 WHERE ticket_number = " . $val->total_tickets);
+  }
+
+  //$wpdb->query("INSERT INTO $participant (`post_id`, `user_id`, ticket_number) VALUES( $post_id,$user_id,$ticket_number)");
+
+  //wpsd_email_to_admin($post_id, $ticket_number, $user_id);
+  //wpsd_email_to_user($post_id, $ticket_number, $user_id);
 
   exit();
 }
