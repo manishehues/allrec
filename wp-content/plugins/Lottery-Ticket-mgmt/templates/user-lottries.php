@@ -53,14 +53,13 @@ get_header();
       					 	</div>
 						</div>
             			<div class="ticket">
+            				 <?php $user_participated_tickets = get_users_participated_tikets_nos($user_lottery->ID);?>
+            					<div class="ticketshowUs"><?php echo count($user_participated_tickets); ?></div>
 							<ul>
-							<?php $user_participated_tickets = get_users_participated_tikets_nos($user_lottery->ID);
+							<?php //$user_participated_tickets = get_users_participated_tikets_nos($user_lottery->ID);
 								//print_r($user_participated_tickets);
 								if(!empty( $user_participated_tickets)){
-								foreach ($user_participated_tickets as $key => $user_participated_ticket) { ?>
-									<li><?php echo $user_participated_ticket->ticket_number;?></li>
-
-								<?php }
+								foreach ($user_participated_tickets as $key => $user_participated_ticket) { ?><li><?php echo $user_participated_ticket->ticket_number;?></li><?php }
 							}
 
 
