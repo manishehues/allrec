@@ -153,13 +153,12 @@
               } */
               ?>
             </select> -->
-            <input type="number" id="quantity" name="quantity" class="quantity" min="0" max="<?php echo get_all_tickets_of_current_user(); ?>" value="0"><br><br>
-
+            <input type="number" id="quantity" name="quantity" class="quantity" min="0" max="<?php echo get_all_tickets_of_current_user(); ?>" value="0">
             <input type="hidden" name="comment_post_ID" class="current_post_id" value="">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary participant">Participant</button>
+            <button type="button" class="btn btn-primary participant">Enter</button>
           </div>
         </div>
       </div>

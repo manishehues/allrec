@@ -19,7 +19,7 @@ get_header();
         <div class="heroContent">
             <div class="content">
                 <h1><?php the_field('tittle'); ?></h1>
-                <p><?php the_field('description'); ?></p>
+                <p><?php the_field('description1'); ?></p>
                 <div class="space">
                     <a class="btn" href="#"><?php the_field('Url'); ?>Sign up today </a>
                 </div>
@@ -39,7 +39,7 @@ get_header();
             </div>
         </div>
     </div>
-
+    
     <div class="product">
         <div class="productTitle">
             <div class="setTitel">
@@ -77,7 +77,7 @@ get_header();
             </div>
         </div>
         <div class="brands">
-            <div class="singleBrand">
+            <!-- <div class="singleBrand">
                 <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/first.svg"/>
                 <a class="btn" href="#">20% OFF</a>
                 <span><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/user-group-solid.svg"/>45 People Used Today</span>
@@ -86,17 +86,17 @@ get_header();
                 <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/second.svg"/>
                 <a class="btn" href="#">20% OFF</a>
                 <span><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/user-group-solid.svg"/>45 People Used Today</span>
-            </div>
+            </div> -->
             <div class="singleBrand">
                 <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/third.svg"/>
                 <a class="btn" href="#">20% OFF</a>
                 <span><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/user-group-solid.svg"/>45 People Used Today</span>
             </div>
-            <div class="singleBrand">
+            <!-- <div class="singleBrand">
                 <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/forth.svg"/>
                 <a class="btn" href="#">20% OFF</a>
                 <span><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/user-group-solid.svg"/>45 People Used Today</span>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
