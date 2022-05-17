@@ -308,56 +308,53 @@
    .site a:focus:not(.wp-block-button__link):not(.wp-block-file__button){background: red!important;}
    .add_to_cart_button:focus{background-color: "#fff"}
    .woocommerce ul.products.columns-3 li.product-type-variable .variations{position: inherit!important;}
-
-  .woocommerce ul.products.columns-3 li.product-type-variable .variations{background: #fbf9f5; padding-bottom: 10px!important;}
+   .woocommerce ul.products.columns-3 li.product-type-variable .variations{background: #fbf9f5; padding-bottom: 10px!important;}
   /*===========================================================================woocommerce-shop=====================================================================*/
 
   /*===========================================================================eventPost============================================================================*/
-  .eventPost{width: 100%; float: left; margin-bottom: 20px;}
-  .eventPost .eventImage{width: 48%;float: left;margin-right: 20px;}
-  .eventPost .eventContent{background: #F1F1F1;display: flex;flex-wrap: wrap;align-items: center;border-radius: 15px;padding: 18px 24px;width: 50%;float: left;}
-  .eventPost .eventContent .innerContent .tittleevent{font-size:26px;color: #EF040D; font-family: 'poppins';font-weight: 700;}
-  .eventPost .eventContent .innerContent p{font-size: 15px!important;line-height: 1.6em !important;}
-  .eventPost .eventContent .innerContent .winner{font-size: 15px;font-weight: 700;color: #000;padding: 6px 0px;}
-  .eventPost .eventContent .innerContent .Hours{font-size: 15px;line-height: 1.6em !important;padding-top: 5px;}
-  .eventPost .eventContent .innerContent .guest{font-size: 20px;font-weight: 700;color: #000;padding-top: 5px;}
-  .eventPost .eventContent .innerContent .Hours .hourTittle{font-size: 20px;font-weight: 700;color: #000;}
-  .eventPost .eventContent .innerContent .winnerlast{font-size: 20px;font-weight: 700;color: #000;padding-top: 5px;}
+.eventPost{width: 100%; float: left; margin-bottom: 20px;}
+.eventPost .eventImage{width: 48%;float: left;margin-right: 20px;}
+.eventPost .eventContent{background: #F1F1F1;display: flex;flex-wrap: wrap;align-items: center;border-radius: 15px;padding: 18px 24px;width: 50%;float: left;}
+.eventPost .eventContent .innerContent .tittleevent{font-size:26px;color: #EF040D; font-family: 'poppins';font-weight: 700;}
+.eventPost .eventContent .innerContent p{font-size: 15px!important;line-height: 1.6em !important;}
+.eventPost .eventContent .innerContent .winner{font-size: 15px;font-weight: 700;color: #000;padding: 6px 0px;}
+.eventPost .eventContent .innerContent .Hours{font-size: 15px;line-height: 1.6em !important;padding-top: 5px;}
+.eventPost .eventContent .innerContent .guest{font-size: 20px;font-weight: 700;color: #000;padding-top: 5px;}
+.eventPost .eventContent .innerContent .Hours .hourTittle{font-size: 20px;font-weight: 700;color: #000;}
+.eventPost .eventContent .innerContent .winnerlast{font-size: 20px;font-weight: 700;color: #000;padding-top: 5px;}
 
 
-  /*===========================================================================eventPost============================================================================*/
+/*===========================================================================eventPost============================================================================*/
 
-  .woocommerce-account .woocommerce-MyAccount-navigation{width:20%;float:left;margin-right:30px;border-top:1px solid #ddd;}
-  .woocommerce-account .woocommerce-MyAccount-navigation li a{color:#000;}
-  #payment .form-row.place-order{padding-left:0;padding-right:0;}
-  .logged-in .woocommerce-MyAccount-navigation{float:left !important;background-color:#000 !important;padding:15px 30px;margin-bottom:15px !important; height: 100%;}
-  .woocommerce .woocommerce-MyAccount-navigation{width:250px;}
-  .logged-in .woocommerce-MyAccount-navigation ul li{border:0px !important; display: flex; padding: 5px 12px;margin: 3px 0px!important;}
-    
-  .logged-in .woocommerce-MyAccount-navigation{float:left !important;background-color:#000 !important;padding:15px 30px;margin-bottom:15px !important;}
-  .woocommerce .woocommerce-MyAccount-navigation{width:250px;}
-  .woocommerce .woocommerce-MyAccount-navigation ul li.is-active, .woocommerce .woocommerce-MyAccount-navigation ul li:hover{opacity:1;}
-  .logged-in .woocommerce-MyAccount-navigation ul li{border:0px !important;}
-  .logged-in .woocommerce-MyAccount-navigation{float:left !important;background-color:#1b212f !important;padding:15px 0px;margin-bottom:15px !important;}
-  .woocommerce .woocommerce-MyAccount-navigation ul li.is-active{background: #ef040d; padding: 5px 12px!important;margin: 3px 0px!important;}
-  .woocommerce-account .woocommerce-MyAccount-navigation li.is-active a{box-shadow: none!important; color: #fff!important; text-decoration: none!important;}
-  .woocommerce .woocommerce-MyAccount-navigation ul li{padding-right: 15px; padding-left: 15px; opacity: 1; margin: 0px!important;}
-  .logged-in .woocommerce-MyAccount-navigation ul li a{color: #fff!important; font-family: 'poppins'; font-size: 16px;text-transform: uppercase; font-weight: bold; text-decoration: none!important;}
-  .woocommerce .woocommerce-MyAccount-navigation ul li::before{color: #000000c2;}
-  .woocommerce .woocommerce-MyAccount-navigation ul li.is-active a{font-weight: 700;}
-  .woocommerce-account .woocommerce-MyAccount-navigation li.is-active::before{color: #000;}
-  .woocommerce .woocommerce-MyAccount-navigation ul li:hover{background: #ef040d; transition: all 0.2s ease;}
-  .woocommerce .woocommerce-MyAccount-navigation ul li:hover a{color: #fff!important; transition: all 0.2s ease; text-decoration: none!important;}
-  .logged-in .woocommerce-MyAccount-navigation{margin-top: 0px; margin-bottom: 0!important; border-radius: 10px; box-shadow: -1px 4px 16px rgb(0, 0, 0);}
+.woocommerce-account .woocommerce-MyAccount-navigation{width:20%;float:left;margin-right:30px;border-top:1px solid #ddd;}
+.woocommerce-account .woocommerce-MyAccount-navigation li a{color:#000;}
+#payment .form-row.place-order{padding-left:0;padding-right:0;}
+.logged-in .woocommerce-MyAccount-navigation{float:left !important;background-color:#000 !important;padding:15px 30px;margin-bottom:15px !important; height: 100%;}
+.woocommerce .woocommerce-MyAccount-navigation{width:250px;}
+.logged-in .woocommerce-MyAccount-navigation ul li{border:0px !important; display: flex; padding: 5px 12px;margin: 3px 0px!important;}
+.logged-in .woocommerce-MyAccount-navigation{float:left !important;background-color:#000 !important;padding:15px 30px;margin-bottom:15px !important;}
+.woocommerce .woocommerce-MyAccount-navigation{width:250px;}
+.woocommerce .woocommerce-MyAccount-navigation ul li.is-active, .woocommerce .woocommerce-MyAccount-navigation ul li:hover{opacity:1;}
+.logged-in .woocommerce-MyAccount-navigation ul li{border:0px !important;}
+.logged-in .woocommerce-MyAccount-navigation{float:left !important;background-color:#1b212f !important;padding:15px 0px;margin-bottom:15px !important;}
+.woocommerce .woocommerce-MyAccount-navigation ul li.is-active{background: #ef040d; padding: 5px 12px!important;margin: 3px 0px!important;}
+.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a{box-shadow: none!important; color: #fff!important; text-decoration: none!important;}
+.woocommerce .woocommerce-MyAccount-navigation ul li{padding-right: 15px; padding-left: 15px; opacity: 1; margin: 0px!important;}
+.logged-in .woocommerce-MyAccount-navigation ul li a{color: #fff!important; font-family: 'poppins'; font-size: 16px;text-transform: uppercase; font-weight: bold; text-decoration: none!important;}
+.woocommerce .woocommerce-MyAccount-navigation ul li::before{color: #000000c2;}
+.woocommerce .woocommerce-MyAccount-navigation ul li.is-active a{font-weight: 700;}
+.woocommerce-account .woocommerce-MyAccount-navigation li.is-active::before{color: #000;}
+.woocommerce .woocommerce-MyAccount-navigation ul li:hover{background: #ef040d; transition: all 0.2s ease;}
+.woocommerce .woocommerce-MyAccount-navigation ul li:hover a{color: #fff!important; transition: all 0.2s ease; text-decoration: none!important;}
+.logged-in .woocommerce-MyAccount-navigation{margin-top: 0px; margin-bottom: 0!important; border-radius: 10px; box-shadow: -1px 4px 16px rgb(0, 0, 0);}
 
-
-  .cartPage .leftSide.cartForm table thead{background: #000; color: #fff;}
-  .cartPage .leftSide.cartForm table tbody tr:nth-child(odd){background-color: #f7f7f7 !important;}
-  .cartPage .leftSide.cartForm table tbody tr td.product-thumbnail{max-width: 50px!important;}
-  .cartPage .leftSide.cartForm table tbody tr td.product-quantity .quantity input.input-text {border: 1px solid #000; padding: 7px; border-radius: 6px;}
-  .cartPage .leftSide.cartForm table tbody tr td.product-name a{font-size: 16px!important;}
-  .cartPage .leftSide.cartForm table tbody tr td.product-remove .remove:hover{background: red;}
-  .cartPage .leftSide.cartForm table tbody tr td.actions .button{border: 2px solid #FF0000 !important;
+.cartPage .leftSide.cartForm table thead{background: #000; color: #fff;}
+.cartPage .leftSide.cartForm table tbody tr:nth-child(odd){background-color: #f7f7f7 !important;}
+.cartPage .leftSide.cartForm table tbody tr td.product-thumbnail{max-width: 50px!important;}
+.cartPage .leftSide.cartForm table tbody tr td.product-quantity .quantity input.input-text {border: 1px solid #000; padding: 7px; border-radius: 6px;}
+.cartPage .leftSide.cartForm table tbody tr td.product-name a{font-size: 16px!important;}
+.cartPage .leftSide.cartForm table tbody tr td.product-remove .remove:hover{background: red;}
+.cartPage .leftSide.cartForm table tbody tr td.actions .button{border: 2px solid #FF0000 !important;
     background: #FF0000 !important;
     color: #fff !important;
     border-radius: 8px !important;
@@ -367,14 +364,14 @@
     text-transform: uppercase;
     padding: 10px 30px;
   }
-  .cartPage .leftSide.cartForm table tbody tr td.actions .button:hover{border: 2px solid #FF0000 !important;
+.cartPage .leftSide.cartForm table tbody tr td.actions .button:hover{border: 2px solid #FF0000 !important;
     color: #000 !important;
     background: transparent !important;
   }
-  .cartPage .leftSide.cartForm table tbody tr td.actions .coupon input{font-size: 14px!important;}
-  .woocommerce .cart-collaterals .cart_totals, .woocommerce-page .cart-collaterals .cart_totals{width: 100%!important; float: left;}
-  .col-sm-4.rightSide.cartTotals{margin-top: 90px; padding: 0px 40px;}
-  .col-sm-4.rightSide.cartTotals .checkout-button{border: 2px solid #FF0000 !important;
+.cartPage .leftSide.cartForm table tbody tr td.actions .coupon input{font-size: 14px!important;}
+.woocommerce .cart-collaterals .cart_totals, .woocommerce-page .cart-collaterals .cart_totals{width: 100%!important; float: left;}
+.col-sm-4.rightSide.cartTotals{margin-top: 90px; padding: 0px 40px;}
+.col-sm-4.rightSide.cartTotals .checkout-button{border: 2px solid #FF0000 !important;
     background: #FF0000 !important;
     color: #fff !important;
     border-radius: 8px !important;
@@ -385,38 +382,38 @@
     padding: 10px 30px;
     text-decoration: none!important;
   }
-  .col-sm-4.rightSide.cartTotals .checkout-button:hover{border: 2px solid #FF0000 !important;color: #000 !important;background: transparent !important;}
-  .woocommerce .cart-collaterals, .woocommerce-page .cart-collaterals{width: 100%;background: #fff;padding: 30px;box-shadow: 0px 0px 30px rgba(0,0,0,0.10);}
-  .woocommerce .cartPage{height: calc(100vh - 210px);}
+.col-sm-4.rightSide.cartTotals .checkout-button:hover{border: 2px solid #FF0000 !important;color: #000 !important;background: transparent !important;}
+.woocommerce .cart-collaterals, .woocommerce-page .cart-collaterals{width: 100%;background: #fff;padding: 30px;box-shadow: 0px 0px 30px rgba(0,0,0,0.10);}
+.woocommerce .cartPage{height: calc(100vh - 210px);}
 
 
-  /*=========================savedTicket===================================*/
-  .savedTicket{width: 100%; float: left ; padding: 30px 0px;}
-  .savedTicket .ticketConten{ font-size: 18px !important;font-weight: 700 !important;font-family: 'Poppins'!important;color: #1B212F !important;}
-  .savedTicket .numberOff{font-size: 26px !important;font-weight: 700 !important;font-family: 'Poppins'!important;color: #fff!important;background: red; padding: 5px 20px; display: inline-block; line-height: normal; border-radius: 6px;}
-  .lotrySelection{width: 100% ; float: left;}
-  .lotrySelection .Singlelotry{width: 50%; float: left; padding-right: 10px; padding-left: 10px; margin-bottom: 30px;}
-  .lotrySelection .Singlelotry .tittleCart{position: relative;}
-  .cart_tittle h1 {float: left; padding-right: 320px;padding-left: 40px;line-height: 1em;color: #fff !important; position: relative;z-index: 99;}
-  .cart_tittle h1::after{content: '';height: 25px;width: 176px;position: absolute;background: #FF0000A8;left: 44px;bottom: 55px;z-index: -99999999;}
-  .cart_tittle h1::before{content: '';height: 25px;width: 116px;position: absolute;background: #FF0000A8;left: 64px;bottom: 3px;z-index: -99999999;}
-  .lotrySelection .Singlelotry .ticket{width: 100%; float: left; margin: 10px 0px;}
-  .lotrySelection .Singlelotry .ticket ul{padding: 0;text-align: center;}
-  .lotrySelection .Singlelotry .ticket ul li{list-style: none;display: inline-block;padding: 4px 14px;background: #f00;color: #fff;border-radius: 6px;font-family: 'poppins';font-weight: 600;}
-  .QRcode{width: 100%; float: left; padding-top: 30px;}
-  .QRcode img{max-width: 110px!important;}
-  .accountTabs {width: 100%;float: left;text-align: center;}
-  .accountTabs .tabBtn{max-width: 257px;margin: 0 auto;border: 1px solid #00000040;padding: 6px 0px;border-radius: 5px;}
-  .accountTabs .tabBtn a {text-decoration: none;padding: 10px 15px;}
-  .accountTabs .tabBtn a.account {border-top-left-radius: 4px;border-bottom-left-radius: 4px;background: #f00;color: #fff;border: 1px solid #0000;}
-  .accountTabs .tabBtn a.account:focus{background: #f00!important; outline: none!important; text-decoration: none!important;}
+/*=========================savedTicket===================================*/
+.savedTicket{width: 100%; float: left ; padding: 30px 0px;}
+.savedTicket .ticketConten{ font-size: 18px !important;font-weight: 700 !important;font-family: 'Poppins'!important;color: #1B212F !important;}
+.savedTicket .numberOff{font-size: 26px !important;font-weight: 700 !important;font-family: 'Poppins'!important;color: #fff!important;background: red; padding: 5px 20px; display: inline-block; line-height: normal; border-radius: 6px;}
+.lotrySelection{width: 100% ; float: left;}
+.lotrySelection .Singlelotry{width: 50%; float: left; padding-right: 10px; padding-left: 10px; margin-bottom: 30px;}
+.lotrySelection .Singlelotry .tittleCart{position: relative;}
+.cart_tittle h1 {float: left; padding-right: 320px;padding-left: 40px;line-height: 1em;color: #fff !important; position: relative;z-index: 99;}
+.cart_tittle h1::after{content: '';height: 25px;width: 176px;position: absolute;background: #FF0000A8;left: 44px;bottom: 55px;z-index: -99999999;}
+.cart_tittle h1::before{content: '';height: 25px;width: 116px;position: absolute;background: #FF0000A8;left: 64px;bottom: 3px;z-index: -99999999;}
+.lotrySelection .Singlelotry .ticket{width: 100%; float: left; margin: 10px 0px;}
+.lotrySelection .Singlelotry .ticket ul{padding: 0;text-align: center;}
+.lotrySelection .Singlelotry .ticket ul li{list-style: none;display: inline-block;padding: 4px 14px;background: #f00;color: #fff;border-radius: 6px;font-family: 'poppins';font-weight: 600;}
+.QRcode{width: 100%; float: left; padding-top: 30px;}
+.QRcode img{max-width: 110px!important;}
+.accountTabs {width: 100%;float: left;text-align: center;}
+.accountTabs .tabBtn{max-width: 257px;margin: 0 auto;border: 1px solid #00000040;padding: 6px 0px;border-radius: 5px;}
+.accountTabs .tabBtn a {text-decoration: none;padding: 10px 15px;}
+.accountTabs .tabBtn a.account {border-top-left-radius: 4px;border-bottom-left-radius: 4px;background: #f00;color: #fff;border: 1px solid #0000;}
+.accountTabs .tabBtn a.account:focus{background: #f00!important; outline: none!important; text-decoration: none!important;}
 
-  /*=========================savedTicket===================================*/
+/*=========================savedTicket===================================*/
 
 
 
   /*===============================================notification===============================================*/
-  .woocommerce-info, .woocommerce-message{
+.woocommerce-info, .woocommerce-message{
     background: #ff00001a;
     color: #000;
     border-top: 2px solid #00000094 !important;
@@ -428,7 +425,7 @@
     font-size: 15px;
     margin-bottom: 60px;
   }
-  .woocommerce-notices-wrapper .woocommerce-message .button.wc-forward{
+.woocommerce-notices-wrapper .woocommerce-message .button.wc-forward{
     border: none !important;
     background-color: red !important;
     color: #fff !important;
@@ -441,19 +438,19 @@
     text-decoration: none;
   }
 
-  .woocommerce-notices-wrapper .woocommerce-message .button.wc-forward:focus{
+.woocommerce-notices-wrapper .woocommerce-message .button.wc-forward:focus{
     background: red!important;
     text-decoration: none!important;
   }
   /*===============================================notification===============================================*/
 
   /*==============================order placed==========================================*/
-  .woocommerce-order ul.woocommerce-order-overview{
+.woocommerce-order ul.woocommerce-order-overview{
     padding: 0px;
     width: 100%;
     float: left;
   }
-  .woocommerce-order ul.woocommerce-order-overview li{
+.woocommerce-order ul.woocommerce-order-overview li{
     float: left;
     margin-right: 2em;
     text-transform: uppercase;
@@ -467,8 +464,9 @@
     margin-bottom: 15px;
     margin-top: 15px;
     font-family: 'poppins';
-  }
-  .woocommerce-order ul.woocommerce-order-overview li strong{
+}
+
+.woocommerce-order ul.woocommerce-order-overview li strong{
     display: block;
     font-size: 1em;
     text-transform: none;
