@@ -1,10 +1,36 @@
 @media screen and (max-width:1919px){   
 }
-
+@media screen and (max-width:1679px){  
+	.page-id-36 .cart_tittle h1{
+		padding-right: 60px;
+	} 
+	.page-id-36 .savedTicket{
+		padding-top: 0px;
+	}
+	.page-id-36 .lotrySelection .Singlelotry .ticket{
+		padding-left: 20%;
+	}
+	.page-id-36 .lotrySelection .Singlelotry .ticket ul li{
+		padding: 0px 36px;
+	}
+	.page-id-36 .lotrySelection .Singlelotry .ticket ul li{
+		padding: 0px 50px!important;
+	}
+}
 @media screen and (max-width:1599px){
 	.primary-navigation .primary-menu-container > ul > .menu-item {
 	  padding-right: 30px;
-	}		
+	}
+	.page-id-36 .cart_tittle h1{
+		font-size: 33px !important;
+		line-height: normal;
+	}
+	.page-id-36 h1{
+		font-size: 30px !important;
+	}
+	.page-id-36 .lotrySelection .Singlelotry .ticket{
+		padding-left: 10%;
+	}
 }
 
 @media screen and (max-width:1439px){	
@@ -33,6 +59,7 @@
 	.fullBorder{
 		padding-top: 80px;margin-top: 0px !important;
 	}
+
 	.primary-navigation .primary-menu-container > ul > .menu-item {
   		padding-right: 10px;
 	}
@@ -163,6 +190,24 @@
 	}
 	.commentForm .userComments .foruserScrool{
 		max-height: 200px !important;
+	}
+	.page-id-36 .cart_tittle h1{
+		font-size: 22px !important;
+	}
+	.page-id-36 .cart_tittle h1::after{
+		height: 15px;
+		bottom: 45px;
+	}
+	.page-id-36 .cart_tittle h1::before{
+		height: 15px;
+		top: 45px;
+		left: 24px;
+	}
+	.page-id-36 .lottryNumber{
+		top: 20px;
+	}
+	.page-id-36 .cart_tittle {
+  		bottom: 10px;
 	}
 
 
@@ -325,6 +370,22 @@
 		border-bottom-right-radius: 15px;
 
 	}
+	.page-id-36 .cart_tittle h1{
+	  font-size: 20px !important;
+	  line-height: 1.2em;
+	}
+	.page-id-36 .cart_tittle h1::before{
+	  height: 6px;
+	  top: 38px;
+	  left: 44px;
+	}
+	.page-id-36 .cart_tittle h1::after{
+	  height: 6px;
+	  bottom: 30px;
+	}
+	.woocommerce-MyAccount-content{
+	  margin-top: 30px;
+	}
 
 
 }
@@ -486,6 +547,24 @@
 	.cart_tittle .btn.btn-primary{
 		z-index: auto;
 		line-height: 1.2em;	
+	}
+	.page-id-36 .lotrySelection .Singlelotry{
+		width: 100%;
+	}
+	.page-id-36 .cart_tittle {
+	  bottom: 20px;
+	}
+	.page-id-36 .cart_tittle h1{
+		font-size: 24px !important;
+		padding-right: 160px;
+	}
+	.page-id-36 .ticket_tittle{
+		padding-right: 0;
+		padding-left: 0;
+	}
+	.page-id-36 .lotrySelection .Singlelotry{
+		padding-right: 0;
+		padding-left: 0;
 	}
 
 }
