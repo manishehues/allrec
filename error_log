@@ -5,3 +5,23 @@
 [12-May-2022 05:54:19 America/Boise] PHP Parse error:  syntax error, unexpected '<<' (T_SL), expecting end of file in /home4/woazuymy/public_html/allrec/wp-config.php on line 30
 [12-May-2022 05:54:19 America/Boise] PHP Parse error:  syntax error, unexpected '<<' (T_SL), expecting end of file in /home4/woazuymy/public_html/allrec/wp-config.php on line 30
 [12-May-2022 05:54:22 America/Boise] PHP Parse error:  syntax error, unexpected '<<' (T_SL), expecting end of file in /home4/woazuymy/public_html/allrec/wp-config.php on line 30
+[24-May-2022 03:56:31 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 03:56:31 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 03:56:33 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 03:56:33 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 03:56:44 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 03:56:44 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 03:56:59 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 03:56:59 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 03:57:46 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 03:57:46 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 03:57:53 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 03:57:53 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 03:57:58 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 03:57:58 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 04:00:29 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 04:00:29 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 04:02:15 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 04:02:15 UTC] The Automattic\WooCommerce\Admin\API\Options::get_options function is deprecated since version 3.1.
+[24-May-2022 04:14:46 UTC] total was called incorrectly. Order properties should not be accessed directly. Backtrace: require('wp-blog-header.php'), require_once('wp-includes/template-loader.php'), do_action('template_redirect'), WP_Hook->do_action, WP_Hook->apply_filters, WC_AJAX::do_wc_ajax, do_action('wc_ajax_checkout'), WP_Hook->do_action, WP_Hook->apply_filters, WC_AJAX::checkout, WC_Checkout->process_checkout, WC_Checkout->create_order, WC_Order->save, WC_Abstract_Order->save, WC_Data_Store->create, WC_Order_Data_Store_CPT->create, do_action('woocommerce_new_order'), WP_Hook->do_action, WP_Hook->apply_filters, genrate_lottery_numbers, WC_Abstract_Legacy_Order->__get, wc_doing_it_wrong. This message was added in version 3.0.
+[24-May-2022 04:14:46 UTC] customer_id was called incorrectly. Order properties should not be accessed directly. Backtrace: require('wp-blog-header.php'), require_once('wp-includes/template-loader.php'), do_action('template_redirect'), WP_Hook->do_action, WP_Hook->apply_filters, WC_AJAX::do_wc_ajax, do_action('wc_ajax_checkout'), WP_Hook->do_action, WP_Hook->apply_filters, WC_AJAX::checkout, WC_Checkout->process_checkout, WC_Checkout->create_order, WC_Order->save, WC_Abstract_Order->save, WC_Data_Store->create, WC_Order_Data_Store_CPT->create, do_action('woocommerce_new_order'), WP_Hook->do_action, WP_Hook->apply_filters, genrate_lottery_numbers, WC_Abstract_Legacy_Order->__get, wc_doing_it_wrong. This message was added in version 3.0.
