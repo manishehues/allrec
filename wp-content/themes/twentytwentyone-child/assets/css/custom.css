@@ -89,7 +89,9 @@
   .product.spacing{width: 100%;float: none;}
   .fullBorder{width: 100%; float: left; margin: 0px!important; padding-top: 100px; padding-bottom: 100px; border-bottom: 1px solid #7E7E7E; border-top: 1px solid #7E7E7E; margin-top: 60px!important;}
 
-
+.upperWrap .variations_form table.variations tbody tr:nth-child(2n+1){
+  background-color: transparent!important;
+}
   /*============================================features page============================================*/
   .features .secOff,.features .mainVideo{width: 100%; float: left;}
   .features .secOff{border-radius: 10px; border: 1px solid #70707063; padding: 70px 80px; display: flex; align-items: center;}
@@ -221,7 +223,7 @@
   .giveAway .giveAway-product .Sap{width: 60%; float: left; position: relative; margin-bottom: 40px;}
   .giveAway .giveAway-product .giveAway-chatbox{width: 40%; float: left; /*text-align: center;*/}
   .cart_tittle{position: absolute; bottom: 20px; width: 100%;}
-  .cart_tittle h2 {float: left; padding-right: 401px;padding-left: 40px;line-height: 1em;color: #fff !important; position: relative;z-index: 99;}
+  .cart_tittle h2 {float: left; padding-right: 380px;padding-left: 40px;line-height: 1em;color: #fff !important; position: relative;z-index: 99;}
   .lottryNumber{position: absolute;top: 50px;right: 0;color: #fff;text-align: right;background: #0000003b;border-top-left-radius: 15px;border-bottom-left-radius: 15px;line-height: normal;padding: 12px 20px;font-family: 'poppins';font-weight: 500;}
   .cart_tittle h2::after{content: '';height: 25px;width: 176px;position: absolute;background: #FF0000A8;left: 44px;bottom: 55px;z-index: -99999999;}
   .cart_tittle h2::before{content: '';height: 25px;width: 116px;position: absolute;background: #FF0000A8;left: 64px;bottom: 3px;z-index: -99999999;}
@@ -494,7 +496,7 @@
     padding-top: 40px;
     padding-bottom: 40px;
     box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.19);
-    margin-top: 30px;
+    margin-top: 120px;
   }
   .woocommerce-order-details {
     width: 60%;
@@ -502,6 +504,7 @@
     padding: 30px;
     padding-top: 30px;
     padding-bottom: 30px;
+    padding-left: 0px!important;
   }
   .woocommerce-customer-details address {
     font-family: 'poppins';
@@ -606,7 +609,7 @@
 .modal-body #quantity:hover{opacity: 1!important;}
 .modal-body input[type=number]::-webkit-inner-spin-button,
 .modal-body input[type=number]::-webkit-outer-spin-button{
-opacity: 1;}
+opacity: 1!important;}
 
   /*popupo*/
 .lotrySelection .Singlelotry .ticket{
@@ -623,7 +626,6 @@ padding-left: 110px;
 max-width: 350px;
 height: 200px;
 overflow: scroll; 
-
 }
 .lotrySelection .Singlelotry .ticket ul:hover{opacity: 1;}
 

@@ -26,9 +26,9 @@ get_header();
             </div>
             <div class="heroIcons">
                 <ul>
-                    <?php if( have_rows('icon') ): ?>           
+                    <?php if( have_rows('icon') ): ?>
                         <?php while( have_rows('icon') ): the_row();
-                            $icon_img = get_sub_field('icon_img');                
+                            $icon_img = get_sub_field('icon_img');
                         ?>
 
                     <li><a herf="#"><?php echo $title; ?><img src="<?php echo $icon_img['url']; ?>" alt="<?php echo $title; ?>"></a></li>
@@ -39,7 +39,6 @@ get_header();
             </div>
         </div>
     </div>
-    
     <div class="product">
         <div class="productTitle">
             <div class="setTitel">
@@ -49,7 +48,7 @@ get_header();
             <div class="sildeSlider">
             </div>
         </div>
-        <div class="ProductShortcode">       
+        <div class="ProductShortcode">
            <?php the_field('shortcode'); ?>
         </div>
     </div>
@@ -62,7 +61,7 @@ get_header();
             <div class="sildeSlider">
             </div>
         </div>
-        <div class="ProductShortcode">       
+        <div class="ProductShortcode">
            <?php the_field('shortcode_give_away'); ?>
         </div>
     </div>
